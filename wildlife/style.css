@@ -40,6 +40,11 @@ a {
   text-decoration: none;
 }
 
+a:active,
+a:focus {
+  outline: none;
+}
+
 .visually-hidden:not(:focus):not(:active) {
   position: absolute;
 
@@ -68,6 +73,8 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: -78px;
+  padding-top: 18px;
 
   background-color: #02160b;
 }
@@ -129,11 +136,19 @@ a {
 }
 
 .btn {
+  padding: 16px 43px;
+
   line-height: 27px;
   font-family: "Roboto", "Arial", sans-serif;
+  color: #f7f7f7;
 
   background-color: #cd6326;
+  border: none;
   border-radius: 5px;
+}
+
+.btn:hover {
+  background-color: #e39128;
 }
 
 .btn--sign {
@@ -144,8 +159,8 @@ a {
 }
 
 .btn--sign:hover {
-  background-color: #e39128;
-  border-color: #e39128;
+  background-color: #cd6326;
+  border-color: #cd6326;
   opacity: 1;
 }
 
@@ -153,7 +168,42 @@ a {
 .btn:focus {
   background-color: #8f5613;
   border-color: #8f5613;
+  outline: none;
   opacity: 1;
+}
+
+.title {
+  margin-top: 0;
+  margin-bottom: 0;
+
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 72px;
+}
+
+.survival {
+  padding-top: 199px;
+  padding-bottom: 241px;
+
+  background-color: #02160b;
+  background-image: url("/assets/img/fox.jpg");
+  background-position: center center;
+}
+
+.survival__title {
+  margin-bottom: 50px;
+
+  color: #cd6326;
+  letter-spacing: 2px;
+}
+
+.survival__text {
+  width: 274px;
+  margin-top: 0;
+  margin-bottom: 47px;
+
+  font-size: 18px;
+  line-height: 27px;
 }
 
 .page-footer {
