@@ -160,8 +160,11 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-top: 150px;
+  padding-bottom: 150px;
 
   background-color: #181617;
+  background-image: url("/assets/img/leaves.jpg");
 }
 
 .page-footer__nav {
