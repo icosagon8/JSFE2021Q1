@@ -164,6 +164,13 @@ a:focus {
   opacity: 1;
 }
 
+.btn--send {
+  padding-right: 35px;
+  padding-left: 35px;
+
+  border-radius: 0 5px 5px 0;
+}
+
 .btn:active,
 .btn:focus {
   background-color: #8f5613;
@@ -204,6 +211,58 @@ a:focus {
 
   font-size: 18px;
   line-height: 27px;
+}
+
+.subscription {
+  padding-top: 122px;
+  padding-bottom: 238px;
+
+  background-color: #cccccc;
+}
+
+.subscription__wrapper {
+  width: 663px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.subscription__inner {
+  display: flex;
+}
+
+.subscription__text {
+  margin-top: 0;
+  margin-bottom: 59px;
+
+  font-size: 27px;
+  line-height: 40px;
+  text-align: center;
+  color: #333333;
+}
+
+.subscription__form-group {
+  width: 100%;
+}
+
+.subscription__field {
+  width: 100%;
+  padding: 16px;
+
+  font-size: 23px;
+  line-height: 27px;
+  font-family: "Roboto", "Arial", sans-serif;
+}
+
+.subscription__field::-moz-placeholder {
+  color: #666666;
+}
+
+.subscription__field::placeholder {
+  color: #666666;
+}
+
+.subscription__button {
+  margin-left: -1px;
 }
 
 .page-footer {
