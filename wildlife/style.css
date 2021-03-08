@@ -352,6 +352,10 @@ a:focus {
   font-family: "Roboto", "Arial", sans-serif;
 }
 
+.subscription__field:focus {
+  outline: none;
+}
+
 .subscription__field::-moz-placeholder {
   color: #666666;
 }
