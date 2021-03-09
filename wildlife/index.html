@@ -10,134 +10,144 @@
 </head>
 
 <body>
-  <header class="page-header container">
-    <a class="page-header__logo logo">
-      <img class="logo__image" src="assets/img/logo.svg" width="70" height="60" alt="Wildlife">
-      <h1 class="logo__text">Wildlife</h1>
-    </a>
-    <nav class="main-nav">
-      <ul class="main-nav__list">
-        <li class="main-nav__item">
-          <a class="main-nav__link" href="#">Blog</a>
-        </li>
-        <li class="main-nav__item">
-          <a class="main-nav__link" href="#">Contacts</a>
-        </li>
-        <li class="main-nav__item">
-          <a class="main-nav__link main-nav__link--search" href="#">
-            <span class="visually-hidden">Search</span>
-          </a>
-        </li>
-        <li class="main-nav__item">
-          <a class="main-nav__link btn btn--sign" href="#">Sign in</a>
-        </li>
-      </ul>
-    </nav>
-  </header>
-  <main class="page-main">
-    <section class="survival container">
-      <h2 class="survival__title title">Survival</h2>
-      <p class="survival__text">What this means is that we exist to help protect our environment and do in numbers of ways. You can save the planet by donation.</p>
-      <button class="survival__btn btn" type="button">Donate</button>
-    </section>
-    <section class="articles container">
-      <h2 class="articles__title title">Latest articles</h2>
-      <p class="articles__text">Breaking news from the wild</p>
-      <div class="articles__wrapper">
-        <ul class="articles__list">
-          <li class="articles__item articles-item">
-            <article class="articles-item__article">
-              <div class="articles-item__wrapper">
-                <h3 class="articles-item__title">Deer</h3>
-                <p class="articles-item__text">Naturalist investigation</p>
-              </div>
-              <img class="articles-item__image" src="assets/img/deer.jpg" width="300" height="360" alt="Deer">
-            </article>
+  <header class="page-header">
+    <div class="container page-header__wrapper">
+      <a class="page-header__logo logo">
+        <img class="logo__image" src="assets/img/logo.svg" width="70" height="60" alt="Wildlife">
+        <h1 class="logo__text">Wildlife</h1>
+      </a>
+      <nav class="main-nav">
+        <ul class="main-nav__list">
+          <li class="main-nav__item">
+            <a class="main-nav__link" href="#">Blog</a>
           </li>
-          <li class="articles__item articles-item">
-            <article class="articles-item__article">
-              <div class="articles-item__wrapper">
-                <h3 class="articles-item__title">Squirrel</h3>
-                <p class="articles-item__text">Kamikaze squirrels</p>
-              </div>
-              <img class="articles-item__image" src="assets/img/squirrel.jpg" width="300" height="360" alt="Squirrel">
-            </article>
+          <li class="main-nav__item">
+            <a class="main-nav__link" href="#">Contacts</a>
           </li>
-          <li class="articles__item articles-item">
-            <article class="articles-item__article">
-              <div class="articles-item__wrapper">
-                <h3 class="articles-item__title">Bird</h3>
-                <p class="articles-item__text">Birds Fight club</p>
-              </div>
-              <img class="articles-item__image" src="assets/img/bird.jpg" width="300" height="360" alt="Bird">
-            </article>
+          <li class="main-nav__item">
+            <a class="main-nav__link main-nav__link--search" href="#">
+              <span class="visually-hidden">Search</span>
+            </a>
+          </li>
+          <li class="main-nav__item">
+            <a class="main-nav__link btn btn--sign" href="#">Sign in</a>
           </li>
         </ul>
-        <button class="articles__toggle articles__toggle--prev" type="button">
-          <span class="visually-hidden">Предыдущая статья</span>
-        </button>
-        <button class="articles__toggle articles__toggle--next" type="button">
-          <span class="visually-hidden">Следующая статья</span>
-        </button>
+      </nav>
+    </div>
+  </header>
+  <main class="page-main">
+    <section class="survival">
+      <div class="container">
+        <h2 class="survival__title title">Survival</h2>
+        <p class="survival__text">What this means is that we exist to help protect our environment and do in numbers of ways. You can save the planet by donation.</p>
+        <button class="survival__btn btn" type="button">Donate</button>
       </div>
     </section>
-    <section class="subscription container">
-      <h2 class="visually-hidden">Subscription</h2>
-      <p class="subscription__text">Get notified about new amazing articles</p>
-      <div class="subscription__wrapper">
-        <form class="subscription__form" action="#">
-          <div class="subscription__inner">
-            <div class="subscription__form-group">
-              <label class="visually-hidden" for="email">Email</label>
-              <input class="subscription__field" id="email" type="text" name="email" placeholder="Email">
+    <section class="articles">
+      <div class="container">
+        <h2 class="articles__title title">Latest articles</h2>
+        <p class="articles__text">Breaking news from the wild</p>
+        <div class="articles__wrapper">
+          <ul class="articles__list">
+            <li class="articles__item articles-item">
+              <article class="articles-item__article">
+                <div class="articles-item__wrapper">
+                  <h3 class="articles-item__title">Deer</h3>
+                  <p class="articles-item__text">Naturalist investigation</p>
+                </div>
+                <img class="articles-item__image" src="assets/img/deer.jpg" width="300" height="360" alt="Deer">
+              </article>
+            </li>
+            <li class="articles__item articles-item">
+              <article class="articles-item__article">
+                <div class="articles-item__wrapper">
+                  <h3 class="articles-item__title">Squirrel</h3>
+                  <p class="articles-item__text">Kamikaze squirrels</p>
+                </div>
+                <img class="articles-item__image" src="assets/img/squirrel.jpg" width="300" height="360" alt="Squirrel">
+              </article>
+            </li>
+            <li class="articles__item articles-item">
+              <article class="articles-item__article">
+                <div class="articles-item__wrapper">
+                  <h3 class="articles-item__title">Bird</h3>
+                  <p class="articles-item__text">Birds Fight club</p>
+                </div>
+                <img class="articles-item__image" src="assets/img/bird.jpg" width="300" height="360" alt="Bird">
+              </article>
+            </li>
+          </ul>
+          <button class="articles__toggle articles__toggle--prev" type="button">
+            <span class="visually-hidden">Предыдущая статья</span>
+          </button>
+          <button class="articles__toggle articles__toggle--next" type="button">
+            <span class="visually-hidden">Следующая статья</span>
+          </button>
+        </div>
+      </div>
+    </section>
+    <section class="subscription">
+      <div class="container">
+        <h2 class="visually-hidden">Subscription</h2>
+        <p class="subscription__text">Get notified about new amazing articles</p>
+        <div class="subscription__wrapper">
+          <form class="subscription__form" action="#">
+            <div class="subscription__inner">
+              <div class="subscription__form-group">
+                <label class="visually-hidden" for="email">Email</label>
+                <input class="subscription__field" id="email" type="text" name="email" placeholder="Email">
+              </div>
+              <input class="subscription__button btn btn--send" type="submit" value="Send">
             </div>
-            <input class="subscription__button btn btn--send" type="submit" value="Send">
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </section>
   </main>
-  <footer class="page-footer container">
-    <a class="page-footer__logo logo">
-      <img class="logo__image" src="assets/img/logo.svg" width="70" height="60" alt="Wildlife">
-      <span class="logo__text">Wildlife</span>
-    </a>
-    <div class="page-footer__nav">
-      <ul class="page-footer__list">
-        <li class="page-footer__item">
-          <a class="page-footer__link" href="#">Articles</a>
-        </li>
-        <li class="page-footer__item">
-          <a class="page-footer__link" href="#">About us</a>
-        </li>
-        <li class="page-footer__item">
-          <a class="page-footer__link" href="#">Learn more</a>
-        </li>
-      </ul>
-    </div>
-    <div class="page-footer__social social">
-      <ul class="social__list">
-        <li class="social__item">
-          <a class="social__link social__link--fb" href="#" target="_blank">
-            <span class="visually-hidden">Facebook</span>
-          </a>
-        </li>
-        <li class="social__item">
-          <a class="social__link social__link--insta" href="#" target="_blank">
-            <span class="visually-hidden">Instagram</span>
-          </a>
-        </li>
-        <li class="social__item">
-          <a class="social__link social__link--pt" href="#" target="_blank">
-            <span class="visually-hidden">Pinterest</span>
-          </a>
-        </li>
-        <li class="social__item">
-          <a class="social__link social__link--tg" href="#" target="_blank">
-            <span class="visually-hidden">Telegram</span>
-          </a>
-        </li>
-      </ul>
+  <footer class="page-footer">
+    <div class="container page-footer__wrapper">
+      <a class="page-footer__logo logo">
+        <img class="logo__image" src="assets/img/logo.svg" width="70" height="60" alt="Wildlife">
+        <span class="logo__text">Wildlife</span>
+      </a>
+      <div class="page-footer__nav">
+        <ul class="page-footer__list">
+          <li class="page-footer__item">
+            <a class="page-footer__link" href="#">Articles</a>
+          </li>
+          <li class="page-footer__item">
+            <a class="page-footer__link" href="#">About us</a>
+          </li>
+          <li class="page-footer__item">
+            <a class="page-footer__link" href="#">Learn more</a>
+          </li>
+        </ul>
+      </div>
+      <div class="page-footer__social social">
+        <ul class="social__list">
+          <li class="social__item">
+            <a class="social__link social__link--fb" href="#" target="_blank">
+              <span class="visually-hidden">Facebook</span>
+            </a>
+          </li>
+          <li class="social__item">
+            <a class="social__link social__link--insta" href="#" target="_blank">
+              <span class="visually-hidden">Instagram</span>
+            </a>
+          </li>
+          <li class="social__item">
+            <a class="social__link social__link--pt" href="#" target="_blank">
+              <span class="visually-hidden">Pinterest</span>
+            </a>
+          </li>
+          <li class="social__item">
+            <a class="social__link social__link--tg" href="#" target="_blank">
+              <span class="visually-hidden">Telegram</span>
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
   </footer>
 </body>

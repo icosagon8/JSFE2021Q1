@@ -64,19 +64,22 @@ a:focus {
 }
 
 .container {
-  width: 1440px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: 0 120px;
 }
 
 .page-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   margin-bottom: -78px;
   padding-top: 18px;
 
   background-color: #02160b;
+}
+
+.page-header__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo {
@@ -198,7 +201,8 @@ a:focus {
 
   background-color: #02160b;
   background-image: url("/assets/img/fox.jpg");
-  background-position: center center;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .survival__title {
@@ -352,10 +356,6 @@ a:focus {
   font-family: "Roboto", "Arial", sans-serif;
 }
 
-.subscription__field:focus {
-  outline: none;
-}
-
 .subscription__field::-moz-placeholder {
   color: #666666;
 }
@@ -364,19 +364,28 @@ a:focus {
   color: #666666;
 }
 
+.subscription__field:focus {
+  outline: none;
+}
+
 .subscription__button {
   margin-left: -1px;
 }
 
 .page-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding-top: 150px;
   padding-bottom: 150px;
 
   background-color: #181617;
   background-image: url("/assets/img/leaves.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.page-footer__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .page-footer__nav {
