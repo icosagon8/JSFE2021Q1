@@ -142,6 +142,7 @@ a:focus {
   background-color: #cd6326;
   border: none;
   border-radius: 5px;
+  cursor: pointer;
 
   transition: 0.4s;
 }
