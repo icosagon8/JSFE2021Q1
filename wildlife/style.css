@@ -3,7 +3,7 @@
   font-weight: 400;
   font-family: "Open Sans";
   font-display: swap;
-  src: url("../fonts/open-sans-v18-latin-regular.woff2") format("woff2"), url("../fonts/open-sans-v18-latin-regular.woff") format("woff");
+  src: url("assets/fonts/open-sans-v18-latin-regular.woff2") format("woff2"), url("assets/fonts/open-sans-v18-latin-regular.woff") format("woff");
 }
 
 @font-face {
@@ -11,7 +11,7 @@
   font-weight: 400;
   font-family: "Roboto";
   font-display: swap;
-  src: url("../fonts/roboto-v20-latin-regular.woff2") format("woff2"), url("../fonts/roboto-v20-latin-regular.woff") format("woff");
+  src: url("assets/fonts/roboto-v20-latin-regular.woff2") format("woff2"), url("assets/fonts/roboto-v20-latin-regular.woff") format("woff");
 }
 
 *,
@@ -38,6 +38,8 @@ img {
 a {
   color: #f7f7f7;
   text-decoration: none;
+
+  transition: 0.4s;
 }
 
 a:active,
@@ -93,6 +95,7 @@ a:focus {
 
 .logo__text {
   margin: 0;
+  padding-right: 11px;
 
   font-weight: 400;
   font-size: 32px;
@@ -108,7 +111,7 @@ a:focus {
 
   list-style: none;
 
-  gap: 61.7px;
+  gap: 65px;
 }
 
 .main-nav__link:hover {
@@ -121,19 +124,7 @@ a:focus {
 }
 
 .main-nav__link--search {
-  position: relative;
-
   display: block;
-  width: 32px;
-  height: 32px;
-}
-
-.main-nav__link--search::before {
-  content: "";
-  position: absolute;
-  top: 4px;
-  left: 5px;
-
   width: 23px;
   height: 23px;
 
@@ -151,6 +142,8 @@ a:focus {
   background-color: #cd6326;
   border: none;
   border-radius: 5px;
+
+  transition: 0.4s;
 }
 
 .btn:hover {
@@ -200,7 +193,7 @@ a:focus {
   padding-bottom: 241px;
 
   background-color: #02160b;
-  background-image: url("/assets/img/fox.jpg");
+  background-image: url("assets/img/fox.jpg");
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -263,10 +256,12 @@ a:focus {
   padding: 0;
 
   background-color: transparent;
-  background-image: url("/assets/img/icon-arrow.svg");
+  background-image: url("assets/img/icon-arrow.svg");
   background-repeat: no-repeat;
   border: none;
   cursor: pointer;
+
+  transition: 0.4s;
 }
 
 .articles__toggle:hover {
@@ -377,7 +372,7 @@ a:focus {
   padding-bottom: 150px;
 
   background-color: #181617;
-  background-image: url("/assets/img/leaves.jpg");
+  background-image: url("assets/img/leaves.jpg");
   background-repeat: no-repeat;
   background-position: center;
 }
@@ -386,10 +381,6 @@ a:focus {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.page-footer__nav {
-  margin-left: 13px;
 }
 
 .page-footer__list {
