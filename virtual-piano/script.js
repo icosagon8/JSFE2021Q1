@@ -31,6 +31,25 @@ function removeTransitionKey(evt) {
   pianoKey.classList.remove('piano-key-active');
 }
 
+function playNoteMouse(evt) {
+  if (evt.button === 0) {
+    if (evt.target.classList.contains('piano-key')) {
+      const src = `/assets/audio/${evt.target.dataset.note}.mp3`;
+      evt.target.classList.add('piano-key-active', 'piano-key-active-pseudo');
+      playNote(src);
+    }
+  }
+}
+
+function removeTransitionMouse(evt) {
+  evt.target.classList.remove('piano-key-active', 'piano-key-active-pseudo');
+}
+
 window.addEventListener('keydown', playNoteKey);
 window.addEventListener('keyup', removeTransitionKey);
+
+const piano = document.querySelector('.piano');
+
+piano.addEventListener('mousedown', playNoteMouse);
+piano.addEventListener('mouseup', removeTransitionMouse);
 
