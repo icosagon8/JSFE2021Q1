@@ -74,3 +74,19 @@ document.addEventListener('mouseup', () => {
   piano.removeEventListener('mouseover', mouseOver);
   piano.removeEventListener('mouseout', mouseOut);
 })
+
+const btnNotes = document.querySelector('.btn-notes');
+const btnLetters = document.querySelector('.btn-letters');
+const pianoКeys = document.querySelectorAll('.piano-key[data-letter]');
+
+btnLetters.addEventListener('click', () => {
+  btnNotes.classList.remove('btn-active');
+  btnLetters.classList.add('btn-active');
+  pianoКeys.forEach(pianoКey => pianoКey.classList.add('piano-key-letter'));
+});
+
+btnNotes.addEventListener('click', () => {
+  btnLetters.classList.remove('btn-active');
+  btnNotes.classList.add('btn-active');
+  pianoКeys.forEach(pianoКey => pianoКey.classList.remove('piano-key-letter'));
+});
