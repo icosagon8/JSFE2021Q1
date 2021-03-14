@@ -57,6 +57,16 @@ function mouseOut(evt) {
   evt.target.classList.remove('piano-key-active', 'piano-key-active-pseudo');
 }
 
+function toggleFullScreen() {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen();
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    }
+  }
+}
+
 window.addEventListener('keydown', playNoteKey);
 window.addEventListener('keyup', removeTransitionKey);
 
@@ -90,3 +100,6 @@ btnNotes.addEventListener('click', () => {
   btnNotes.classList.add('btn-active');
   pianoКeys.forEach(pianoКey => pianoКey.classList.remove('piano-key-letter'));
 });
+
+const btnFullScreen = document.querySelector('.fullscreen');
+btnFullScreen.addEventListener('click', toggleFullScreen);
