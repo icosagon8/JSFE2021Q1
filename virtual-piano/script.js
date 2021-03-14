@@ -45,6 +45,18 @@ function removeTransitionMouse(evt) {
   evt.target.classList.remove('piano-key-active', 'piano-key-active-pseudo');
 }
 
+function mouseOver(evt) {
+  if (evt.target.classList.contains('piano-key')) {
+    const src = `/assets/audio/${evt.target.dataset.note}.mp3`;
+    evt.target.classList.add('piano-key-active', 'piano-key-active-pseudo');
+    playNote(src);
+  }
+}
+
+function mouseOut(evt) {
+  evt.target.classList.remove('piano-key-active', 'piano-key-active-pseudo');
+}
+
 window.addEventListener('keydown', playNoteKey);
 window.addEventListener('keyup', removeTransitionKey);
 
@@ -53,3 +65,12 @@ const piano = document.querySelector('.piano');
 piano.addEventListener('mousedown', playNoteMouse);
 piano.addEventListener('mouseup', removeTransitionMouse);
 
+piano.addEventListener('mousedown', () => {
+  piano.addEventListener('mouseover', mouseOver);
+  piano.addEventListener('mouseout', mouseOut);
+})
+
+document.addEventListener('mouseup', () => {
+  piano.removeEventListener('mouseover', mouseOver);
+  piano.removeEventListener('mouseout', mouseOut);
+})
