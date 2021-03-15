@@ -14,7 +14,7 @@ function onKeydown(evt) {
     return;
   }
 
-  const src = `/assets/audio/${pianoKey.dataset.note}.mp3`;
+  const src = `assets/audio/${pianoKey.dataset.note}.mp3`;
 
   pianoKey.classList.add('piano-key-active');
   playNote(src);
@@ -34,7 +34,7 @@ function onKeyup(evt) {
 function onPianoMousedown(evt) {
   if (evt.which === 1) {
     if (evt.target.classList.contains('piano-key')) {
-      const src = `/assets/audio/${evt.target.dataset.note}.mp3`;
+      const src = `assets/audio/${evt.target.dataset.note}.mp3`;
       evt.target.classList.add('piano-key-active', 'piano-key-active-pseudo');
       playNote(src);
     }
@@ -48,7 +48,7 @@ function onPianoMouseup(evt) {
 function onPianoMouseover(evt) {
   if (evt.which === 1) {
     if (evt.target.classList.contains('piano-key')) {
-      const src = `/assets/audio/${evt.target.dataset.note}.mp3`;
+      const src = `assets/audio/${evt.target.dataset.note}.mp3`;
       evt.target.classList.add('piano-key-active', 'piano-key-active-pseudo');
       playNote(src);
     }
