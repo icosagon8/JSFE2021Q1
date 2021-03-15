@@ -32,7 +32,7 @@ function onKeyup(evt) {
 }
 
 function onPianoMousedown(evt) {
-  if (evt.button === 0) {
+  if (evt.which === 1) {
     if (evt.target.classList.contains('piano-key')) {
       const src = `/assets/audio/${evt.target.dataset.note}.mp3`;
       evt.target.classList.add('piano-key-active', 'piano-key-active-pseudo');
@@ -46,10 +46,12 @@ function onPianoMouseup(evt) {
 }
 
 function onPianoMouseover(evt) {
-  if (evt.target.classList.contains('piano-key')) {
-    const src = `/assets/audio/${evt.target.dataset.note}.mp3`;
-    evt.target.classList.add('piano-key-active', 'piano-key-active-pseudo');
-    playNote(src);
+  if (evt.which === 1) {
+    if (evt.target.classList.contains('piano-key')) {
+      const src = `/assets/audio/${evt.target.dataset.note}.mp3`;
+      evt.target.classList.add('piano-key-active', 'piano-key-active-pseudo');
+      playNote(src);
+    }
   }
 }
 
