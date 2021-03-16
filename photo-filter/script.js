@@ -9,5 +9,22 @@ function onFiltersInput(evt) {
   }
 }
 
+function onResetClick() {
+  document.documentElement.removeAttribute('style');
+
+  inputs.forEach(input => {
+    input.value = input.defaultValue;
+  })
+
+  outputs.forEach(output => {
+    output.value = output.defaultValue;
+  })
+}
+
 const filters = document.querySelector('.filters');
 filters.addEventListener('input', onFiltersInput);
+
+const btnReset = document.querySelector('.btn-reset');
+const inputs = document.querySelectorAll('.filters input');
+const outputs = document.querySelectorAll('.filters output');
+btnReset.addEventListener('click', onResetClick);
