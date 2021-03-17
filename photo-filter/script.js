@@ -134,3 +134,18 @@ btnNext.addEventListener('click', onNextClick);
 
 const btnSave = document.querySelector('.btn-save');
 btnSave.addEventListener('click', onSaveButtonClick);
+
+const btnContainer = document.querySelector('.btn-container');
+const buttons = btnContainer.children;
+
+btnContainer.addEventListener('click', (evt) => {
+  for (let button of buttons) {
+    button.classList.remove('btn-active');
+  }
+
+  if (evt.target.classList.contains('btn-load--input')) {
+    evt.target.parentElement.classList.add('btn-active');
+  } else {
+    evt.target.classList.add('btn-active');
+  }
+});
