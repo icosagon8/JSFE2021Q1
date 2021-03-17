@@ -21,7 +21,7 @@ function onResetClick() {
   })
 }
 
-function toggleFullScreen() {
+function onFullscreenButtonClick() {
   if (!document.fullscreenElement) {
     document.documentElement.requestFullscreen();
   } else {
@@ -29,6 +29,17 @@ function toggleFullScreen() {
       document.exitFullscreen();
     }
   }
+}
+
+function onLoadButtonChange() {
+  const file = fileInput.files[0];
+  const reader = new FileReader();
+
+  reader.addEventListener('load', () => {
+    image.src = reader.result;
+  })
+
+  reader.readAsDataURL(file);
 }
 
 function getPartOfDay() {
@@ -87,21 +98,11 @@ const outputs = document.querySelectorAll('.filters output');
 btnReset.addEventListener('click', onResetClick);
 
 const btnFullScreen = document.querySelector('.fullscreen');
-btnFullScreen.addEventListener('click', toggleFullScreen);
+btnFullScreen.addEventListener('click', onFullscreenButtonClick);
 
 const fileInput = document.querySelector('input[type="file"]');
 const image = document.querySelector('.editor img');
-
-fileInput.addEventListener('change', function (evt) {
-  const file = fileInput.files[0];
-  const reader = new FileReader();
-
-  reader.addEventListener('load', () => {
-    image.src = reader.result;
-  })
-
-  reader.readAsDataURL(file);
-});
+fileInput.addEventListener('change', onLoadButtonChange);
 
 const btnNext = document.querySelector('.btn-next');
 const onNextClick = makeGetImage();
