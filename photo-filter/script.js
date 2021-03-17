@@ -31,6 +31,53 @@ function toggleFullScreen() {
   }
 }
 
+function getPartOfDay() {
+  const date = new Date();
+  const hours = date.getHours();
+
+  if (hours >= 6 && hours < 12) {
+    return 'morning';
+  }
+
+  if (hours >= 12 && hours < 18) {
+    return 'day';
+  }
+
+  if (hours >= 18 && hours < 24) {
+    return 'evening';
+  }
+
+  if (hours >= 0 && hours < 6) {
+    return 'night';
+  }
+}
+
+function makeGetImage() {
+  const BASE = 'https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/';
+  const IMAGES = ['01.jpg', '02.jpg', '03.jpg', '04.jpg', '05.jpg', '06.jpg', '07.jpg', '08.jpg', '09.jpg', '10.jpg', '11.jpg', '12.jpg', '13.jpg', '14.jpg', '15.jpg', '16.jpg', '17.jpg', '18.jpg', '19.jpg', '20.jpg'];
+  const partOfDay = getPartOfDay();
+  let count = 0;
+
+  return () => {
+    const imageIndex = count % IMAGES.length;
+    const imageUrl = `${BASE}${partOfDay}/${IMAGES[imageIndex]}`;
+    viewImage(imageUrl);
+    count++;
+    btnNext.disabled = true;
+    setTimeout(() => {
+      btnNext.disabled = false;
+    }, 1000);
+  }
+}
+
+function viewImage(src) {
+  const img = new Image();
+  img.src = src;
+  img.addEventListener('load', () => {
+    image.src = src;
+  })
+}
+
 const filters = document.querySelector('.filters');
 filters.addEventListener('input', onFiltersInput);
 
@@ -55,3 +102,7 @@ fileInput.addEventListener('change', function (evt) {
 
   reader.readAsDataURL(file);
 });
+
+const btnNext = document.querySelector('.btn-next');
+const onNextClick = makeGetImage();
+btnNext.addEventListener('click', onNextClick);
