@@ -89,6 +89,30 @@ function viewImage(src) {
   })
 }
 
+function onSaveButtonClick() {
+  const canvas = document.createElement('canvas');
+  const img = new Image();
+  img.src = image.src;
+  img.setAttribute('crossOrigin', 'anonymous');
+  img.addEventListener('load', () => {
+    canvas.width = img.width;
+    canvas.height = img.height;
+    const ctx = canvas.getContext('2d');
+    ctx.filter = getComputedStyle(image).getPropertyValue('filter');
+    ctx.drawImage(img, 0, 0);
+    const dataUrl = canvas.toDataURL('image/jpeg');
+    saveImage(dataUrl);
+  });
+}
+
+function saveImage(url) {
+  const link = document.createElement('a');
+  link.download = 'download.jpg';
+  link.href = url;
+  link.click();
+  link.delete;
+}
+
 const filters = document.querySelector('.filters');
 filters.addEventListener('input', onFiltersInput);
 
@@ -107,3 +131,6 @@ fileInput.addEventListener('change', onLoadButtonChange);
 const btnNext = document.querySelector('.btn-next');
 const onNextClick = makeGetImage();
 btnNext.addEventListener('click', onNextClick);
+
+const btnSave = document.querySelector('.btn-save');
+btnSave.addEventListener('click', onSaveButtonClick);
