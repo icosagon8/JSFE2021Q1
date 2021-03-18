@@ -136,16 +136,18 @@ const btnSave = document.querySelector('.btn-save');
 btnSave.addEventListener('click', onSaveButtonClick);
 
 const btnContainer = document.querySelector('.btn-container');
-const buttons = btnContainer.children;
+const buttons = btnContainer.querySelectorAll('.btn');
 
 btnContainer.addEventListener('click', (evt) => {
-  for (let button of buttons) {
-    button.classList.remove('btn-active');
-  }
+  if (!evt.target.classList.contains('btn-container')) {
+    buttons.forEach(button => {
+      button.classList.remove('btn-active');
+    })
 
-  if (evt.target.classList.contains('btn-load--input')) {
-    evt.target.parentElement.classList.add('btn-active');
-  } else {
-    evt.target.classList.add('btn-active');
+    if (evt.target.classList.contains('btn-load--input')) {
+      evt.target.parentElement.classList.add('btn-active');
+    } else {
+      evt.target.classList.add('btn-active');
+    }
   }
 });
