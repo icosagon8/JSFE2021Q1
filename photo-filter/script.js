@@ -40,6 +40,7 @@ function onLoadButtonChange() {
   })
 
   reader.readAsDataURL(file);
+  fileInput.value = '';
 }
 
 function getPartOfDay() {
