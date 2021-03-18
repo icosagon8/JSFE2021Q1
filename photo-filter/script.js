@@ -4,6 +4,10 @@ function onFiltersInput(evt) {
   const suffix = evt.target.dataset.sizing;
   document.documentElement.style.setProperty(`--${evt.target.name}`, evt.target.value + suffix);
 
+  if (evt.target.name === 'blur') {
+    image.style.setProperty('--blur', `${evt.target.value / (image.naturalHeight / image.offsetHeight) + suffix}`);
+  }
+
   if (evt.target.nextElementSibling.matches('output[name=result]')) {
     evt.target.nextElementSibling.value = evt.target.value;
   }
@@ -11,6 +15,7 @@ function onFiltersInput(evt) {
 
 function onResetClick() {
   document.documentElement.removeAttribute('style');
+  image.style.setProperty('--blur', `0px`);
 
   inputs.forEach(input => {
     input.value = input.defaultValue;
@@ -99,7 +104,19 @@ function onSaveButtonClick() {
     canvas.width = img.width;
     canvas.height = img.height;
     const ctx = canvas.getContext('2d');
-    ctx.filter = getComputedStyle(image).getPropertyValue('filter');
+    let canvasFilterFunctions = [];
+
+    inputs.forEach((input) => {
+      if (input.name === 'saturate') {
+        canvasFilterFunctions.push(`${input.name}(${(input.value) / 100})`);
+      } else if (input.dataset.sizing === '%') {
+        canvasFilterFunctions.push(`${input.name}(${input.value})`);
+      } else {
+        canvasFilterFunctions.push(`${input.name}(${input.value}${input.dataset.sizing})`);
+      }
+    })
+
+    ctx.filter = canvasFilterFunctions.join(' ');
     ctx.drawImage(img, 0, 0);
     const dataUrl = canvas.toDataURL('image/jpeg');
     saveImage(dataUrl);
