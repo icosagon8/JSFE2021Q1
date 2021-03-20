@@ -38,6 +38,7 @@ function onFullscreenButtonClick() {
 
 function onLoadButtonChange() {
   const file = fileInput.files[0];
+  fileFormat = file.type.split('/')[1];
   const reader = new FileReader();
 
   reader.addEventListener('load', () => {
@@ -118,14 +119,14 @@ function onSaveButtonClick() {
 
     ctx.filter = canvasFilterFunctions.join(' ');
     ctx.drawImage(img, 0, 0);
-    const dataUrl = canvas.toDataURL('image/jpeg');
+    const dataUrl = canvas.toDataURL(`image/${fileFormat}`);
     saveImage(dataUrl);
   });
 }
 
 function saveImage(url) {
   const link = document.createElement('a');
-  link.download = 'download.jpg';
+  link.download = `download.${fileFormat}`;
   link.href = url;
   link.click();
   link.delete;
@@ -144,6 +145,7 @@ btnFullScreen.addEventListener('click', onFullscreenButtonClick);
 
 const fileInput = document.querySelector('input[type="file"]');
 const image = document.querySelector('.editor img');
+let fileFormat = 'jpeg';
 fileInput.addEventListener('change', onLoadButtonChange);
 
 const btnNext = document.querySelector('.btn-next');
