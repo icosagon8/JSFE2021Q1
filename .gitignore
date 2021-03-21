@@ -102,3 +102,12 @@ dist
 
 # TernJS port file
 .tern-port
+
+# Development
+source/
+.editorconfig
+.stylelintrc
+csscomb.json
+gulpfile.js
+package-lock.json
+package.json
