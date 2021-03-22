@@ -431,6 +431,40 @@ a:focus {
   }
 }
 
+.btn {
+  background-image: linear-gradient(106.89deg, #4bd8b5 -14.32%, #49d6df 100.68%);
+  border-radius: 3px;
+  padding: 12px 18px;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 20px;
+  width: 245px;
+}
+
+.btn--watch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn--watch::before {
+  content: "";
+  width: 32px;
+  height: 32px;
+  background-image: url("../../../assets/icons/icon-play.svg");
+  background-repeat: no-repeat;
+  margin-right: 5px;
+}
+
+.title {
+  font-weight: 900;
+  font-size: 48px;
+  line-height: 56px;
+  color: #333333;
+}
+
 .page-header {
   padding-top: 26px;
   padding-bottom: 26px;
@@ -484,4 +518,70 @@ a:focus {
 
 .logo__image {
   display: block;
+}
+
+.first-screen {
+  padding-top: 206px;
+  padding-bottom: 111px;
+  background-color: #68686b;
+  background-image: url("../../../assets/images/sunset.jpg");
+  background-repeat: no-repeat;
+}
+
+.first-screen__title {
+  font-weight: 900;
+  font-size: 89px;
+  line-height: 104px;
+  color: #fefefe;
+  width: 793px;
+  margin-top: 0;
+  margin-bottom: 37px;
+  margin-left: 210px;
+}
+
+.first-screen__btn {
+  margin-left: 210px;
+  margin-bottom: 216px;
+}
+
+.social__list {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.social__list--vertical {
+  flex-direction: column;
+}
+
+.social__link {
+  display: block;
+  background-repeat: no-repeat;
+}
+
+.social__link--insta {
+  background-image: url("../../../assets/icons/icon-insta.svg");
+  width: 20px;
+  height: 20px;
+}
+
+.social__link--twitter {
+  background-image: url("../../../assets/icons/icon-twitter.svg");
+  width: 20px;
+  height: 16.25px;
+}
+
+.social__link--youtube {
+  background-image: url("../../../assets/icons/icon-youtube.svg");
+  width: 20px;
+  height: 13.75px;
+}
+
+.social__link--vk {
+  background-image: url("../../../assets/icons/icon-vk.svg");
+  width: 20px;
+  height: 11.41px;
 }
