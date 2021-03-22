@@ -463,6 +463,8 @@ a:focus {
   font-size: 48px;
   line-height: 56px;
   color: #333333;
+  margin-top: 0;
+  margin-bottom: 30px;
 }
 
 .page-header {
@@ -584,4 +586,88 @@ a:focus {
   background-image: url("../../../assets/icons/icon-vk.svg");
   width: 20px;
   height: 11.41px;
+}
+
+.about__wrapper {
+  margin: 0 auto;
+}
+
+.about__wrapper-top {
+  max-width: 790px;
+}
+
+.about__wrapper-bottom {
+  max-width: 1200px;
+}
+
+.about__desc {
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+.about__btn {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.about__top {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  min-height: 883px;
+}
+
+.about__bottom {
+  background-color: #f2f2f2;
+  padding-top: 100px;
+  padding-bottom: 132px;
+}
+
+.about__list {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.about__item {
+  max-width: 380px;
+  position: relative;
+}
+
+.about__item::before {
+  content: "";
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background-repeat: no-repeat;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.about__item--inspiration::before {
+  background-image: url("../../../assets/icons/icon-inspiration.svg");
+}
+
+.about__item--mission::before {
+  background-image: url("../../../assets/icons/icon-mission.svg");
+}
+
+.about__item--belief::before {
+  background-image: url("../../../assets/icons/icon-belief.svg");
+}
+
+.about__subtitle {
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 23px;
+  text-align: center;
+  padding-top: 95px;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.about__text {
+  margin-top: 0;
+  margin-bottom: 0;
 }
