@@ -443,6 +443,7 @@ a:focus {
   line-height: 20px;
   width: 245px;
   height: 55px;
+  cursor: pointer;
 }
 
 .btn--watch {
@@ -458,6 +459,11 @@ a:focus {
   background-image: url("../../../assets/icons/icon-play.svg");
   background-repeat: no-repeat;
   margin-right: 5px;
+}
+
+.btn--large {
+  width: 275px;
+  font-weight: 500;
 }
 
 .title {
@@ -521,6 +527,10 @@ a:focus {
   margin: 5px;
 }
 
+.logo {
+  display: inline-block;
+}
+
 .logo__image {
   display: block;
 }
@@ -562,33 +572,38 @@ a:focus {
   flex-direction: column;
 }
 
+.social__list--vertical .social__item--vk {
+  order: 1;
+}
+
 .social__link {
   display: block;
+  height: 100%;
   background-repeat: no-repeat;
 }
 
-.social__link--insta {
+.social__item--insta {
   background-image: url("../../../assets/icons/icon-insta.svg");
   width: 20px;
   height: 20px;
 }
 
-.social__link--twitter {
+.social__item--twitter {
   background-image: url("../../../assets/icons/icon-twitter.svg");
   width: 20px;
   height: 16.25px;
 }
 
-.social__link--youtube {
+.social__item--youtube {
   background-image: url("../../../assets/icons/icon-youtube.svg");
   width: 20px;
   height: 13.75px;
 }
 
-.social__link--vk {
+.social__item--vk {
   background-image: url("../../../assets/icons/icon-vk.svg");
   width: 20px;
-  height: 11.41px;
+  height: 11.4px;
 }
 
 .about__wrapper {
@@ -748,4 +763,210 @@ a:focus {
   width: 135px;
   margin-top: 0;
   margin-bottom: 0;
+}
+
+.page-footer {
+  background-color: #333333;
+  padding-top: 100px;
+  padding-bottom: 64px;
+}
+
+.page-footer__logo {
+  align-self: center;
+}
+
+.page-footer__wrapper {
+  display: grid;
+  grid-column-gap: 30px;
+  grid-row-gap: 58px;
+  grid-template-columns: 1fr 2fr 1fr;
+  margin-bottom: 60px;
+}
+
+.page-footer__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 73px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  justify-self: end;
+  align-self: center;
+}
+
+.page-footer__link {
+  color: #fefefe;
+}
+
+.page-footer__btn {
+  justify-self: end;
+}
+
+.page-footer__form {
+  width: 368px;
+}
+
+.page-footer__contacts {
+  justify-self: end;
+  margin-right: 190px;
+}
+
+.page-footer__copyright {
+  border-top: 0.5px solid #fefefe;
+  padding-top: 23px;
+  font-size: 12px;
+  line-height: 14px;
+  color: #bdbdbd;
+}
+
+.page-footer__copyright-author {
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+.page-footer__copyright-course {
+  margin: 0;
+}
+
+.contacts {
+  color: #fefefe;
+}
+
+.contacts__title {
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-top: 0;
+  margin-bottom: 35px;
+}
+
+.contacts__address {
+  font-style: normal;
+}
+
+.contacts__street-address {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.contacts__hours {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.contacts__tel {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.contacts__email {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.contacts__link {
+  color: inherit;
+}
+
+.contact-form__title {
+  color: #fefefe;
+  margin-top: 0;
+  margin-bottom: 38px;
+}
+
+.contact-form__form {
+  color: #bdbdbd;
+}
+
+.contact-form__group {
+  margin-bottom: 21px;
+}
+
+.contact-form__field {
+  background-color: transparent;
+  border: 0;
+  border-bottom: 1px solid #bdbdbd;
+  outline: 0;
+  width: 100%;
+  padding-bottom: 8px;
+  color: #e0e0e0;
+}
+
+.contact-form__field::-moz-placeholder {
+  color: #e0e0e0;
+}
+
+.contact-form__field::placeholder {
+  color: #e0e0e0;
+}
+
+.contact-form__legend {
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.contact-form__textarea {
+  outline: 0;
+  resize: none;
+  background-color: transparent;
+  border: 0;
+  width: 100%;
+  font-size: 12px;
+  line-height: 14px;
+  color: #e0e0e0;
+}
+
+.contact-form__fieldset {
+  border: 1px solid #bdbdbd;
+  border-radius: 3px;
+  margin-bottom: 25px;
+  padding-left: 6px;
+}
+
+.contact-form__label {
+  font-size: 12px;
+  line-height: 14px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.contact-form__label::before {
+  content: "";
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  border: 1px solid #bdbdbd;
+  border-radius: 1px;
+  left: 1px;
+  top: 1px;
+}
+
+.contact-form__checkbox:checked + .contact-form__label::after {
+  content: "";
+  position: absolute;
+  background-image: url("../../../assets/icons/icon-tick.svg");
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 14px;
+  left: -1px;
+  top: -1px;
+}
+
+.contact-form__btn {
+  background-color: transparent;
+  font-weight: 500;
+  color: #fefefe;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  text-transform: uppercase;
+  margin-right: 14px;
+}
+
+.contact-form__btn-text {
+  padding-right: 24px;
 }
