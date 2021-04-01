@@ -1281,3 +1281,140 @@ a:focus {
 .testimonials__btn {
   margin: 0 auto;
 }
+
+.map {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  background-color: #f2f2f2;
+}
+
+.map__title {
+  margin-bottom: 60px;
+}
+
+.map__wrapper {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.map__image {
+  margin-bottom: 35px;
+  position: relative;
+}
+
+.map__image svg {
+  display: block;
+}
+
+.map__btn {
+  margin: 0 auto;
+}
+
+.map__pin {
+  position: absolute;
+  transform: translate(-50%, -100%);
+}
+
+.map__pin:hover {
+  z-index: 10;
+}
+
+.map__pin:hover .map__tooltip {
+  display: flex;
+  align-items: center;
+}
+
+.map__pin:hover svg path {
+  fill: #eb5757;
+}
+
+.map__pin::after {
+  content: "";
+  position: absolute;
+  width: 43px;
+  height: 43px;
+  top: 14%;
+  left: 18%;
+  border-radius: 50%;
+}
+
+.map__pin--eagle {
+  top: 33.7%;
+  left: 12.9%;
+}
+
+.map__pin--eagle::after {
+  background-image: url("../../../assets/images/eagles-pin.jpg");
+}
+
+.map__pin--crocodile {
+  top: 39.3%;
+  left: 23.2%;
+}
+
+.map__pin--crocodile::after {
+  background-image: url("../../../../assets/images/crocodile-pin.jpg");
+}
+
+.map__pin--gorilla {
+  top: 56.8%;
+  left: 50.4%;
+}
+
+.map__pin--gorilla::after {
+  background-image: url("../../../../assets/images/gorilla-pin.jpg");
+}
+
+.map__pin--panda {
+  top: 36.9%;
+  left: 77.2%;
+}
+
+.map__pin--panda::after {
+  background-image: url("../../../../assets/images/panda-pin.jpg");
+}
+
+.map__tooltip {
+  position: absolute;
+  background: #fefefe;
+  box-shadow: 2px 4px 15px rgba(6, 12, 70, 0.15);
+  border-radius: 8px;
+  display: none;
+  width: 436px;
+  padding: 40px 44px 44px;
+  right: 50%;
+  top: 81%;
+}
+
+.map__tooltip-text {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.map__tooltip-text:last-child {
+  margin-bottom: 0;
+}
+
+.map__tooltip-title {
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 21px;
+  margin-top: 0;
+  margin-bottom: 7px;
+  color: #333333;
+}
+
+.map__tooltip-subtitle {
+  color: #333333;
+  font-weight: 500;
+}
+
+.map__tooltip::before {
+  content: "";
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  background-image: url("../../../../assets/images/eagle-tooltip.jpg");
+  background-repeat: no-repeat;
+  margin-right: 20px;
+}
