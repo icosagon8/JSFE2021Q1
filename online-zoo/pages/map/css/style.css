@@ -928,6 +928,7 @@ a:focus {
   appearance: none;
   width: 245px;
   display: block;
+  background-color: transparent;
 }
 
 .slider__range:focus {
@@ -955,6 +956,10 @@ a:focus {
   width: 62px;
 }
 
+.slider__range--light::-webkit-slider-thumb {
+  background-color: #fefefe;
+}
+
 .slider__range::-moz-range-track {
   width: 100%;
   height: 5px;
@@ -975,6 +980,10 @@ a:focus {
   width: 62px;
 }
 
+.slider__range--light::-moz-range-thumb {
+  background-color: #fefefe;
+}
+
 .slider__range::-ms-track {
   width: 100%;
   height: 5px;
@@ -988,6 +997,8 @@ a:focus {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 245px;
+  margin: 0 auto;
 }
 
 .slider__output {
@@ -1000,6 +1011,10 @@ a:focus {
   font-size: 24px;
   line-height: 28px;
   color: #333333;
+}
+
+.slider__output-number--light {
+  color: #fefefe;
 }
 
 .slider__output-total {
@@ -1027,6 +1042,53 @@ a:focus {
 .slider__btn--left {
   order: -1;
   transform: rotate(180deg);
+}
+
+.slider__tooltip {
+  transition: 0.5s;
+  margin-left: 22px;
+  width: 197px;
+}
+
+.slider__text {
+  color: #ffffff;
+  margin-top: 0;
+  margin-bottom: 14px;
+  margin-right: 15px;
+}
+
+.slider__links {
+  display: flex;
+  justify-content: space-between;
+}
+
+.slider__link {
+  display: flex;
+  align-items: center;
+}
+
+.slider__link--watch {
+  color: #4bd8b5;
+}
+
+.slider__link--donate {
+  color: #ffffff;
+}
+
+.slider__link--donate::before {
+  content: "";
+  width: 24px;
+  height: 24px;
+  background-image: url("../../../assets/icons/icon-dollar.svg");
+  background-repeat: no-repeat;
+}
+
+.slider__link-text {
+  margin-left: 3px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  text-transform: uppercase;
 }
 
 .choose-favorite {
