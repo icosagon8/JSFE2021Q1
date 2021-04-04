@@ -1000,6 +1000,7 @@ a:focus {
   content: "";
   background-repeat: no-repeat;
   margin-bottom: 19px;
+  margin-top: 5px;
 }
 
 .donate__item--card::before {
