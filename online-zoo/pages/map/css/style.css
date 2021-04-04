@@ -431,6 +431,11 @@ a:focus {
   }
 }
 
+.inner {
+  display: flex;
+  padding-top: 60px;
+}
+
 .btn {
   background-image: linear-gradient(106.89deg, #4bd8b5 -14.32%, #49d6df 100.68%);
   border: 0;
@@ -1042,6 +1047,15 @@ a:focus {
 .slider__btn--left {
   order: -1;
   transform: rotate(180deg);
+}
+
+.slider__btn--up {
+  order: -1;
+  transform: rotate(270deg);
+}
+
+.slider__btn--down {
+  transform: rotate(90deg);
 }
 
 .slider__tooltip {
