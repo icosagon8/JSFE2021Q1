@@ -1309,7 +1309,7 @@ a:focus {
 }
 
 .pets__item:hover .pets__tooltip {
-  transform: translateY(calc(-65px - 100%));
+  transform: translateY(calc(-47px - 100%));
 }
 
 .pets__item::before {
@@ -1326,6 +1326,10 @@ a:focus {
 
 .pets__item:hover::before {
   opacity: 1;
+}
+
+.pets__slider-wrapper {
+  gap: 26px;
 }
 
 .testimonials {
