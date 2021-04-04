@@ -747,6 +747,10 @@ a:focus {
   background-color: #68686b;
   background-image: url("../../../assets/images/sunset.jpg");
   background-repeat: no-repeat;
+  background-position-x: center;
+}
+
+.first-screen__wrapper {
   position: relative;
 }
 
@@ -768,7 +772,7 @@ a:focus {
 
 .first-screen__slider {
   position: absolute;
-  bottom: 110px;
+  top: 174px;
   right: 0;
   width: 1080px;
 }
@@ -843,7 +847,7 @@ a:focus {
 
 .first-screen__pagination {
   position: relative;
-  left: -96px;
+  left: -97px;
 }
 
 .social__list {
