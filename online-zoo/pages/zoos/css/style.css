@@ -791,19 +791,15 @@ a:focus {
 .page-footer {
   background-color: #333333;
   padding-top: 100px;
-  padding-bottom: 64px;
-}
-
-.page-footer__logo {
-  align-self: center;
+  padding-bottom: 72px;
 }
 
 .page-footer__wrapper {
   display: grid;
-  grid-column-gap: 30px;
+  grid-column-gap: 22px;
   grid-row-gap: 58px;
   grid-template-columns: 1fr 2fr 1fr;
-  margin-bottom: 60px;
+  margin-bottom: 55px;
 }
 
 .page-footer__list {
@@ -828,7 +824,7 @@ a:focus {
 }
 
 .page-footer__form {
-  width: 368px;
+  width: 383px;
 }
 
 .page-footer__contacts {
@@ -838,7 +834,7 @@ a:focus {
 
 .page-footer__copyright {
   border-top: 0.5px solid #fefefe;
-  padding-top: 23px;
+  padding-top: 28px;
   font-size: 12px;
   line-height: 14px;
   color: #bdbdbd;
@@ -885,7 +881,7 @@ a:focus {
 
 .contacts__email {
   margin-top: 0;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .contacts__link {
@@ -987,7 +983,7 @@ a:focus {
   align-items: center;
   margin-left: auto;
   text-transform: uppercase;
-  margin-right: 14px;
+  margin-right: 7px;
 }
 
 .contact-form__btn-text {
