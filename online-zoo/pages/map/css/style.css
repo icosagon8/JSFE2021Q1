@@ -924,7 +924,7 @@ button:focus {
 }
 
 .world-map__pin--crocodile::after {
-  background-image: url("../../../../assets/images/crocodile-pin.jpg");
+  background-image: url("../../../assets/images/crocodile-pin.jpg");
 }
 
 .world-map__pin--gorilla {
@@ -933,7 +933,7 @@ button:focus {
 }
 
 .world-map__pin--gorilla::after {
-  background-image: url("../../../../assets/images/gorilla-pin.jpg");
+  background-image: url("../../../assets/images/gorilla-pin.jpg");
 }
 
 .world-map__pin--panda {
@@ -942,7 +942,7 @@ button:focus {
 }
 
 .world-map__pin--panda::after {
-  background-image: url("../../../../assets/images/panda-pin.jpg");
+  background-image: url("../../../assets/images/panda-pin.jpg");
 }
 
 .world-map__tooltip {
