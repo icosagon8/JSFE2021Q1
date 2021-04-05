@@ -893,7 +893,7 @@ button:focus {
 .first-screen__slider__wrapper {
   overflow: hidden;
   margin-bottom: 20px;
-  background-image: url("../../../../assets/icons/icon-line.svg");
+  background-image: url("../../../assets/icons/icon-line.svg");
   background-repeat: no-repeat;
   background-position-y: 57%;
 }
