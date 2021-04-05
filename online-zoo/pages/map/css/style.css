@@ -880,6 +880,7 @@ button:focus {
 .world-map__pin {
   position: absolute;
   transform: translate(-50%, -100%);
+  cursor: pointer;
 }
 
 .world-map__pin:hover {
@@ -964,7 +965,7 @@ button:focus {
   width: 65px;
   height: 65px;
   border-radius: 50%;
-  background-image: url("../../../../assets/images/eagle-tooltip.jpg");
+  background-image: url("../../../assets/images/eagle-tooltip.jpg");
   background-repeat: no-repeat;
   margin-right: 20px;
 }

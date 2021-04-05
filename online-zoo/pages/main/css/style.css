@@ -842,7 +842,6 @@ button:focus {
   border-radius: 5px;
   overflow: hidden;
   position: relative;
-  cursor: pointer;
 }
 
 .first-screen__item:hover::before {
@@ -1394,7 +1393,6 @@ button:focus {
   border-radius: 5px;
   overflow: hidden;
   position: relative;
-  cursor: pointer;
 }
 
 .pets__item:hover .pets__tooltip {
@@ -1511,6 +1509,7 @@ button:focus {
 .world-map__pin {
   position: absolute;
   transform: translate(-50%, -100%);
+  cursor: pointer;
 }
 
 .world-map__pin:hover {
@@ -1595,7 +1594,7 @@ button:focus {
   width: 65px;
   height: 65px;
   border-radius: 50%;
-  background-image: url("../../../../assets/images/eagle-tooltip.jpg");
+  background-image: url("../../../assets/images/eagle-tooltip.jpg");
   background-repeat: no-repeat;
   margin-right: 20px;
 }
