@@ -1415,7 +1415,8 @@ a:focus {
   position: relative;
 }
 
-.world-map__image svg {
+.world-map__image,
+.world-map__pin-image {
   display: block;
 }
 
@@ -1430,10 +1431,10 @@ a:focus {
 
 .world-map__pin:hover .world-map__tooltip {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
 }
 
-.world-map__pin:hover svg path {
+.world-map__pin:hover .world-map__pin-image path {
   fill: #eb5757;
 }
 
@@ -1447,7 +1448,7 @@ a:focus {
   border-radius: 50%;
 }
 
-.world-map__pin--active svg path {
+.world-map__pin--active .world-map__pin-image path {
   fill: #eb5757;
 }
 
@@ -1494,9 +1495,11 @@ a:focus {
   border-radius: 8px;
   display: none;
   width: 436px;
-  padding: 40px 44px 44px;
+  padding: 40px 44px 36px;
   right: 50%;
   top: 81%;
+  transition: 0.6s;
+  height: 149px;
 }
 
 .world-map__tooltip::before {
@@ -1507,6 +1510,14 @@ a:focus {
   background-image: url("../../../../assets/images/eagle-tooltip.jpg");
   background-repeat: no-repeat;
   margin-right: 20px;
+}
+
+.world-map__tooltip:hover {
+  height: 192px;
+}
+
+.world-map__tooltip:hover .world-map__link {
+  display: flex;
 }
 
 .world-map__tooltip-text {
@@ -1523,13 +1534,46 @@ a:focus {
   font-size: 18px;
   line-height: 21px;
   margin-top: 0;
-  margin-bottom: 7px;
+  margin-bottom: 15px;
   color: #333333;
 }
 
 .world-map__tooltip-subtitle {
   color: #333333;
   font-weight: 500;
+}
+
+.world-map__link {
+  align-items: center;
+  justify-content: center;
+  color: #4bd8b5;
+  width: 115px;
+  height: 29px;
+  display: none;
+  margin-top: 14px;
+  background-image: linear-gradient(106.89deg, #4bd8b5 -14.32%, #49d6df 100.68%);
+  border-radius: 3px;
+}
+
+.world-map__link-text {
+  margin-left: 4px;
+  font-weight: 900;
+  font-size: 13px;
+  line-height: 15px;
+  background-image: linear-gradient(106.89deg, #4bd8b5 -14.32%, #49d6df 100.68%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.world-map__link-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fefefe;
+  width: 113px;
+  height: 27px;
+  border-radius: 3px;
 }
 
 .map {
