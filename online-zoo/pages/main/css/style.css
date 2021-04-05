@@ -1520,6 +1520,10 @@ a:focus {
   display: flex;
 }
 
+.world-map__tooltip:hover .world-map__tooltip-title {
+  margin-bottom: 15px;
+}
+
 .world-map__tooltip-text {
   margin-top: 0;
   margin-bottom: 5px;
@@ -1534,8 +1538,9 @@ a:focus {
   font-size: 18px;
   line-height: 21px;
   margin-top: 0;
-  margin-bottom: 15px;
+  margin-bottom: 7px;
   color: #333333;
+  transition: 0.6s;
 }
 
 .world-map__tooltip-subtitle {
