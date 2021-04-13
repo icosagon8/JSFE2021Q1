@@ -426,7 +426,7 @@ button:focus {
   }
 }
 
-@media (max-width: 639px) {
+@media (max-width: 320px) {
   .container {
     padding: 0 10px;
   }
@@ -505,8 +505,32 @@ button:focus {
   align-items: center;
 }
 
+@media (max-width: 640px) {
+  .page-header__wrapper {
+    padding-right: 94px;
+  }
+}
+
+@media (max-width: 320px) {
+  .page-header__wrapper {
+    padding-right: 75px;
+  }
+}
+
 .page-header__nav {
   margin-top: 8px;
+}
+
+@media (max-width: 800px) {
+  .page-header__nav {
+    width: 75%;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-header__nav {
+    width: auto;
+  }
 }
 
 .main-nav__list {
@@ -515,6 +539,19 @@ button:focus {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+@media (max-width: 800px) {
+  .main-nav__list {
+    gap: unset;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 640px) {
+  .main-nav__list {
+    display: none;
+  }
 }
 
 .main-nav__item:not(.main-nav__item--active):hover {
@@ -540,6 +577,63 @@ button:focus {
   line-height: 19px;
   color: #333333;
   font-weight: 500;
+}
+
+.main-nav__toggle {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .main-nav__toggle {
+    display: block;
+    width: 40px;
+    height: 21px;
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    transition: 0.3s;
+  }
+
+  .main-nav__toggle:hover {
+    opacity: 0.8;
+  }
+
+  .main-nav__toggle:active,
+  .main-nav__toggle:focus {
+    opacity: 0.6;
+  }
+
+  .main-nav__toggle--open::before {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 3px;
+    background-color: #333333;
+    box-shadow: 0 9px 0 #333333;
+    top: 0;
+    left: 0;
+  }
+
+  .main-nav__toggle--open::after {
+    content: "";
+    position: absolute;
+    width: 33px;
+    height: 3px;
+    background-color: #333333;
+    bottom: 0;
+    right: 0;
+  }
+}
+
+@media (max-width: 320px) {
+  .main-nav__toggle {
+    right: 11px;
+  }
 }
 
 .switch {
