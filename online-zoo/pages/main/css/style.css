@@ -1221,11 +1221,6 @@ button:focus {
   padding-bottom: 132px;
 }
 
-.features__wrapper {
-  margin: 0 auto;
-  max-width: 1200px;
-}
-
 .features__list {
   display: flex;
   justify-content: space-between;
@@ -1274,6 +1269,50 @@ button:focus {
 .features__text {
   margin-top: 0;
   margin-bottom: 0;
+}
+
+@media (min-width: 1201px) {
+  .features__wrapper {
+    margin: 0 auto;
+    max-width: 1200px;
+  }
+}
+
+@media (max-width: 1919px) {
+  .features {
+    padding-bottom: 115px;
+  }
+
+  .features__item {
+    max-width: 285px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .features {
+    padding-bottom: 97px;
+  }
+
+  .features__list {
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+  }
+}
+
+@media (max-width: 639px) {
+  .features {
+    padding-top: 50px;
+    padding-bottom: 47px;
+  }
+
+  .features__list {
+    gap: 30px;
+  }
+
+  .features__item {
+    max-width: 300px;
+  }
 }
 
 .donate {
