@@ -1399,6 +1399,74 @@ button:focus {
   margin: 0 auto;
 }
 
+@media (max-width: 1919px) {
+  .donate__desc {
+    margin-bottom: 50px;
+  }
+
+  .donate__list {
+    margin-bottom: 48px;
+  }
+
+  .donate__arrow {
+    width: 48px;
+    overflow: hidden;
+  }
+
+  .donate__arrow-img {
+    display: block;
+    transform: translateX(-60px);
+  }
+}
+
+@media (max-width: 1199px) {
+  .donate__title {
+    margin-bottom: 18px;
+  }
+
+  .donate__desc {
+    margin-bottom: 47px;
+    max-width: 538px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .donate__list {
+    flex-direction: column;
+    gap: 42px;
+    margin-bottom: 50px;
+  }
+
+  .donate__arrow {
+    width: 40px;
+    transform: rotate(90deg);
+  }
+
+  .donate__arrow-img {
+    display: block;
+    transform: translateX(-68px);
+  }
+}
+
+@media (max-width: 639px) {
+  .donate {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  .donate__title {
+    margin-bottom: 31px;
+  }
+
+  .donate__desc {
+    display: none;
+  }
+
+  .donate__list {
+    margin-bottom: 39px;
+  }
+}
+
 .page-footer {
   background-color: #333333;
   padding-top: 100px;
