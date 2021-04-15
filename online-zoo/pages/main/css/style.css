@@ -2078,12 +2078,17 @@ button:focus {
 }
 
 .world-map__wrapper {
-  width: 1200px;
+  max-width: 1200px;
   margin: 0 auto;
   position: relative;
 }
 
-.world-map__image,
+.world-map__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .world-map__pin-image {
   display: block;
 }
@@ -2250,6 +2255,91 @@ button:focus {
   border-radius: 3px;
 }
 
+@media (max-width: 1919px) {
+  .world-map__wrapper {
+    height: 436px;
+  }
+
+  .world-map__tooltip--eagle,
+  .world-map__tooltip--crocodile {
+    left: 23%;
+    top: 83%;
+  }
+
+  .world-map__tooltip--gorilla {
+    right: -155%;
+  }
+
+  .world-map__tooltip--panda {
+    right: 20%;
+  }
+}
+
+@media (max-width: 1199px) {
+  .world-map__wrapper {
+    height: 290px;
+  }
+
+  .world-map__tooltip--eagle,
+  .world-map__tooltip--crocodile {
+    left: 39%;
+    top: 74%;
+  }
+}
+
+@media (max-width: 639px) {
+  .world-map__wrapper {
+    height: 146px;
+  }
+
+  .world-map__pin-image {
+    width: 34px;
+    height: 47px;
+  }
+
+  .world-map__pin::after {
+    width: 19px;
+    height: 19px;
+    top: 15%;
+    left: 23%;
+    background-size: contain;
+  }
+
+  .world-map__tooltip {
+    padding: 16px 20px 19px 15px;
+    height: 113px;
+    width: 238px;
+  }
+
+  .world-map__tooltip::before {
+    width: 40px;
+    height: 40px;
+    background-size: cover;
+    flex-shrink: 0;
+    margin-right: 7px;
+  }
+
+  .world-map__tooltip--eagle,
+  .world-map__tooltip--crocodile {
+    left: 18%;
+    top: 70%;
+  }
+
+  .world-map__tooltip--gorilla {
+    right: -215%;
+  }
+
+  .world-map__tooltip-title {
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  .world-map__tooltip-text {
+    font-size: 11px;
+    line-height: 13px;
+  }
+}
+
 .map {
   padding-top: 100px;
   padding-bottom: 100px;
@@ -2266,4 +2356,29 @@ button:focus {
 
 .map__btn {
   margin: 0 auto;
+}
+
+@media (max-width: 1199px) {
+  .map {
+    padding-bottom: 80px;
+  }
+
+  .map__title {
+    margin-bottom: 50px;
+  }
+}
+
+@media (max-width: 639px) {
+  .map {
+    padding-top: 50px;
+    padding-bottom: 60px;
+  }
+
+  .map__title {
+    margin-bottom: 30px;
+  }
+
+  .map__wrapper {
+    margin-bottom: 30px;
+  }
 }
