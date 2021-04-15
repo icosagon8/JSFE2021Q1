@@ -1512,7 +1512,7 @@ button:focus {
 }
 
 .page-footer__form {
-  width: 383px;
+  max-width: 383px;
 }
 
 .page-footer__contacts {
@@ -1535,6 +1535,112 @@ button:focus {
 
 .page-footer__copyright-course {
   margin: 0;
+}
+
+@media (max-width: 1919px) {
+  .page-footer__wrapper {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 98px 225px auto;
+    grid-row-gap: 0;
+    margin-bottom: 61px;
+  }
+
+  .page-footer__form {
+    padding-top: 16px;
+    grid-row: 2/4;
+  }
+
+  .page-footer__btn {
+    grid-column: 2;
+    grid-row: 3;
+    justify-self: auto;
+  }
+
+  .page-footer__contacts {
+    justify-self: auto;
+    margin-right: 0;
+  }
+
+  .page-footer__list {
+    justify-self: auto;
+    align-self: auto;
+    margin-top: 19px;
+  }
+
+  .page-footer__copyright {
+    padding-top: 32px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .page-footer {
+    padding-top: 96px;
+  }
+
+  .page-footer__wrapper {
+    grid-template-rows: auto;
+    grid-column-gap: 49px;
+    grid-row-gap: 18px;
+    margin-bottom: 67px;
+  }
+
+  .page-footer__list {
+    flex-direction: column;
+    gap: 5px;
+    grid-row: 2;
+    margin-top: 0;
+  }
+
+  .page-footer__form {
+    grid-column: 1/3;
+    grid-row: 3;
+    padding-top: 9px;
+  }
+
+  .page-footer__btn {
+    grid-row: 1;
+  }
+
+  .page-footer__contacts {
+    grid-column: 1;
+    padding-top: 57px;
+  }
+
+  .page-footer__copyright {
+    padding-top: 27px;
+  }
+}
+
+@media (max-width: 639px) {
+  .page-footer {
+    padding-top: 50px;
+  }
+
+  .page-footer__wrapper {
+    grid-template-columns: 1fr;
+    grid-row-gap: 26px;
+    margin-bottom: 79px;
+  }
+
+  .page-footer__form {
+    grid-column: 1;
+    padding-top: 0;
+  }
+
+  .page-footer__btn {
+    grid-column: 1;
+    grid-row: 5;
+    justify-self: center;
+  }
+
+  .page-footer__list {
+    margin-top: 12px;
+  }
+
+  .page-footer__contacts {
+    padding-top: 27px;
+    margin-bottom: 17px;
+  }
 }
 
 .contacts {
@@ -1685,6 +1791,19 @@ button:focus {
 
 .contact-form__btn-text {
   padding-right: 24px;
+}
+
+@media (max-width: 1919px) {
+  .contact-form__fieldset {
+    margin-bottom: 19px;
+  }
+}
+
+@media (max-width: 639px) {
+  .contact-form__btn {
+    margin-right: 0;
+    padding-right: 0;
+  }
 }
 
 .about {
