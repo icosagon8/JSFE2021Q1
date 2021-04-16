@@ -32,6 +32,7 @@
             <a class="main-nav__link" href="https://www.figma.com/file/HKt5Nlx0jghQtJp6jW9q8F/zooApp" target="_blank">Design</a>
           </li>
         </ul>
+        <button class="main-nav__toggle main-nav__toggle--open" type="button"></button>
       </nav>
       <label class="switch">
         <input class="switch-field" type="checkbox" />
@@ -94,18 +95,22 @@
         <h2 class="animal__title title">GRACE Gorilla Forest Corridor Cam</h2>
         <div class="animal__wrapper">
           <div class="animal__live">
-            <iframe class="animal__video" width="790" height="442" src="https://www.youtube.com/embed/rgXWDk7rh4w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <ul class="animal__preview">
-              <li class="animal__preview-list">
-                <img class="animal__preview-image" src="../../assets/images/gorilla-preview-1.jpg" alt="">
-              </li>
-              <li class="animal__preview-list">
-                <img class="animal__preview-image" src="../../assets/images/gorilla-preview-2.jpg" alt="">
-              </li>
-              <li class="animal__preview-list">
-                <img class="animal__preview-image" src="../../assets/images/gorilla-preview-3.jpg" alt="">
-              </li>
-            </ul>
+            <div class="animal__video-wrapper">
+              <iframe class="animal__video" width="790" height="442" src="https://www.youtube.com/embed/rgXWDk7rh4w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="animal__preview-wrapper">
+              <ul class="animal__preview">
+                <li class="animal__preview-item">
+                  <img class="animal__preview-image" src="../../assets/images/gorilla-preview-1.jpg" alt="">
+                </li>
+                <li class="animal__preview-item">
+                  <img class="animal__preview-image" src="../../assets/images/gorilla-preview-2.jpg" alt="">
+                </li>
+                <li class="animal__preview-item">
+                  <img class="animal__preview-image" src="../../assets/images/gorilla-preview-3.jpg" alt="">
+                </li>
+              </ul>
+            </div>
             <ul class="animal__dots">
               <li class="animal__dots-item animal__dots-item--active"></li>
               <li class="animal__dots-item"></li>
