@@ -974,7 +974,7 @@ button:focus {
   background-color: #68686b;
   background-image: url("../../../assets/images/sunset.jpg");
   background-repeat: no-repeat;
-  background-position-x: center;
+  background-position: center;
 }
 
 .first-screen__wrapper {
@@ -1082,6 +1082,7 @@ button:focus {
   .first-screen {
     padding-top: 126px;
     padding-bottom: 72px;
+    background-size: cover;
   }
 
   .first-screen__title {
