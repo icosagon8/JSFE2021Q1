@@ -437,6 +437,28 @@ button:focus {
   padding-top: 60px;
   margin: 0 auto;
   max-width: 1920px;
+  padding-left: 26px;
+  padding-right: 26px;
+}
+
+@media (max-width: 1919px) {
+  .inner {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .inner {
+    padding-left: 7px;
+    padding-right: 20px;
+  }
+}
+
+@media (max-width: 639px) {
+  .inner {
+    padding-top: 33px;
+  }
 }
 
 .btn {
@@ -2216,6 +2238,7 @@ button:focus {
   position: absolute;
   transform: translate(-50%, -100%);
   cursor: pointer;
+  filter: drop-shadow(2px 4px 15px rgba(6, 12, 70, 0.25));
 }
 
 .world-map__pin:hover {
