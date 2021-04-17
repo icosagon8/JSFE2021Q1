@@ -32,6 +32,7 @@
             <a class="main-nav__link" href="https://www.figma.com/file/HKt5Nlx0jghQtJp6jW9q8F/zooApp" target="_blank">Design</a>
           </li>
         </ul>
+        <button class="main-nav__toggle main-nav__toggle--open" type="button"></button>
       </nav>
       <label class="switch">
         <input class="switch-field" type="checkbox" />
@@ -46,7 +47,7 @@
         <h2 class="first-screen__title">Watch your favorite animal online</h2>
         <a class="first-screen__btn btn btn--watch" href="../zoos/panda.html">Watch online</a>
         <ul class="social__list social__list--vertical">
-          <li class="social__item  social__item--insta">
+          <li class="social__item social__item--insta">
             <a class="social__link" href="#" target="_blank">
               <span class="visually-hidden">Instagram</span>
             </a>
@@ -68,8 +69,8 @@
           </li>
         </ul>
         <div class="first-screen__slider slider">
-          <div class="first-screen__slider__wrapper">
-            <div class="first-screen__slider__inner">
+          <div class="first-screen__slider-wrapper">
+            <div class="first-screen__slider-inner">
               <ul class="first-screen__list">
                 <li class="first-screen__item slider__item">
                   <img class="first-screen__image" src="../../assets/images/eagle-first-screen.jpg" alt="Eagle">
@@ -229,56 +230,60 @@
       </div>
     </section>
     <section class="about">
-      <div class="about__wrapper">
-        <h2 class="about__title title">How it works?</h2>
-        <p class="about__desc">As a voice for wildlife, we are devastated by the impact of the 2020 Australian bushfires on precious species and their habitat, and we are determined to assist in all aspects, including providing veterinary support and raising much-needed emergency funds. Zoo Online saves wildlife and inspires everyone to make conservation a priority in their lives. Animals have the right to a pain-free and happy life. They have equal claim to the resources of this planet, and
-          deserve a life of dignity and compassion.As a voice for wildlife, we are devastated by the impact of the 2020 Australian bushfires on precious species and their habitat.</p>
-        <div class="about__slider slider">
-          <ul class="about__list slider__list">
-            <li class="about__item slider__item">
-              <img class="about__image" src="../../assets/images/deers-about.jpg" alt="Deers">
-            </li>
-            <li class="about__item slider__item">
-              <img class="about__image" src="../../assets/images/panda-about.jpg" alt="Panda">
-            </li>
-            <li class="about__item slider__item">
-              <img class="about__image" src="../../assets/images/macaques-about.jpg" alt="Macaques">
-            </li>
-            <li class="about__item slider__item">
-              <img class="about__image" src="../../assets/images/gorillas-about.jpg" alt="Gorillas">
-            </li>
-          </ul>
-          <div class="slider__pagination">
-            <label class="visually-hidden" for="slider__range">Switch slide</label>
-            <input class="slider__range slider__range--long" id="slider__range" type="range" name="range" min="1" max="4" value="1">
-            <output class="slider__output" name="result">
-              <span class="slider__output-number">01/</span><span class="slider__output-total">04</span>
-            </output>
+      <div class="container">
+        <div class="about__wrapper">
+          <h2 class="about__title title">How it works?</h2>
+          <p class="about__desc">As a voice for wildlife, we are devastated by the impact of the 2020 Australian bushfires on precious species and their habitat, and we are determined to assist in all aspects, including providing veterinary support and raising much‑needed emergency funds. Zoo Online saves wildlife and inspires everyone to make conservation a priority in their lives. Animals have the right to a pain-free and happy life. They have equal claim to the resources of this planet, and
+            deserve a life of dignity and compassion.As a voice for wildlife, we are devastated by the impact of the 2020 Australian bushfires on precious species and their habitat.</p>
+          <div class="about__slider slider">
+            <ul class="about__list slider__list">
+              <li class="about__item slider__item">
+                <img class="about__image" src="../../assets/images/deers-about.jpg" alt="Deers">
+              </li>
+              <li class="about__item slider__item">
+                <img class="about__image" src="../../assets/images/panda-about.jpg" alt="Panda">
+              </li>
+              <li class="about__item slider__item">
+                <img class="about__image" src="../../assets/images/macaques-about.jpg" alt="Macaques">
+              </li>
+              <li class="about__item slider__item">
+                <img class="about__image" src="../../assets/images/gorillas-about.jpg" alt="Gorillas">
+              </li>
+            </ul>
+            <div class="slider__pagination">
+              <label class="visually-hidden" for="slider__range">Switch slide</label>
+              <input class="slider__range slider__range--long" id="slider__range" type="range" name="range" min="1" max="4" value="1">
+              <output class="slider__output" name="result">
+                <span class="slider__output-number">01/</span><span class="slider__output-total">04</span>
+              </output>
+            </div>
           </div>
+          <a class="about__btn btn btn--watch" href="#">Watch online</a>
         </div>
-        <a class="about__btn btn btn--watch" href="#">Watch online</a>
       </div>
     </section>
     <section class="features">
-      <div class="features__wrapper">
-        <ul class="features__list">
-          <li class="features__item features__item--inspiration">
-            <h3 class="features__subtitle">What inspires us?</h3>
-            <p class="features__text">As a voice for wildlife, we are devastated by the impact of the 2020 Australian bushfires on precious species and their habitat, and we are determined to assist in all aspects.</p>
-          </li>
-          <li class="features__item features__item--mission">
-            <h3 class="features__subtitle">Our mission</h3>
-            <p class="features__text">Zoo Online saves wildlife and inspires everyone to make conservation a priority in their lives. </p>
-          </li>
-          <li class="features__item features__item--belief">
-            <h3 class="features__subtitle">What we believe in?</h3>
-            <p class="features__text">Animals have the right to a pain-free and happy life. They have equal claim to the resources of this planet, and deserve a life of dignity and compassion.</p>
-          </li>
-        </ul>
+      <div class="container">
+        <div class="features__wrapper">
+          <ul class="features__list">
+            <li class="features__item features__item--inspiration">
+              <h3 class="features__subtitle">What inspires us?</h3>
+              <p class="features__text">As a voice for wildlife, we are devastated by the impact of the 2020 Australian bushfires on precious species and their habitat, and we are determined to assist in all aspects.</p>
+            </li>
+            <li class="features__item features__item--mission">
+              <h3 class="features__subtitle">Our mission</h3>
+              <p class="features__text">Zoo Online saves wildlife and inspires everyone to make conservation a priority in their lives. </p>
+            </li>
+            <li class="features__item features__item--belief">
+              <h3 class="features__subtitle">What we believe in?</h3>
+              <p class="features__text">Animals have the right to a pain-free and happy life. They have equal claim to the resources of this planet, and deserve a life of dignity and compassion.</p>
+            </li>
+          </ul>
+        </div>
       </div>
     </section>
     <section class="pets">
-      <div class="pets__wrapper">
+      <div class="pets__wrapper container">
         <h2 class="pets__title title">Pets in Zoo</h2>
         <div class="pets__slider slider">
           <div class="pets__slider-wrapper slider__wrapper">
@@ -457,43 +462,49 @@
       </div>
     </section>
     <section class="donate">
-      <div class="donate__wrapper">
-        <h2 class="donate__title title">Pay and feed</h2>
-        <p class="donate__desc">The opportunity to easily and naturally (but as often as possible) donate to the needs of animals that you like.</p>
-        <div class="donate__list">
-          <div class="donate__item donate__item--card">
-            <p class="donate__text">You pay with a VISA card</p>
+      <div class="container">
+        <div class="donate__wrapper">
+          <h2 class="donate__title title">Pay and feed</h2>
+          <p class="donate__desc">The opportunity to easily and naturally (but as often as possible) donate to the needs of animals that you like.</p>
+          <div class="donate__list">
+            <div class="donate__item donate__item--card">
+              <p class="donate__text">You pay with a VISA card</p>
+            </div>
+            <div class="donate__arrow">
+              <svg class="donate__arrow-img" width="108" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M107.707 8.707a1 1 0 000-1.414L101.343.929a1 1 0 10-1.414 1.414L105.586 8l-5.657 5.657a1 1 0 001.414 1.414l6.364-6.364zM0 9h107V7H0v2z" fill="url(#paint1_linear)" />
+                <defs>
+                  <linearGradient id="paint1_linear" x1="-19.979" y1="8" x2="-19.827" y2="12.934" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#4BD8B5" />
+                    <stop offset="1" stop-color="#49D6DF" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <div class="donate__item donate__item--zoo">
+              <p class="donate__text">Payment goes to the Zoo</p>
+            </div>
+            <div class="donate__arrow">
+              <svg class="donate__arrow-img" width="108" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M107.707 8.707a1 1 0 000-1.414L101.343.929a1 1 0 10-1.414 1.414L105.586 8l-5.657 5.657a1 1 0 001.414 1.414l6.364-6.364zM0 9h107V7H0v2z" fill="url(#paint1_linear)" />
+                <defs>
+                  <linearGradient id="paint1_linear" x1="-19.979" y1="8" x2="-19.827" y2="12.934" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#4BD8B5" />
+                    <stop offset="1" stop-color="#49D6DF" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <div class="donate__item donate__item--panda">
+              <p class="donate__text">Panda gets the bamboo</p>
+            </div>
           </div>
-          <svg width="108" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M107.707 8.707a1 1 0 000-1.414L101.343.929a1 1 0 10-1.414 1.414L105.586 8l-5.657 5.657a1 1 0 001.414 1.414l6.364-6.364zM0 9h107V7H0v2z" fill="url(#paint1_linear)" />
-            <defs>
-              <linearGradient id="paint1_linear" x1="-19.979" y1="8" x2="-19.827" y2="12.934" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#4BD8B5" />
-                <stop offset="1" stop-color="#49D6DF" />
-              </linearGradient>
-            </defs>
-          </svg>
-          <div class="donate__item donate__item--zoo">
-            <p class="donate__text">Payment goes to the Zoo</p>
-          </div>
-          <svg width="108" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M107.707 8.707a1 1 0 000-1.414L101.343.929a1 1 0 10-1.414 1.414L105.586 8l-5.657 5.657a1 1 0 001.414 1.414l6.364-6.364zM0 9h107V7H0v2z" fill="url(#paint1_linear)" />
-            <defs>
-              <linearGradient id="paint1_linear" x1="-19.979" y1="8" x2="-19.827" y2="12.934" gradientUnits="userSpaceOnUse">
-                <stop stop-color="#4BD8B5" />
-                <stop offset="1" stop-color="#49D6DF" />
-              </linearGradient>
-            </defs>
-          </svg>
-          <div class="donate__item donate__item--panda">
-            <p class="donate__text">Panda gets the bamboo</p>
-          </div>
+          <button class="donate__btn btn">Donate</button>
         </div>
-        <button class="donate__btn btn">Donate</button>
       </div>
     </section>
     <section class="testimonials">
-      <div class="testimonials__wrapper">
+      <div class="testimonials__wrapper container">
         <h2 class="testimonials__title title">Testimonials</h2>
         <div class="testimonials__slider slider">
           <div class="testimonials__slider-wrapper slider__wrapper">
@@ -603,7 +614,7 @@
       <div class="container">
         <h2 class="map__title title">Map</h2>
         <div class="map__wrapper world-map__wrapper">
-          <svg class="world-map__image" width="1200" height="498" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg class="world-map__image" viewBox="0 0 1200 498" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M742.625 212.977l.602-.182.211.984 2.693-.56 2.905.091 2.121.105 2.182-2.42 2.408-2.284 2.001-2.193.767 1.225.737 2.813-1.775.016-.09 2.314.662.499-1.52.696.105 1.452-.887 1.483.015 1.422-.647.756-10.669-1.785-1.625-3.615-.196-.817z" fill="#333" stroke="#333" />
             <path
               d="M771.425 172.316l3.686 1.361 2.498-.484.467-1.619 2.618-.529 1.76-1.089.211-2.844 2.769-.696.316-1.27 1.76.953 1.053.105 1.896.031 2.693.756 1.114.439 2.272-1.15 1.264.681.812-1.634 2.047.076.421-.515.105-1.437 1.234-1.24 1.986.802-.165 1.089 1.053.166.226 3.01 1.55 1.165 1.053-.756 1.459-.348 1.821-1.603 2.392.272h3.506l.798 1.028-1.896.394-1.61.665-3.837.409-3.536.756-1.715 1.543 1.068 1.513.692 1.785-1.459 1.497.376 1.362-.737 1.285-3.281-.105 1.716 2.359-2.047.893-1.128 2.148.496 2.148-1.203.998-1.324-.333-2.573.469-.226.999h-2.573l-1.655 2.012.271 3.04-4.304 1.467-2.452-.302-.602.771-2.137-.453-3.4.544-6.019-1.83 2.753-3.222-.571-2.299-2.694-.606-.556-2.253-1.505-2.844 1.204-1.967-1.565-.514.587-2.602.767-4.447z"
@@ -926,7 +937,7 @@
           </svg>
           <div class="world-map__pins">
             <div class="world-map__pin world-map__pin--eagle">
-              <svg class="world-map__pin-image" width="67" height="94" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg class="world-map__pin-image" width="67" height="94" viewBox="0 0 67 94" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M33.691.15C15.458.15.625 14.985.625 33.22c0 17.64 30.23 57.831 31.518 59.535.362.487.942.77 1.548.77.607 0 1.187-.284 1.549-.77 1.287-1.704 31.518-41.894 31.518-59.534C66.758 14.985 51.924.15 33.69.15zm0 50.578c-9.651 0-17.505-7.855-17.505-17.507 0-9.653 7.854-17.508 17.505-17.508 9.652 0 17.506 7.855 17.506 17.508 0 9.652-7.854 17.508-17.506 17.508z" fill="url(#paint0_linear)" />
                 <defs>
                   <linearGradient id="paint0_linear" x1="-11.723" y1=".15" x2="83.036" y2="20.523" gradientUnits="userSpaceOnUse">
@@ -963,7 +974,7 @@
               </div>
             </div>
             <div class="world-map__pin world-map__pin--crocodile">
-              <svg class="world-map__pin-image" width="67" height="94" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg class="world-map__pin-image" width="67" height="94" viewBox="0 0 67 94" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M33.691.15C15.458.15.625 14.985.625 33.22c0 17.64 30.23 57.831 31.518 59.535.362.487.942.77 1.548.77.607 0 1.187-.284 1.549-.77 1.287-1.704 31.518-41.894 31.518-59.534C66.758 14.985 51.924.15 33.69.15zm0 50.578c-9.651 0-17.505-7.855-17.505-17.507 0-9.653 7.854-17.508 17.505-17.508 9.652 0 17.506 7.855 17.506 17.508 0 9.652-7.854 17.508-17.506 17.508z" fill="url(#paint0_linear)" />
                 <defs>
                   <linearGradient id="paint0_linear" x1="-11.723" y1=".15" x2="83.036" y2="20.523" gradientUnits="userSpaceOnUse">
@@ -1000,7 +1011,7 @@
               </div>
             </div>
             <div class="world-map__pin world-map__pin--gorilla">
-              <svg class="world-map__pin-image" width="67" height="94" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg class="world-map__pin-image" width="67" height="94" viewBox="0 0 67 94" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M33.691.15C15.458.15.625 14.985.625 33.22c0 17.64 30.23 57.831 31.518 59.535.362.487.942.77 1.548.77.607 0 1.187-.284 1.549-.77 1.287-1.704 31.518-41.894 31.518-59.534C66.758 14.985 51.924.15 33.69.15zm0 50.578c-9.651 0-17.505-7.855-17.505-17.507 0-9.653 7.854-17.508 17.505-17.508 9.652 0 17.506 7.855 17.506 17.508 0 9.652-7.854 17.508-17.506 17.508z" fill="url(#paint0_linear)" />
                 <defs>
                   <linearGradient id="paint0_linear" x1="-11.723" y1=".15" x2="83.036" y2="20.523" gradientUnits="userSpaceOnUse">
@@ -1037,7 +1048,7 @@
               </div>
             </div>
             <div class="world-map__pin world-map__pin--panda">
-              <svg class="world-map__pin-image" width="67" height="94" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg class="world-map__pin-image" width="67" height="94" viewBox="0 0 67 94" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M33.691.15C15.458.15.625 14.985.625 33.22c0 17.64 30.23 57.831 31.518 59.535.362.487.942.77 1.548.77.607 0 1.187-.284 1.549-.77 1.287-1.704 31.518-41.894 31.518-59.534C66.758 14.985 51.924.15 33.69.15zm0 50.578c-9.651 0-17.505-7.855-17.505-17.507 0-9.653 7.854-17.508 17.505-17.508 9.652 0 17.506 7.855 17.506 17.508 0 9.652-7.854 17.508-17.506 17.508z" fill="url(#paint0_linear)" />
                 <defs>
                   <linearGradient id="paint0_linear" x1="-11.723" y1=".15" x2="83.036" y2="20.523" gradientUnits="userSpaceOnUse">
@@ -1174,6 +1185,99 @@
       </div>
     </div>
   </footer>
+  <div class="popup-overlay">
+    <section class="popup">
+      <div class="popup__aside"></div>
+      <div class="popup__main">
+        <h2 class="popup__title">Donate for your animal</h2>
+        <form class="popup__form" action="#">
+          <div class="popup__top">
+            <div class="popup__group">
+              <label class="popup__label">Сhoose an animal</label>
+              <div class="popup__select"></div>
+              <ul class="popup__select-list">
+                <li class="popup__option">Panda</li>
+                <li class="popup__option">Crocodile</li>
+                <li class="popup__option">Gorilla</li>
+                <li class="popup__option">Eagle</li>
+                <li class="popup__option">Fox</li>
+                <li class="popup__option">Sloth</li>
+                <li class="popup__option">Elephant</li>
+                <li class="popup__option">Tiger</li>
+              </ul>
+            </div>
+            <div class="popup__group">
+              <label class="popup__label">To donate</label>
+              <input class="popup__input" type="text">
+            </div>
+          </div>
+          <div class="popup__bottom">
+            <fieldset class="popup__fieldset">
+              <legend class="popup__legend">About you</legend>
+              <div class="popup__group">
+                <label class="popup__label">Name</label>
+                <input class="popup__input" type="text">
+              </div>
+              <div class="popup__group">
+                <label class="popup__label">Email</label>
+                <input class="popup__input" type="email">
+              </div>
+              <div class="popup__group">
+                <label class="popup__label">Phone</label>
+                <div class="popup__wrapper">
+                  <div class="popup__select popup__select--phone-code">+7</div>
+                  <ul class="popup__select-list">
+                    <li class="popup__option">+8</li>
+                    <li class="popup__option">+9</li>
+                    <li class="popup__option">+10</li>
+                  </ul>
+                  <input class="popup__input popup__input--tel" type="tel">
+                </div>
+              </div>
+            </fieldset>
+            <fieldset class="popup__fieldset">
+              <legend class="popup__legend">Checkout</legend>
+              <div class="popup__group">
+                <label class="popup__label">Card number</label>
+                <input class="popup__input" type="text">
+              </div>
+              <div class="popup__group">
+                <label class="popup__label">Expiry date</label>
+                <div class="popup__select popup__select--month"></div>
+                <ul class="popup__select-list">
+                  <li class="popup__option">Panda</li>
+                  <li class="popup__option">Crocodile</li>
+                  <li class="popup__option">Gorilla</li>
+                  <li class="popup__option">Eagle</li>
+                  <li class="popup__option">Fox</li>
+                  <li class="popup__option">Sloth</li>
+                  <li class="popup__option">Elephant</li>
+                  <li class="popup__option">Tiger</li>
+                </ul>
+                <div class="popup__select popup__select--year"></div>
+                <ul class="popup__select-list">
+                  <li class="popup__option">Panda</li>
+                  <li class="popup__option">Crocodile</li>
+                  <li class="popup__option">Gorilla</li>
+                  <li class="popup__option">Eagle</li>
+                  <li class="popup__option">Fox</li>
+                  <li class="popup__option">Sloth</li>
+                  <li class="popup__option">Elephant</li>
+                  <li class="popup__option">Tiger</li>
+                </ul>
+              </div>
+              <div class="popup__group">
+                <label class="popup__label">CVC</label>
+                <input class="popup__input" type="text">
+              </div>
+            </fieldset>
+          </div>
+        </form>
+        <p class="popup__text">If don’t cancel your subscription before the trial ends on April 15, 2021, you agree that you will automatically be charged</p>
+        <button class="popup__btn btn">Donate</button>
+      </div>
+    </section>
+  </div>
 </body>
 
 </html>

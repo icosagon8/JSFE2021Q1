@@ -32,6 +32,7 @@
             <a class="main-nav__link" href="https://www.figma.com/file/HKt5Nlx0jghQtJp6jW9q8F/zooApp" target="_blank">Design</a>
           </li>
         </ul>
+        <button class="main-nav__toggle main-nav__toggle--open" type="button"></button>
       </nav>
       <label class="switch">
         <input class="switch-field" type="checkbox" />
@@ -94,18 +95,22 @@
         <h2 class="animal__title title">West End Bald Eagle Cam</h2>
         <div class="animal__wrapper">
           <div class="animal__live">
-            <iframe class="animal__video" width="790" height="442" src="https://www.youtube.com/embed/RmmAzrAkKqI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <ul class="animal__preview">
-              <li class="animal__preview-list">
-                <img class="animal__preview-image" src="../../assets/images/eagle-preview-1.jpg" alt="">
-              </li>
-              <li class="animal__preview-list">
-                <img class="animal__preview-image" src="../../assets/images/eagle-preview-2.jpg" alt="">
-              </li>
-              <li class="animal__preview-list">
-                <img class="animal__preview-image" src="../../assets/images/eagle-preview-3.jpg" alt="">
-              </li>
-            </ul>
+            <div class="animal__video-wrapper">
+              <iframe class="animal__video" width="790" height="442" src="https://www.youtube.com/embed/RmmAzrAkKqI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="animal__preview-wrapper">
+              <ul class="animal__preview">
+                <li class="animal__preview-item">
+                  <img class="animal__preview-image" src="../../assets/images/eagle-preview-1.jpg" alt="">
+                </li>
+                <li class="animal__preview-item">
+                  <img class="animal__preview-image" src="../../assets/images/eagle-preview-2.jpg" alt="">
+                </li>
+                <li class="animal__preview-item">
+                  <img class="animal__preview-image" src="../../assets/images/eagle-preview-3.jpg" alt="">
+                </li>
+              </ul>
+            </div>
             <ul class="animal__dots">
               <li class="animal__dots-item animal__dots-item--active"></li>
               <li class="animal__dots-item"></li>
@@ -220,6 +225,99 @@
       </div>
     </div>
   </footer>
+  <div class="popup-overlay">
+    <section class="popup">
+      <div class="popup__aside"></div>
+      <div class="popup__main">
+        <h2 class="popup__title">Donate for your animal</h2>
+        <form class="popup__form" action="#">
+          <div class="popup__top">
+            <div class="popup__group">
+              <label class="popup__label">Сhoose an animal</label>
+              <div class="popup__select"></div>
+              <ul class="popup__select-list">
+                <li class="popup__option">Panda</li>
+                <li class="popup__option">Crocodile</li>
+                <li class="popup__option">Gorilla</li>
+                <li class="popup__option">Eagle</li>
+                <li class="popup__option">Fox</li>
+                <li class="popup__option">Sloth</li>
+                <li class="popup__option">Elephant</li>
+                <li class="popup__option">Tiger</li>
+              </ul>
+            </div>
+            <div class="popup__group">
+              <label class="popup__label">To donate</label>
+              <input class="popup__input" type="text">
+            </div>
+          </div>
+          <div class="popup__bottom">
+            <fieldset class="popup__fieldset">
+              <legend class="popup__legend">About you</legend>
+              <div class="popup__group">
+                <label class="popup__label">Name</label>
+                <input class="popup__input" type="text">
+              </div>
+              <div class="popup__group">
+                <label class="popup__label">Email</label>
+                <input class="popup__input" type="email">
+              </div>
+              <div class="popup__group">
+                <label class="popup__label">Phone</label>
+                <div class="popup__wrapper">
+                  <div class="popup__select popup__select--phone-code">+7</div>
+                  <ul class="popup__select-list">
+                    <li class="popup__option">+8</li>
+                    <li class="popup__option">+9</li>
+                    <li class="popup__option">+10</li>
+                  </ul>
+                  <input class="popup__input popup__input--tel" type="tel">
+                </div>
+              </div>
+            </fieldset>
+            <fieldset class="popup__fieldset">
+              <legend class="popup__legend">Checkout</legend>
+              <div class="popup__group">
+                <label class="popup__label">Card number</label>
+                <input class="popup__input" type="text">
+              </div>
+              <div class="popup__group">
+                <label class="popup__label">Expiry date</label>
+                <div class="popup__select popup__select--month"></div>
+                <ul class="popup__select-list">
+                  <li class="popup__option">Panda</li>
+                  <li class="popup__option">Crocodile</li>
+                  <li class="popup__option">Gorilla</li>
+                  <li class="popup__option">Eagle</li>
+                  <li class="popup__option">Fox</li>
+                  <li class="popup__option">Sloth</li>
+                  <li class="popup__option">Elephant</li>
+                  <li class="popup__option">Tiger</li>
+                </ul>
+                <div class="popup__select popup__select--year"></div>
+                <ul class="popup__select-list">
+                  <li class="popup__option">Panda</li>
+                  <li class="popup__option">Crocodile</li>
+                  <li class="popup__option">Gorilla</li>
+                  <li class="popup__option">Eagle</li>
+                  <li class="popup__option">Fox</li>
+                  <li class="popup__option">Sloth</li>
+                  <li class="popup__option">Elephant</li>
+                  <li class="popup__option">Tiger</li>
+                </ul>
+              </div>
+              <div class="popup__group">
+                <label class="popup__label">CVC</label>
+                <input class="popup__input" type="text">
+              </div>
+            </fieldset>
+          </div>
+        </form>
+        <p class="popup__text">If don’t cancel your subscription before the trial ends on April 15, 2021, you agree that you will automatically be charged</p>
+        <button class="popup__btn btn">Donate</button>
+      </div>
+    </section>
+  </div>
 </body>
 
 </html>
