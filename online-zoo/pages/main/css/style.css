@@ -524,8 +524,16 @@ button:focus {
   padding-top: 26px;
   padding-bottom: 26px;
   position: relative;
-  z-index: 0;
+  z-index: 15;
   box-shadow: 0 4px 8px rgba(44, 101, 77, 0.08);
+  background-color: #ffffff;
+}
+
+@media (max-width: 639px) {
+  .page-header {
+    position: sticky;
+    top: 0;
+  }
 }
 
 .page-header__wrapper {
@@ -1224,6 +1232,7 @@ button:focus {
     margin-left: 8px;
     width: auto;
     transform: translateY(calc(-10px - 100%));
+    margin-right: 3px;
   }
 
   .first-screen__list {
@@ -1913,7 +1922,7 @@ button:focus {
   }
 
   .about__title {
-    margin-bottom: 20px;
+    margin-bottom: 21px;
   }
 
   .about__image {
@@ -1926,7 +1935,7 @@ button:focus {
   }
 
   .about__slider {
-    margin-bottom: 20px;
+    margin-bottom: 16px;
   }
 }
 
@@ -2045,7 +2054,7 @@ button:focus {
   }
 
   .pets__slider {
-    margin-bottom: 25px;
+    margin-bottom: 23px;
   }
 
   .pets__list {
