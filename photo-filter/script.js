@@ -38,7 +38,6 @@ function onFullscreenButtonClick() {
 
 function onLoadButtonChange() {
   const file = fileInput.files[0];
-  fileFormat = file.type.split('/')[1];
   const reader = new FileReader();
 
   reader.addEventListener('load', () => {
@@ -79,7 +78,7 @@ function makeGetImage() {
   return () => {
     const imageIndex = count % IMAGES.length;
     const imageUrl = `${BASE}${partOfDay}/${IMAGES[imageIndex]}`;
-    viewImage(imageUrl);
+    image.src = imageUrl;
     count++;
     btnNext.disabled = true;
     setTimeout(() => {
@@ -88,19 +87,11 @@ function makeGetImage() {
   }
 }
 
-function viewImage(src) {
-  const img = new Image();
-  img.src = src;
-  img.addEventListener('load', () => {
-    image.src = src;
-  })
-}
-
 function onSaveButtonClick() {
   const canvas = document.createElement('canvas');
   const img = new Image();
-  img.src = image.src;
   img.setAttribute('crossOrigin', 'anonymous');
+  img.src = image.src;
   img.addEventListener('load', () => {
     canvas.width = img.width;
     canvas.height = img.height;
@@ -108,10 +99,8 @@ function onSaveButtonClick() {
     let canvasFilterFunctions = [];
 
     inputs.forEach((input) => {
-      if (input.name === 'saturate') {
+      if (input.dataset.sizing === '%') {
         canvasFilterFunctions.push(`${input.name}(${(input.value) / 100})`);
-      } else if (input.dataset.sizing === '%') {
-        canvasFilterFunctions.push(`${input.name}(${input.value})`);
       } else {
         canvasFilterFunctions.push(`${input.name}(${input.value}${input.dataset.sizing})`);
       }
@@ -119,14 +108,14 @@ function onSaveButtonClick() {
 
     ctx.filter = canvasFilterFunctions.join(' ');
     ctx.drawImage(img, 0, 0);
-    const dataUrl = canvas.toDataURL(`image/${fileFormat}`);
+    const dataUrl = canvas.toDataURL();
     saveImage(dataUrl);
   });
 }
 
 function saveImage(url) {
   const link = document.createElement('a');
-  link.download = `download.${fileFormat}`;
+  link.download = `download.png`;
   link.href = url;
   link.click();
   link.delete;
@@ -145,7 +134,6 @@ btnFullScreen.addEventListener('click', onFullscreenButtonClick);
 
 const fileInput = document.querySelector('input[type="file"]');
 const image = document.querySelector('.editor img');
-let fileFormat = 'jpeg';
 fileInput.addEventListener('change', onLoadButtonChange);
 
 const btnNext = document.querySelector('.btn-next');
