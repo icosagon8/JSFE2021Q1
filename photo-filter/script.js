@@ -4,10 +4,6 @@ function onFiltersInput(evt) {
   const suffix = evt.target.dataset.sizing;
   document.documentElement.style.setProperty(`--${evt.target.name}`, evt.target.value + suffix);
 
-  if (evt.target.name === 'blur') {
-    image.style.setProperty('--blur', `${evt.target.value / (image.naturalHeight / image.offsetHeight) + suffix}`);
-  }
-
   if (evt.target.nextElementSibling.matches('output[name=result]')) {
     evt.target.nextElementSibling.value = evt.target.value;
   }
@@ -99,7 +95,9 @@ function onSaveButtonClick() {
     let canvasFilterFunctions = [];
 
     inputs.forEach((input) => {
-      if (input.dataset.sizing === '%') {
+      if (input.name === 'blur') {
+        canvasFilterFunctions.push(`${input.name}(${input.value * (image.naturalHeight / image.offsetHeight)}${input.dataset.sizing})`);
+      } else if (input.dataset.sizing === '%') {
         canvasFilterFunctions.push(`${input.name}(${(input.value) / 100})`);
       } else {
         canvasFilterFunctions.push(`${input.name}(${input.value}${input.dataset.sizing})`);
