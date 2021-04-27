@@ -293,8 +293,10 @@
         <div class="pets__slider slider">
           <div class="pets__slider-wrapper slider__wrapper">
             <ul class="pets__list slider__list">
-              <li class="pets__item slider__item">
-                <img class="pets__image" src="../../assets/images/panda.jpg" alt="Panda">
+              <li class="pets__item pets__item--active slider__item">
+                <div class="pets__image-wrapper">
+                  <img class="pets__image" src="../../assets/images/panda.jpg" alt="Panda">
+                </div>
                 <div class="pets__tooltip slider__tooltip">
                   <p class="slider__text">Panda’s name is Bei Bei. He is 2 years old. Bei Bei is from China. He loves bamboos.</p>
                   <div class="slider__links">
@@ -312,7 +314,9 @@
                 </div>
               </li>
               <li class="pets__item slider__item">
-                <img class="pets__image" src="../../assets/images/eagles.jpg" alt="Eagles">
+                <div class="pets__image-wrapper">
+                  <img class="pets__image" src="../../assets/images/eagles.jpg" alt="Eagles">
+                </div>
                 <div class="pets__tooltip slider__tooltip">
                   <p class="slider__text">Eagle’s name is Tails. He is 10 years old. Tails is from North America. He loves fish.</p>
                   <div class="slider__links">
@@ -330,7 +334,9 @@
                 </div>
               </li>
               <li class="pets__item slider__item">
-                <img class="pets__image" src="../../assets/images/gorilla.jpg" alt="Gorilla">
+                <div class="pets__image-wrapper">
+                  <img class="pets__image" src="../../assets/images/gorilla.jpg" alt="Gorilla">
+                </div>
                 <div class="pets__tooltip slider__tooltip">
                   <p class="slider__text">Gorilla's name is Moto Moto. He is 20 years old. Moto Moto is from Congo. He loves fruits.</p>
                   <div class="slider__links">
@@ -348,7 +354,9 @@
                 </div>
               </li>
               <li class="pets__item slider__item">
-                <img class="pets__image" src="../../assets/images/crocodile.jpg" alt="Crocodile">
+                <div class="pets__image-wrapper">
+                  <img class="pets__image" src="../../assets/images/crocodile.jpg" alt="Crocodile">
+                </div>
                 <div class="pets__tooltip slider__tooltip">
                   <p class="slider__text">Crocodile’s name is Tick-Tock. He is 50 years old. Tick-Tock is from North America. He loves meat.</p>
                   <div class="slider__links">
@@ -366,7 +374,9 @@
                 </div>
               </li>
               <li class="pets__item slider__item">
-                <img class="pets__image" src="../../assets/images/fox.jpg" alt="Fox">
+                <div class="pets__image-wrapper">
+                  <img class="pets__image" src="../../assets/images/fox.jpg" alt="Fox">
+                </div>
                 <div class="pets__tooltip slider__tooltip">
                   <p class="slider__text">Crocodile’s name is Tick-Tock. He is 50 years old. Tick-Tock is from North America. He loves meat.</p>
                   <div class="slider__links">
@@ -384,7 +394,9 @@
                 </div>
               </li>
               <li class="pets__item slider__item">
-                <img class="pets__image" src="../../assets/images/sloth.jpg" alt="Sloth">
+                <div class="pets__image-wrapper">
+                  <img class="pets__image" src="../../assets/images/sloth.jpg" alt="Sloth">
+                </div>
                 <div class="pets__tooltip slider__tooltip">
                   <p class="slider__text">Crocodile’s name is Tick-Tock. He is 50 years old. Tick-Tock is from North America. He loves meat.</p>
                   <div class="slider__links">
@@ -402,7 +414,9 @@
                 </div>
               </li>
               <li class="pets__item slider__item">
-                <img class="pets__image" src="../../assets/images/elephant.jpg" alt="Elephant">
+                <div class="pets__image-wrapper">
+                  <img class="pets__image" src="../../assets/images/elephant.jpg" alt="Elephant">
+                </div>
                 <div class="pets__tooltip slider__tooltip">
                   <p class="slider__text">Crocodile’s name is Tick-Tock. He is 50 years old. Tick-Tock is from North America. He loves meat.</p>
                   <div class="slider__links">
@@ -420,7 +434,9 @@
                 </div>
               </li>
               <li class="pets__item slider__item">
-                <img class="pets__image" src="../../assets/images/tiger.jpg" alt="Tiger">
+                <div class="pets__image-wrapper">
+                  <img class="pets__image" src="../../assets/images/tiger.jpg" alt="Tiger">
+                </div>
                 <div class="pets__tooltip slider__tooltip">
                   <p class="slider__text">Crocodile’s name is Tick-Tock. He is 50 years old. Tick-Tock is from North America. He loves meat.</p>
                   <div class="slider__links">
@@ -438,14 +454,14 @@
                 </div>
               </li>
             </ul>
-            <button class="slider__btn slider__btn--left">
+            <button class="pets__btn--left slider__btn slider__btn--left">
               <svg class="slider__btn-image" width="18" height="30" viewBox="0 0 18 30" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M17.3337 13.8294L3.98332 0.479264C3.67454 0.170243 3.26235 0 2.82284 0C2.38334 0 1.97114 0.170243 1.66237 0.479264L0.679203 1.46218C0.0394526 2.10267 0.0394526 3.14363 0.679203 3.78314L11.8898 14.9938L0.666764 26.2169C0.357986 26.5259 0.1875 26.9378 0.1875 27.3771C0.1875 27.8168 0.357986 28.2288 0.666764 28.5381L1.64993 29.5207C1.95895 29.8298 2.3709 30 2.81041 30C3.24991 30 3.66211 29.8298 3.97088 29.5207L17.3337 16.1584C17.6432 15.8484 17.8132 15.4345 17.8122 14.9945C17.8132 14.5528 17.6432 14.1392 17.3337 13.8294Z" />
               </svg>
               <span class="visually-hidden">Previous slide</span>
             </button>
-            <button class="slider__btn slider__btn--right">
+            <button class="pets__btn--right slider__btn slider__btn--right">
               <svg class="slider__btn-image" width="18" height="30" viewBox="0 0 18 30" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M17.3337 13.8294L3.98332 0.479264C3.67454 0.170243 3.26235 0 2.82284 0C2.38334 0 1.97114 0.170243 1.66237 0.479264L0.679203 1.46218C0.0394526 2.10267 0.0394526 3.14363 0.679203 3.78314L11.8898 14.9938L0.666764 26.2169C0.357986 26.5259 0.1875 26.9378 0.1875 27.3771C0.1875 27.8168 0.357986 28.2288 0.666764 28.5381L1.64993 29.5207C1.95895 29.8298 2.3709 30 2.81041 30C3.24991 30 3.66211 29.8298 3.97088 29.5207L17.3337 16.1584C17.6432 15.8484 17.8132 15.4345 17.8122 14.9945C17.8132 14.5528 17.6432 14.1392 17.3337 13.8294Z" />
@@ -455,9 +471,9 @@
           </div>
           <div class="slider__pagination">
             <label class="visually-hidden" for="slider__range">Switch slide</label>
-            <input class="slider__range" id="slider__range" type="range" name="range" min="1" max="8" value="1">
-            <output class="slider__output" name="result">
-              <span class="slider__output-number">01/</span><span class="slider__output-total">08</span>
+            <input class="pets__range slider__range" id="slider__range" type="range" name="range" min="1" max="8" value="1" step="1">
+            <output class="pets__output slider__output" name="result">
+              <span class="pets__output-number slider__output-number">01</span><span class="slider__output-separator">/</span><span class="slider__output-total">08</span>
             </output>
           </div>
         </div>

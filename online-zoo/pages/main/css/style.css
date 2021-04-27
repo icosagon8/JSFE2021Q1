@@ -850,14 +850,16 @@ button:focus {
   margin-bottom: 8px;
 }
 
-.slider__output-number {
+.slider__output-number,
+.slider__output-separator {
   font-weight: 900;
   font-size: 24px;
   line-height: 28px;
   color: var(--slider-number-color);
 }
 
-.slider__output-number--light {
+.slider__output-number--light,
+.slider__output-separator--light {
   color: #fefefe;
 }
 
@@ -2013,23 +2015,39 @@ button:focus {
   margin-bottom: 27px;
 }
 
-.pets__list {
-  gap: 30px;
-}
-
 .pets__item {
-  width: 278px;
+  width: 25%;
   height: 399px;
-  border-radius: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
   overflow: hidden;
-  position: relative;
 }
 
-.pets__item:hover .pets__tooltip {
+.pets__item:hover .pets__tooltip,
+.pets__item--active .pets__tooltip {
   transform: translateY(calc(-47px - 100%));
 }
 
-.pets__item::before {
+.pets__item:hover .pets__image-wrapper::before {
+  opacity: 1;
+}
+
+.pets__slider-wrapper {
+  gap: 11px;
+  overflow: hidden;
+}
+
+.pets__image {
+  display: block;
+}
+
+.pets__image-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.pets__image-wrapper::before {
   opacity: 0;
   content: "";
   position: absolute;
@@ -2039,14 +2057,6 @@ button:focus {
   left: 0;
   background-image: linear-gradient(352.9deg, #000000 4.35%, rgba(0, 0, 0, 0) 58.59%);
   transition: opacity 0.5s ease-in-out;
-}
-
-.pets__item:hover::before {
-  opacity: 1;
-}
-
-.pets__slider-wrapper {
-  gap: 26px;
 }
 
 @media (min-width: 1200px) {
@@ -2068,16 +2078,23 @@ button:focus {
     max-width: 988px;
   }
 
+  .pets__slider-wrapper {
+    gap: 16px;
+  }
+
   .pets__list {
-    gap: 20px;
+    width: 920px;
   }
 
   .pets__item {
-    width: 210px;
-    height: 301px;
+    width: 25%;
+    height: 302px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 
-  .pets__item:hover .pets__tooltip {
+  .pets__item:hover .pets__tooltip,
+  .pets__item--active .pets__tooltip {
     transform: translateY(calc(-36px - 100%));
   }
 }
@@ -2085,6 +2102,12 @@ button:focus {
 @media (max-width: 1199px) {
   .pets__title {
     margin-bottom: 35px;
+  }
+
+  .pets__list {
+    margin-left: auto;
+    margin-right: auto;
+    flex-shrink: 0;
   }
 
   .pets__slider {
@@ -2096,6 +2119,8 @@ button:focus {
   }
 
   .pets__slider-wrapper {
+    margin-left: -10px;
+    margin-right: -10px;
     margin-bottom: 35px;
   }
 }
