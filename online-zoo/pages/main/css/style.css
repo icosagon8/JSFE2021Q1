@@ -397,6 +397,7 @@ html {
   --map-active-border-color: #3c3c3c;
   --map-tooltip-bg: #fefefe;
   --inner-pages-bg: #fbfbfb;
+  --main-nav-toggle-color: #333333;
 }
 
 html[data-theme="dark"] {
@@ -420,6 +421,7 @@ html[data-theme="dark"] {
   --map-active-border-color: #fefefe;
   --map-tooltip-bg: #333333;
   --inner-pages-bg: #4f4f4f;
+  --main-nav-toggle-color: #fefefe;
 }
 
 body {
@@ -485,7 +487,6 @@ button:focus {
   max-width: 1920px;
   padding-left: 26px;
   padding-right: 26px;
-  background-color: var(--inner-pages-bg);
 }
 
 @media (max-width: 1919px) {
@@ -506,6 +507,10 @@ button:focus {
   .inner {
     padding-top: 33px;
   }
+}
+
+.page-inner {
+  background-color: var(--inner-pages-bg);
 }
 
 .btn {
@@ -682,8 +687,8 @@ button:focus {
     position: absolute;
     width: 40px;
     height: 3px;
-    background-color: #333333;
-    box-shadow: 0 9px 0 #333333;
+    background-color: var(--main-nav-toggle-color);
+    box-shadow: 0 9px 0 var(--main-nav-toggle-color);
     top: 0;
     left: 0;
   }
@@ -693,7 +698,7 @@ button:focus {
     position: absolute;
     width: 33px;
     height: 3px;
-    background-color: #333333;
+    background-color: var(--main-nav-toggle-color);
     bottom: 0;
     right: 0;
   }
