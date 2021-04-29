@@ -11,7 +11,6 @@ function onFiltersInput(evt) {
 
 function onResetClick() {
   document.documentElement.removeAttribute('style');
-  image.style.setProperty('--blur', `0px`);
 
   inputs.forEach(input => {
     input.value = input.defaultValue;
