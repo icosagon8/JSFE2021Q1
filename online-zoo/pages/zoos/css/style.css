@@ -1434,28 +1434,37 @@ button:focus {
   max-width: 790px;
 }
 
+.animal__preview-wrapper {
+  overflow: hidden;
+}
+
 .animal__preview {
   display: flex;
+  gap: 3.29%;
   margin: 0;
   padding: 0;
   list-style: none;
   margin-bottom: 26px;
-  gap: 26px;
 }
 
 .animal__preview-image {
   border-radius: 5px;
   display: block;
+  -o-object-fit: cover;
+  object-fit: cover;
 }
 
 .animal__preview-item {
   cursor: pointer;
+  width: 31.14%;
+  flex-shrink: 0;
 }
 
 .animal__dots {
   align-items: center;
   display: flex;
   justify-content: center;
+  height: 11px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -1510,12 +1519,7 @@ button:focus {
   }
 
   .animal__preview {
-    gap: 17px;
     margin-bottom: 30px;
-  }
-
-  .animal__preview-item {
-    width: 32%;
   }
 }
 
@@ -1589,20 +1593,13 @@ button:focus {
   }
 
   .animal__preview {
-    gap: 0;
+    gap: 4.38%;
     margin-bottom: 20px;
   }
 
   .animal__preview-item {
-    width: 50%;
+    width: 47.81%;
     flex-shrink: 0;
-    padding-left: 4.5px;
-    padding-right: 4.5px;
-  }
-
-  .animal__preview-wrapper {
-    overflow: hidden;
-    margin: 0 -4.5px;
   }
 
   .animal__video-wrapper {
