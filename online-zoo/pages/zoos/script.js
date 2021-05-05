@@ -29,7 +29,9 @@ animalVideo.setAttribute('crossOrigin', 'anonymous');
 
 function onAnimalPreviewImageClick(evt) {
   let src = evt.target.src.slice(-25, -14);
+  let videoSrc = animalVideo.src.slice(-11);
   animalVideo.src = `https://www.youtube.com/embed/${src}`;
+  evt.target.src = `https://img.youtube.com/vi/${videoSrc}/mqdefault.jpg`;
 }
 
 animalPreviewImages.forEach(animalPreviewImage => {
