@@ -2105,6 +2105,10 @@ button:focus {
   opacity: 1;
 }
 
+.pets__tooltip {
+  transition: 0.5s;
+}
+
 .pets__slider-wrapper {
   gap: 11px;
   overflow: hidden;
