@@ -51,9 +51,15 @@ export class Game extends BaseComponent {
     }
 
     if (this.activeCard.image !== card.image) {
+      this.activeCard.showError();
+      card.showError();
       await Promise.all([this.activeCard.flipToBack(), card.flipToBack()]);
+      this.activeCard.deleteError();
+      card.deleteError();
     } else {
       this.matches += 1;
+      this.activeCard.showSuccess();
+      card.showSuccess();
 
       if (this.matches === this.uniqueCards) {
         this.timer.stop();
