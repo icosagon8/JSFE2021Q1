@@ -27,6 +27,18 @@ export class Card extends BaseComponent {
     return this.flip();
   }
 
+  showError(): void {
+    this.element.classList.add('card-container--error');
+  }
+
+  deleteError(): void {
+    this.element.classList.remove('card-container--error');
+  }
+
+  showSuccess(): void {
+    this.element.classList.add('card-container--success');
+  }
+
   private flip(isFront = false): Promise<void> {
     const promise = new Promise<void>((resolve) => {
       this.element.classList.toggle(FLIP_CLASS, isFront);
