@@ -34,7 +34,7 @@
 
   &--error .card__front {
     &::before {
-      background-color: rgba(242, 78, 30, 0.5);
+      background-color: var(--card-error-bg-color);
     }
 
     &::after {
@@ -44,7 +44,7 @@
 
   &--success .card__front {
     &::before {
-      background-color: rgba(10, 207, 131, 0.5);
+      background-color: var(--card-success-bg-color);
     }
 
     &::after {
@@ -73,11 +73,11 @@
 
 
   &__front {
-    background-color: #c1c1c1;
+    background-color: var(--card-front-bg-color);
   }
 
   &__back {
-    background-color: #a4876f;
+    background-color: var(--card-back-bg-color);
     background-image: url('../../assets/images/card-back.jpg');
     transform: rotateY(180deg);
   }
