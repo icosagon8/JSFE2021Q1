@@ -7,13 +7,13 @@ export class MainNav extends BaseComponent {
     this.element.innerHTML = `
       <ul class='main-nav__list'>
         <li>
-          <a class='main-nav__link main-nav__link--about' href='#/about/'>About Game</a>
+          <a class='main-nav__link main-nav__link--about' href='#/about'>About Game</a>
         </li>
         <li>
-          <a class='main-nav__link main-nav__link--score' href='#/score/'>Best Score</a>
+          <a class='main-nav__link main-nav__link--score' href='#/score'>Best Score</a>
         </li>
         <li>
-          <a class='main-nav__link main-nav__link--settings' href='#/settings/'>Game Settings</a>
+          <a class='main-nav__link main-nav__link--settings' href='#/settings'>Game Settings</a>
         </li>
       </ul>
       `;
