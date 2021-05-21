@@ -1,4 +1,4 @@
-import './styles.scss';
+import './assets/styles/styles.scss';
 import { App } from './app';
 
 const rootNode = document.body;
