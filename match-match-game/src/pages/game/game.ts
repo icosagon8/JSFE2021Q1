@@ -3,6 +3,7 @@ import { BaseComponent } from '../../components/base-component';
 import { Card } from '../../components/card/card';
 import { CardsField } from '../../components/cards-field/cards-field';
 import { Timer } from '../../components/timer/timer';
+import { ImageCategoryModel } from '../../models/image-category-model';
 
 export class Game extends BaseComponent {
   private readonly cardsField: CardsField;
@@ -23,6 +24,7 @@ export class Game extends BaseComponent {
     this.element.appendChild(this.timer.element);
     this.cardsField = new CardsField();
     this.element.appendChild(this.cardsField.element);
+    this.start();
   }
 
   newGame(images: string[]): void {
@@ -67,5 +69,13 @@ export class Game extends BaseComponent {
     }
 
     this.activeCard = undefined;
+  }
+
+  async start(): Promise<void> {
+    const res = await fetch('./images.json');
+    const categories: ImageCategoryModel[] = await res.json();
+    const category = categories[0];
+    const images = category.images.map((name) => `${category.category}/${name}`);
+    this.newGame(images);
   }
 }
