@@ -18,3 +18,15 @@ img {
   height: auto;
   display: block;
 }
+
+.page {
+  width: 1000px;
+  height: 500px;
+  background-color: rgba(0, 0, 0, 0.05);
+  margin: 0 auto 125px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  color: #2196f3;
+}
