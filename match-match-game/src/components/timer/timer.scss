@@ -1,12 +1,12 @@
 .timer {
   color: var(--timer-color);
-  width: 256px;
-  padding: 15px 51px;
+  width: 12.8rem;
+  padding: 0.75rem 2.55rem;
   text-align: center;
   background-color: var(--timer-bg-color);
-  margin: 0 auto 60px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.24);
+  margin: 0 auto 3rem;
+  box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.24);
   font-weight: 500;
-  font-size: 36px;
-  line-height: 30px;
+  font-size: 1.8rem;
+  line-height: 1.5rem;
 }

@@ -1,17 +1,17 @@
 .about {
-  width: 1000px;
-  padding: 28px 184px 118px 36px;
+  width: 50rem;
+  padding: 1.4rem 9.2rem 5.9rem 1.8rem;
   background-color: var(--page-bg-color);
-  margin: 0 auto 125px;
+  margin: 0 auto 6.25rem;
 
   &__title {
     font-weight: 500;
-    font-size: 20px;
-    line-height: 30px;
-    letter-spacing: 0.15px;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    letter-spacing: 0.0075rem;
     color: var(--title-color);
     margin-top: 0;
-    margin-bottom: 20px;
+    margin-bottom: 1rem;
   }
 
   &__list {
@@ -26,41 +26,41 @@
     justify-content: space-between;
 
     &:not(:last-child) {
-      margin-bottom: 20px;
+      margin-bottom: 1rem;
     }
   }
 
   &__desc {
-    width: 360px;
+    width: 18rem;
     background-color: var(--about-desc-bg-color);
-    padding: 16px 16px 96px;
+    padding: 0.8rem 0.8rem 4.8rem;
     display: flex;
 
     &::before {
       counter-increment: items;
       content: counter(items);
-      height: 40px;
-      width: 40px;
+      height: 2rem;
+      width: 2rem;
       border-radius: 50%;
       background-color: var(--about-desc-before-bg-color);
-      box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2), 0px 3px 4px rgba(0, 0, 0, 0.12), 0px 2px 4px rgba(0, 0, 0, 0.14);
+      box-shadow: 0 0.05rem 0.25rem rgba(0, 0, 0, 0.2), 0 0.15rem 0.2rem rgba(0, 0, 0, 0.12), 0 0.1rem 0.2rem rgba(0, 0, 0, 0.14);
       flex-shrink: 0;
-      margin-right: 16px;
+      margin-right: 0.8rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 24px;
-      line-height: 21px;
-      letter-spacing: 0.25px;
+      font-size: 1.2rem;
+      line-height: 1.05rem;
+      letter-spacing: 0.0125rem;
       color: var(--about-desc-before-color);
     }
   }
 
   &__text {
     margin: 0;
-    font-size: 14px;
-    line-height: 20px;
-    letter-spacing: 0.25px;
+    font-size: 0.7rem;
+    line-height: 1rem;
+    letter-spacing: 0.0125rem;
     color: var(--about-text-color);
   }
 }
