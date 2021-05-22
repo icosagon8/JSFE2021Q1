@@ -5,6 +5,6 @@ export class Button extends BaseComponent {
   constructor() {
     super('a', ['control-btn']);
     this.element.textContent = 'Stop game';
-    this.element.setAttribute('href', '#/about/');
+    this.element.setAttribute('href', '#');
   }
 }

@@ -12,8 +12,8 @@ export class Router {
 
   constructor() {
     this.routes = [
-      { path: '/', Page: Game },
-      { path: '/about', Page: About },
+      { path: '/', Page: About },
+      { path: '/game', Page: Game },
       { path: '/score', Page: Score },
       { path: '/settings', Page: Settings },
     ];
