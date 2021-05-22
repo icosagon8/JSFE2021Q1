@@ -37,7 +37,7 @@ export class Router {
     return this.location;
   }
 
-  private findPage(routes1: RouteModel[]) {
-    return routes1.find((route: RouteModel) => route.path === this.location);
+  private findPage(routes: RouteModel[]) {
+    return routes.find((route: RouteModel) => route.path === this.location);
   }
 }
