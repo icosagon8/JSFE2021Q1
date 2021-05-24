@@ -1,6 +1,6 @@
 :root {
-  --control-btn-bg-color: #f2f9fe;
-  --control-btn-color: #2196f3;
+  --main-btn-bg-color: #f2f9fe;
+  --main-btn-color: #2196f3;
   --card-front-bg-color: #c1c1c1;
   --card-back-bg-color: #a4876f;
   --card-error-bg-color: rgba(242, 78, 30, 0.5);
@@ -17,4 +17,17 @@
   --about-desc-before-bg-color: #2196F3;
   --about-desc-before-color: #ffffff;
   --about-text-color: rgba(0, 0, 0, 0.6);
+  --btn-bg-color: #2196F3;
+  --btn-color: #ffffff;
+  --btn-cancel-bg-color: #e3f2fd;
+  --btn-cancel-color: #2196F3;
+  --popup-overlay-bg-color: rgba(0, 0, 0, 0.25);
+  --popup-bg-color: #ffffff;
+  --popup-form-bg-color: #fafafa;
+  --popup-title-color: rgba(0, 0, 0, 0.87);
+  --popup-label-color: rgba(0, 0, 0, 0.38);
+  --popup-input-bg-color: rgba(33, 33, 33, 0.08);
+  --popup-input-color: rgba(0, 0, 0, 0.87);
+  --popup-input-border-color: rgba(0, 0, 0, 0.6);
+  --popup-input-valid-bg-color: rgba(1, 135, 134, 0.08);
 }
