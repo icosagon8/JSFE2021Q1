@@ -1,8 +1,8 @@
-import { BaseComponent } from '../../components/base-component';
+import { Component } from '../../components/component';
+import { RootElement } from '../../components/cards-field/cards-field';
 
-export class Score extends BaseComponent {
-  constructor() {
-    super('main', ['page']);
-    this.element.textContent = 'Score Page Placeholder';
+export class Score extends Component {
+  constructor(parentNode: RootElement) {
+    super(parentNode, 'main', ['page'], 'Score Page Placeholder');
   }
 }

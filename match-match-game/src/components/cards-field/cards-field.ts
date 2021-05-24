@@ -1,14 +1,16 @@
 import './cards-field.scss';
-import { BaseComponent } from '../base-component';
+import { Component } from '../component';
 import { Card } from '../card/card';
 
 const SHOW_TIME = 12;
 
-export class CardsField extends BaseComponent {
+export type RootElement = HTMLElement | null;
+
+export class CardsField extends Component {
   private cards: Card[];
 
-  constructor() {
-    super('div', ['cards-field']);
+  constructor(parentNode: RootElement) {
+    super(parentNode, 'div', ['cards-field']);
     this.cards = [];
   }
 

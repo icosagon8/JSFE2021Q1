@@ -1,8 +1,8 @@
-import { BaseComponent } from '../../components/base-component';
+import { Component } from '../../components/component';
+import { RootElement } from '../../components/cards-field/cards-field';
 
-export class ErrorPage extends BaseComponent {
-  constructor() {
-    super('main', ['page']);
-    this.element.textContent = '404';
+export class ErrorPage extends Component {
+  constructor(parentNode: RootElement) {
+    super(parentNode, 'main', ['page'], '404');
   }
 }

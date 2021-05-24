@@ -1,11 +1,11 @@
 import './game.scss';
-import { BaseComponent } from '../../components/base-component';
+import { Component } from '../../components/component';
 import { Card } from '../../components/card/card';
-import { CardsField } from '../../components/cards-field/cards-field';
+import { CardsField, RootElement } from '../../components/cards-field/cards-field';
 import { Timer } from '../../components/timer/timer';
 import { ImageCategoryModel } from '../../models/image-category-model';
 
-export class Game extends BaseComponent {
+export class Game extends Component {
   private readonly cardsField: CardsField;
 
   private activeCard?: Card;
@@ -16,14 +16,12 @@ export class Game extends BaseComponent {
 
   private uniqueCards: number;
 
-  constructor() {
-    super('main', ['game']);
+  constructor(parentNode: RootElement) {
+    super(parentNode, 'main', ['game']);
     this.matches = 0;
     this.uniqueCards = 0;
-    this.timer = new Timer();
-    this.element.appendChild(this.timer.element);
-    this.cardsField = new CardsField();
-    this.element.appendChild(this.cardsField.element);
+    this.timer = new Timer(this.element);
+    this.cardsField = new CardsField(this.element);
     this.start();
   }
 

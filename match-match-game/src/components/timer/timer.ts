@@ -1,7 +1,8 @@
-import { BaseComponent } from '../base-component';
 import './timer.scss';
+import { Component } from '../component';
+import { RootElement } from '../cards-field/cards-field';
 
-export class Timer extends BaseComponent {
+export class Timer extends Component {
   private startTime: number;
 
   private sec: string;
@@ -10,15 +11,14 @@ export class Timer extends BaseComponent {
 
   private timerId!: NodeJS.Timeout;
 
-  constructor() {
-    super('div', ['timer']);
+  constructor(parentNode: RootElement) {
+    super(parentNode, 'div', ['timer'], '00:00');
     this.startTime = 0;
     this.sec = '';
     this.min = '';
   }
 
   start(): void {
-    this.element.textContent = '00:00';
     this.startTime = Date.now();
     this.timerId = setInterval(() => this.showTime(), 1000);
   }

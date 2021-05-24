@@ -1,21 +1,27 @@
 import './main-nav.scss';
-import { BaseComponent } from '../base-component';
+import { Component } from '../component';
+import { RootElement } from '../cards-field/cards-field';
+import { NavItemModel } from '../../models/nav-item-model';
 
-export class MainNav extends BaseComponent {
-  constructor() {
-    super('nav', ['main-nav']);
-    this.element.innerHTML = `
-      <ul class='main-nav__list'>
-        <li>
-          <a class='main-nav__link main-nav__link--about' href='#'>About Game</a>
-        </li>
-        <li>
-          <a class='main-nav__link main-nav__link--score' href='#/score'>Best Score</a>
-        </li>
-        <li>
-          <a class='main-nav__link main-nav__link--settings' href='#/settings'>Game Settings</a>
-        </li>
-      </ul>
-      `;
+export class MainNav extends Component {
+  navList?: Component;
+
+  constructor(parentNode: RootElement) {
+    super(parentNode, 'nav', ['main-nav']);
+  }
+
+  renderNav(navItem: NavItemModel[]): void {
+    this.navList = new Component(this.element, 'ul', ['main-nav__list']);
+
+    for (let i = 0; i < navItem.length; i++) {
+      const item = new Component(this.navList.element, 'li');
+      const link = new Component(
+        item.element,
+        'a',
+        ['main-nav__link', `main-nav__link--${navItem[i].mod}`],
+        navItem[i].text,
+        [['href', navItem[i].href]]
+      );
+    }
   }
 }

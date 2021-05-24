@@ -1,20 +1,25 @@
 import './card.scss';
-import { BaseComponent } from '../base-component';
+import { Component } from '../component';
 
 const FLIP_CLASS = 'card-container--flipped';
 
-export class Card extends BaseComponent {
+export class Card extends Component {
   isFlipped: boolean;
 
+  card: Component;
+
+  cardFront: Component;
+
+  cardBack: Component;
+
   constructor(readonly image: string) {
-    super('div', ['card-container']);
-    this.element.innerHTML = `
-      <div class="card">
-        <div class="card__front" style="background-image: url(./images/${image})"></div>
-        <div class="card__back"></div>
-      </div>
-    `;
+    super(null, 'div', ['card-container']);
     this.isFlipped = false;
+    this.card = new Component(this.element, 'div', ['card']);
+    this.cardFront = new Component(this.card.element, 'div', ['card__front'], '', [
+      ['style', `background-image: url(./images/${image})`],
+    ]);
+    this.cardBack = new Component(this.card.element, 'div', ['card__back']);
   }
 
   flipToBack(): Promise<void> {

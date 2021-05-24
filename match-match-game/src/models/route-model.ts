@@ -1,6 +1,6 @@
-import { BaseComponent } from '../components/base-component';
+import { Component } from '../components/component';
 
 export interface RouteModel {
   path: string;
-  Page: typeof BaseComponent;
+  Page: typeof Component;
 }

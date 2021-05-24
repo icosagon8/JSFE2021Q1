@@ -10,7 +10,7 @@ export class Router {
 
   private readonly routes: RouteModel[];
 
-  constructor() {
+  constructor(private readonly rootElement: HTMLElement) {
     this.routes = [
       { path: '/', Page: About },
       { path: '/game', Page: Game },
@@ -22,14 +22,14 @@ export class Router {
   render(): void {
     this.parseLocation();
     const { Page } = this.findPage(this.routes) || { Page: ErrorPage };
-    const page = new Page();
+    const page = new Page(this.rootElement);
     const main: HTMLElement | null = document.querySelector('main');
 
     if (main) {
       main.remove();
     }
 
-    document.body.appendChild(page.element);
+    this.rootElement.appendChild(page.element);
   }
 
   private parseLocation(): string {

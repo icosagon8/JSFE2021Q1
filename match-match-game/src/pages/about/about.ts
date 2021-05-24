@@ -1,12 +1,13 @@
 import './about.scss';
-import { BaseComponent } from '../../components/base-component';
+import { Component } from '../../components/component';
+import { RootElement } from '../../components/cards-field/cards-field';
 import registr from '../../assets/images/registr-new-player.png';
 import settings from '../../assets/images/game-settings.png';
 import cardField from '../../assets/images/card-field.jpg';
 
-export class About extends BaseComponent {
-  constructor() {
-    super('main', ['about']);
+export class About extends Component {
+  constructor(parentNode: RootElement) {
+    super(parentNode, 'main', ['about']);
     this.element.innerHTML = `
       <h1 class='about__title'>How to play?</h1>
       <ul class='about__list'>

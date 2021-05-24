@@ -1,8 +1,8 @@
-import { BaseComponent } from '../../components/base-component';
+import { Component } from '../../components/component';
+import { RootElement } from '../../components/cards-field/cards-field';
 
-export class Settings extends BaseComponent {
-  constructor() {
-    super('main', ['page']);
-    this.element.textContent = 'Settings Page Placeholder';
+export class Settings extends Component {
+  constructor(parentNode: RootElement) {
+    super(parentNode, 'main', ['page'], 'Settings Page Placeholder');
   }
 }

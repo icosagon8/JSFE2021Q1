@@ -7,9 +7,8 @@ export class App {
   private readonly router: Router;
 
   constructor(private readonly rootElement: HTMLElement) {
-    this.header = new Header();
-    this.rootElement.appendChild(this.header.element);
-    this.router = new Router();
+    this.header = new Header(this.rootElement);
+    this.router = new Router(this.rootElement);
     this.router.render();
     this.hashChangeHandler();
   }

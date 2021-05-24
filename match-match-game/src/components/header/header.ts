@@ -1,37 +1,38 @@
 import './header.scss';
-import { BaseComponent } from '../base-component';
-import { Container } from '../container/container';
-import { Logo } from '../logo/logo';
+import { Component } from '../component';
+import { RootElement } from '../cards-field/cards-field';
 import { MainNav } from '../main-nav/main-nav';
-import { Button } from '../button/button';
-import { Avatar } from '../avatar/avatar';
+import image from '../../assets/images/logo.svg';
+import avatar from '../../assets/images/avatar.jpg';
 
-export class Header extends BaseComponent {
-  private readonly container: Container;
+const PAGES = [
+  { href: '#', mod: 'about', text: 'About Game' },
+  { href: '#/score', mod: 'score', text: 'Best Score' },
+  { href: '#/settings', mod: 'about', text: 'Game Settings' },
+];
 
-  private readonly logo: Logo;
+export class Header extends Component {
+  private readonly container: Component;
+
+  logo: Component;
 
   private readonly nav: MainNav;
 
-  private readonly button: Button;
+  button: Component;
 
-  private readonly avatar: Avatar;
+  private readonly avatar: Component;
 
-  constructor() {
-    super('header', ['header']);
-    this.container = new Container();
-    this.container.element.classList.add('header__wrapper');
-    this.element.appendChild(this.container.element);
-    this.logo = new Logo();
-    this.logo.element.classList.add('header__logo');
-    this.container.element.appendChild(this.logo.element);
-    this.nav = new MainNav();
+  avatarImage: Component;
+
+  constructor(parentNode: RootElement) {
+    super(parentNode, 'header', ['header']);
+    this.container = new Component(this.element, 'div', ['header__wrapper', 'container']);
+    this.logo = new Component(this.container.element, 'img', ['header__logo'], '', [['src', image]]);
+    this.nav = new MainNav(this.container.element);
     this.nav.element.classList.add('header__nav');
-    this.container.element.appendChild(this.nav.element);
-    this.button = new Button();
-    this.button.element.classList.add('header__btn');
-    this.container.element.appendChild(this.button.element);
-    this.avatar = new Avatar();
-    this.container.element.appendChild(this.avatar.element);
+    this.nav.renderNav(PAGES);
+    this.button = new Component(this.container.element, 'a', ['header__btn'], 'Register new player', [['href', '#']]);
+    this.avatar = new Component(this.container.element, 'div', ['header__avatar']);
+    this.avatarImage = new Component(this.avatar.element, 'img', ['header__img'], '', [['src', avatar]]);
   }
 }
