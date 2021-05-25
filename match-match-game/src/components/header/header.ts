@@ -36,8 +36,7 @@ export class Header extends Component {
       this.container.element,
       'a',
       ['header__btn', 'btn', 'btn--main'],
-      'Register new player',
-      [['href', '#']]
+      'Register new player'
     );
     this.avatar = new Component(this.container.element, 'div', ['header__avatar']);
     this.avatarImage = new Component(this.avatar.element, 'img', ['header__img'], '', [['src', avatar]]);
