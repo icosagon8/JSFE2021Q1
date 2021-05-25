@@ -1,3 +1,4 @@
+import { RootElement } from '../components/cards-field/cards-field';
 import { RouteModel } from '../models/route-model';
 import { About } from '../pages/about/about';
 import { ErrorPage } from '../pages/error/error';
@@ -23,13 +24,14 @@ export class Router {
     this.parseLocation();
     const { Page } = this.findPage(this.routes) || { Page: ErrorPage };
     const page = new Page(this.rootElement);
-    const main: HTMLElement | null = document.querySelector('main');
+    const main: RootElement = document.querySelector('main');
 
     if (main) {
       main.remove();
     }
 
-    this.rootElement.appendChild(page.element);
+    const header: RootElement = document.querySelector('header');
+    header?.after(page.element);
   }
 
   private parseLocation(): string {
