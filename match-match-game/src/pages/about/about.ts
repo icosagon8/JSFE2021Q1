@@ -4,12 +4,9 @@ import { RootElement } from '../../components/cards-field/cards-field';
 import registr from '../../assets/images/registr-new-player.png';
 import settings from '../../assets/images/game-settings.png';
 import cardField from '../../assets/images/card-field.jpg';
-import { RegisterPopup } from '../../components/register-popup/register-popup';
 
 export class About extends Component {
-  private readonly popup: RegisterPopup;
-
-  constructor(private readonly parentNode: RootElement) {
+  constructor(parentNode: RootElement) {
     super(parentNode, 'main', ['about']);
     this.element.innerHTML = `
       <h1 class='about__title'>How to play?</h1>
@@ -40,6 +37,5 @@ export class About extends Component {
         </li>
       </ul>
     `;
-    this.popup = new RegisterPopup(this.element);
   }
 }
