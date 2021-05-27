@@ -7,19 +7,34 @@ import { InputModel } from '../../models/input-model';
 
 const INPUTS: InputModel[] = [
   {
+    name: 'name',
     type: 'text',
     label: 'First Name',
     placeholder: 'Jessie',
+    validate: {
+      pattern: /(?!^[\d ]+$)^[^!@#$%*()_—+=|:;"'`<>,.?/^]+$/,
+      maxLength: 30,
+    },
   },
   {
+    name: 'surname',
     type: 'text',
     label: 'Last Name',
     placeholder: 'Doe',
+    validate: {
+      pattern: /(?!^[\d ]+$)^[^!@#$%*()_—+=|:;"'`<>,.?/^]+$/,
+      maxLength: 30,
+    },
   },
   {
-    type: 'email',
+    name: 'email',
+    type: 'text',
     label: 'E-mail',
     placeholder: 'Jessie.Doe@gmail.com',
+    validate: {
+      pattern: /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/,
+      maxLength: 30,
+    },
   },
 ];
 

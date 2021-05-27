@@ -2,6 +2,10 @@
   background-color: var(--popup-bg-color);
   box-shadow: 0 0.05rem 0.4rem rgba(0, 0, 0, 0.2), 0 0.15rem 0.2rem rgba(0, 0, 0, 0.12), 0 0.1rem 0.2rem rgba(0, 0, 0, 0.14);
 
+  &__error-tooltip {
+    font-size: 0.6rem;
+  }
+
   &__form {
     background-color: var(--popup-form-bg-color);
     padding: 1.65rem 2.7rem 1.3rem 1.05rem;
@@ -34,29 +38,51 @@
       margin-bottom: 0.8rem;
     }
 
-    &--valid {
-      &::before {
-        content: '';
-        position: absolute;
-        width: 2rem;
-        height: 2rem;
-        background-color: var(--popup-input-valid-bg-color);
-        top: 50%;
-        transform: translateY(-50%);
-        right: 0.4rem;
-        border-radius: 50%;
-      }
+    &--valid,
+    &--invalid {
 
+      &::before,
       &::after {
         content: '';
         position: absolute;
+      }
+
+      &::before {
+        width: 2rem;
+        height: 2rem;
+        right: 0.4rem;
+        border-radius: 50%;
+        top: 0.4rem;
+      }
+
+      &::after {
         width: 0.9rem;
         height: 0.9rem;
-        background-image: url('../../assets/icons/valid.svg');
         background-repeat: no-repeat;
-        top: 50%;
-        transform: translateY(-50%);
         right: 0.95rem;
+        top: 0.95rem;
+      }
+    }
+
+    &--valid {
+
+      &::before {
+        background-color: var(--popup-input-valid-bg-color);
+      }
+
+      &::after {
+        background-image: url('../../assets/icons/valid.svg');
+      }
+    }
+
+    &--invalid {
+
+      &::before {
+        background-color: var(--popup-input-invalid-bg-color);
+      }
+
+      &::after {
+        background-image: url('../../assets/icons/invalid.svg');
       }
     }
   }

@@ -17,7 +17,7 @@ export class Form extends Component {
 
   inputs: Input[];
 
-  addButton: Component;
+  submitButton: Component;
 
   cancelButton: Component;
 
@@ -32,7 +32,9 @@ export class Form extends Component {
       ['alt', 'Player'],
     ]);
     this.buttonsContainer = new Component(this.element, 'div', ['popup__btn-container']);
-    this.addButton = new Component(this.buttonsContainer.element, 'button', ['popup__btn', 'btn'], 'Add user');
+    this.submitButton = new Component(this.buttonsContainer.element, 'button', ['popup__btn', 'btn'], 'Add user', [
+      ['type', 'submit'],
+    ]);
     this.cancelButton = new Component(this.buttonsContainer.element, 'button', ['btn', 'btn--cancel'], 'Cancel');
   }
 
@@ -40,5 +42,21 @@ export class Form extends Component {
     inputs.forEach((input) => {
       this.inputs.push(new Input(this.groupWrapper.element, input));
     });
+  }
+
+  resetInputs(): void {
+    this.inputs.forEach((input) => {
+      input.field.element.textContent = (input.field.element as HTMLInputElement).defaultValue;
+      (input.field.element as HTMLInputElement).value = (input.field.element as HTMLInputElement).defaultValue;
+      input.onInput();
+    });
+  }
+
+  checkInputsValidity(): boolean {
+    return this.inputs
+      .map((input) => {
+        return input.isValid;
+      })
+      .every((elem) => elem);
   }
 }

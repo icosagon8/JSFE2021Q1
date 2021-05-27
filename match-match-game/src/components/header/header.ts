@@ -5,11 +5,12 @@ import { MainNav } from '../main-nav/main-nav';
 import image from '../../assets/images/logo.svg';
 import avatar from '../../assets/images/avatar.jpg';
 import { NavItemModel } from '../../models/nav-item-model';
+import { RegisterPopup } from '../register-popup/register-popup';
 
 const PAGES: NavItemModel[] = [
   { href: '#', mod: 'about', text: 'About Game' },
   { href: '#/score', mod: 'score', text: 'Best Score' },
-  { href: '#/settings', mod: 'about', text: 'Game Settings' },
+  { href: '#/settings', mod: 'settings', text: 'Game Settings' },
 ];
 
 export class Header extends Component {
@@ -24,6 +25,8 @@ export class Header extends Component {
   private readonly avatar: Component;
 
   avatarImage: Component;
+
+  popup: RegisterPopup;
 
   constructor(parentNode: RootElement) {
     super(parentNode, 'header', ['header']);
@@ -40,5 +43,46 @@ export class Header extends Component {
     );
     this.avatar = new Component(this.container.element, 'div', ['header__avatar']);
     this.avatarImage = new Component(this.avatar.element, 'img', ['header__img'], '', [['src', avatar]]);
+    this.popup = new RegisterPopup(parentNode);
+
+    this.button.element.addEventListener('click', this.onButtonClick);
   }
+
+  onButtonClick = (): void => {
+    this.popup.showPopup();
+    document.addEventListener('click', this.onPopupOverlayClick);
+    this.popup.form.cancelButton.element.addEventListener('click', this.onCancelButtonClick);
+    this.popup.form.submitButton.element.addEventListener('click', this.onSubmitButtonClick);
+    this.button.element.removeEventListener('click', this.onButtonClick);
+  };
+
+  onCancelButtonClick = (evt: Event): void => {
+    evt.preventDefault();
+    this.popup.form.resetInputs();
+  };
+
+  onSubmitButtonClick = (evt: Event): void => {
+    evt.preventDefault();
+
+    this.popup.form.inputs.forEach((input) => {
+      input.onInput();
+    });
+
+    if (this.popup.form.checkInputsValidity()) {
+      this.popup.closePopup();
+      this.popup.form.resetInputs();
+      this.button.element.addEventListener('click', this.onButtonClick);
+    }
+  };
+
+  onPopupOverlayClick = (evt: Event): void => {
+    if ((evt.target as HTMLElement).classList.contains('popup-overlay')) {
+      this.popup.closePopup();
+      this.popup.form.resetInputs();
+      document.removeEventListener('click', this.onPopupOverlayClick);
+      this.popup.form.cancelButton.element.removeEventListener('click', this.onCancelButtonClick);
+      this.popup.form.submitButton.element.removeEventListener('click', this.onSubmitButtonClick);
+      this.button.element.addEventListener('click', this.onButtonClick);
+    }
+  };
 }
