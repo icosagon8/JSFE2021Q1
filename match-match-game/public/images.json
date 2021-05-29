@@ -9,5 +9,18 @@
       "owl.png",
       "beetle.png"
     ]
+  },
+  {
+    "category": "dogs",
+    "images": [
+      "australian-shepherd.svg",
+      "basset-hound.svg",
+      "rottweiler.svg",
+      "yorkshire-terrier.svg",
+      "golden-retriever.svg",
+      "great-dane.svg",
+      "dalmatian.svg",
+      "saint-bernard.svg"
+    ]
   }
 ]
