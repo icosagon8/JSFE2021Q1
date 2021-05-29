@@ -21,6 +21,7 @@ export class Input extends Component {
     this.label = new Component(this.element, 'label', ['popup__label'], input.label);
     this.field = new Component(this.element, 'input', ['popup__input'], '', [
       ['type', `${input.type}`],
+      ['name', `${input.name}`],
       ['placeholder', `${input.placeholder}`],
     ]);
 
