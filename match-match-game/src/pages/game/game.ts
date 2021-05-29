@@ -30,7 +30,7 @@ export class Game extends Component {
     this.start();
   }
 
-  newGame(images: string[]): void {
+  async newGame(images: string[]): Promise<void> {
     this.cardsField.clear();
     const cards = [...images, ...images].map((url) => new Card(url)).sort(() => Math.random() - 0.5);
     this.uniqueCards = images.length;
@@ -38,7 +38,7 @@ export class Game extends Component {
       card.element.addEventListener('click', () => this.cardHandler(card));
     });
 
-    this.cardsField.addCards(cards);
+    await this.cardsField.addCards(cards);
     this.timer.start();
   }
 

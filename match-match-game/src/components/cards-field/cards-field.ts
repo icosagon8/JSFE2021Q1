@@ -19,9 +19,14 @@ export class CardsField extends Component {
     this.element.innerHTML = '';
   }
 
-  addCards(cards: Card[]): void {
-    this.cards = cards;
-    this.cards.forEach((card) => this.element.appendChild(card.element));
-    setTimeout(() => this.cards.forEach((card) => card.flipToBack()), SHOW_TIME * 1000);
+  addCards(cards: Card[]): Promise<void> {
+    return new Promise((resolve) => {
+      this.cards = cards;
+      this.cards.forEach((card) => this.element.appendChild(card.element));
+      setTimeout(() => {
+        this.cards.forEach((card) => card.flipToBack());
+        resolve();
+      }, SHOW_TIME * 1000);
+    });
   }
 }
