@@ -59,4 +59,14 @@ export class Form extends Component {
       })
       .every((elem) => elem);
   }
+
+  getInputsValues(): Record<string, string> {
+    const inputValues: Record<string, string> = {};
+
+    this.inputs.forEach((input) => {
+      inputValues[input.name] = (input.field.element as HTMLInputElement).value;
+    });
+
+    return inputValues;
+  }
 }
