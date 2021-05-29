@@ -1,4 +1,5 @@
 import { Header } from './components/header/header';
+import { iDB } from './components/indexed-db/indexed-db';
 import { Router } from './router/router';
 
 export class App {
@@ -7,9 +8,10 @@ export class App {
   private readonly router: Router;
 
   constructor(private readonly rootElement: HTMLElement) {
+    iDB.init('icosagon8');
     this.header = new Header(this.rootElement);
     this.router = new Router(this.rootElement);
-    this.router.render();
+    setTimeout(() => this.router.render());
     this.hashChangeHandler();
   }
 
