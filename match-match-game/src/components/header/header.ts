@@ -6,6 +6,7 @@ import image from '../../assets/images/logo.svg';
 import avatar from '../../assets/images/avatar.jpg';
 import { NavItemModel } from '../../models/nav-item-model';
 import { RegisterPopup } from '../register-popup/register-popup';
+import { iDB } from '../indexed-db/indexed-db';
 
 const PAGES: NavItemModel[] = [
   { href: '#', mod: 'about', text: 'About Game' },
@@ -69,6 +70,7 @@ export class Header extends Component {
     });
 
     if (this.popup.form.checkInputsValidity()) {
+      iDB.write('users', this.popup.form.getInputsValues());
       this.popup.closePopup();
       this.popup.form.resetInputs();
       this.button.element.addEventListener('click', this.onButtonClick);
