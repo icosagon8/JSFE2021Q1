@@ -37,4 +37,8 @@ export class Timer extends Component {
 
     return `${this.min}:${this.sec}`;
   }
+
+  getSeconds(): number {
+    return +this.min * 60 + +this.sec;
+  }
 }
