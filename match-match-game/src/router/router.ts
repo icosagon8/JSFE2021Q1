@@ -11,17 +11,21 @@ export class Router {
 
   private readonly routes: RouteModel[];
 
+  links: Element[];
+
   constructor(private readonly rootElement: HTMLElement) {
     this.routes = [
-      { path: '/', Page: About },
+      { path: '/about', Page: About },
       { path: '/game', Page: Game },
       { path: '/score', Page: Score },
       { path: '/settings', Page: Settings },
     ];
+
+    this.links = [...document.querySelectorAll('.main-nav__link')];
   }
 
   render(): void {
-    this.parseLocation();
+    const location = this.parseLocation().slice(1);
     const { Page } = this.findPage(this.routes) || { Page: ErrorPage };
     const page = new Page(this.rootElement);
     const main: RootElement = document.querySelector('main');
@@ -32,10 +36,26 @@ export class Router {
 
     const header: RootElement = document.querySelector('header');
     header?.after(page.element);
+
+    this.highlightRout(location);
+  }
+
+  private highlightRout(route: string): void {
+    this.links.forEach((link) => {
+      if (link.classList.contains('main-nav__link--active')) {
+        link.classList.remove('main-nav__link--active');
+      }
+    });
+
+    this.links.forEach((link) => {
+      if (link.classList.contains(`main-nav__link--${route}`)) {
+        link.classList.add('main-nav__link--active');
+      }
+    });
   }
 
   private parseLocation(): string {
-    this.location = window.location.hash.slice(1) || '/';
+    this.location = window.location.hash.slice(1) || '/about';
     return this.location;
   }
 

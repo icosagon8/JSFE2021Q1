@@ -9,7 +9,7 @@ import { RegisterPopup } from '../register-popup/register-popup';
 import { iDB } from '../indexed-db/indexed-db';
 
 const PAGES: NavItemModel[] = [
-  { href: '#', mod: 'about', text: 'About Game' },
+  { href: '#/about', mod: 'about', text: 'About Game' },
   { href: '#/score', mod: 'score', text: 'Best Score' },
   { href: '#/settings', mod: 'settings', text: 'Game Settings' },
 ];
