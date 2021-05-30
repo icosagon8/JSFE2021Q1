@@ -1,0 +1,21 @@
+.congratulations-popup {
+  width: 18rem;
+  padding: 1rem 0.8rem 0.35rem;
+
+  &__text{
+    font-size: 0.7rem;
+    line-height: 1rem;
+    letter-spacing: 0.0125rem;
+    color: var(--congratulations-popup-text-color);
+    margin-top: 0;
+    margin-bottom: 0.4rem;
+  }
+
+  &__btn-wrapper {
+    text-align: center;
+  }
+
+  &__btn {
+    display: inline-block;
+  }
+}
