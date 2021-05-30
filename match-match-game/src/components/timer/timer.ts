@@ -5,9 +5,9 @@ import { RootElement } from '../cards-field/cards-field';
 export class Timer extends Component {
   private startTime: number;
 
-  private sec: string;
+  sec: string;
 
-  private min: string;
+  min: string;
 
   private timerId!: NodeJS.Timeout;
 

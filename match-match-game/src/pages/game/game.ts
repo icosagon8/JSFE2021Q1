@@ -7,6 +7,7 @@ import { ImageCategoryModel } from '../../models/image-category-model';
 import { iDB } from '../../components/indexed-db/indexed-db';
 import { GameSettings } from '../../models/game-settings-model';
 import { User } from '../../models/user-model';
+import { CongratulationsPopup } from '../../components/congratulations-popup/congratulations-popup';
 
 export class Game extends Component {
   private readonly cardsField: CardsField;
@@ -21,7 +22,9 @@ export class Game extends Component {
 
   mismatches: number;
 
-  constructor(parentNode: RootElement) {
+  popup?: CongratulationsPopup;
+
+  constructor(private readonly parentNode: RootElement) {
     super(parentNode, 'main', ['game']);
     this.matches = 0;
     this.uniqueCards = 0;
@@ -69,6 +72,8 @@ export class Game extends Component {
 
       if (this.matches === this.uniqueCards) {
         this.stopGame();
+        this.popup = new CongratulationsPopup(this.parentNode, `${this.timer.min}.${this.timer.sec}`);
+        this.popup.showPopup();
       }
     }
 
