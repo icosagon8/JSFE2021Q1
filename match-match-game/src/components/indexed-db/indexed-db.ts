@@ -46,6 +46,31 @@ export class Database {
       }
     });
   }
+
+  readSorted<RecordType>(collection: string): Promise<Array<RecordType>> {
+    return new Promise((resolve) => {
+      if (this.db) {
+        const transaction = this.db.transaction(collection, 'readonly');
+        const store = transaction.objectStore(collection);
+        const result = store.index('score').openCursor(null, 'prev');
+        const resData: RecordType[] = [];
+
+        result.onsuccess = () => {
+          const cursor = result.result;
+
+          if (cursor) {
+            const currentValue: RecordType = cursor.value;
+            resData.push(currentValue);
+            cursor.continue();
+          }
+        };
+
+        transaction.oncomplete = () => {
+          resolve(resData);
+        };
+      }
+    });
+  }
 }
 
 export const iDB = new Database();
