@@ -34,7 +34,7 @@ export class Score extends Component {
     super(parentNode, 'main', ['score']);
     this.title = new Component(this.element, 'h1', ['score__title'], 'Best players');
     this.table = new Component(this.element, 'table', ['score__table']);
-    iDB.readSorted<User>('users').then((arr) => this.addRows(arr));
+    iDB.readSorted<User>('users', 10).then((arr) => this.addRows(arr));
   }
 
   addRows(users: User[]): void {

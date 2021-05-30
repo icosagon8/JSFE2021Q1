@@ -47,7 +47,7 @@ export class Database {
     });
   }
 
-  readSorted<RecordType>(collection: string): Promise<Array<RecordType>> {
+  readSorted<RecordType>(collection: string, count: number): Promise<Array<RecordType>> {
     return new Promise((resolve) => {
       if (this.db) {
         const transaction = this.db.transaction(collection, 'readonly');
@@ -60,8 +60,11 @@ export class Database {
 
           if (cursor) {
             const currentValue: RecordType = cursor.value;
-            resData.push(currentValue);
-            cursor.continue();
+
+            if (resData.length < count) {
+              resData.push(currentValue);
+              cursor.continue();
+            }
           }
         };
 
