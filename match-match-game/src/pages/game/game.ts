@@ -6,6 +6,7 @@ import { Timer } from '../../components/timer/timer';
 import { ImageCategoryModel } from '../../models/image-category-model';
 import { iDB } from '../../components/indexed-db/indexed-db';
 import { GameSettings } from '../../models/game-settings-model';
+import { User } from '../../models/user-model';
 
 export class Game extends Component {
   private readonly cardsField: CardsField;
@@ -81,7 +82,7 @@ export class Game extends Component {
 
   async stopGame(): Promise<void> {
     this.timer.stop();
-    const users: GameSettings[] = await iDB.readAll('users');
+    const users: User[] = await iDB.readAll('users');
     const user = users[users.length - 1];
     user.score = this.calculateScore();
     iDB.write('users', user);
