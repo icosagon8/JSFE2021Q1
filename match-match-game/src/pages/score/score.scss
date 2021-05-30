@@ -1,0 +1,78 @@
+.score {
+  width: 50rem;
+  padding: 1.4rem 4.9rem 5.9rem 1.8rem;
+  background-color: var(--page-bg-color);
+  margin: 0 auto 6.25rem;
+
+  &__title {
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    letter-spacing: 0.0075rem;
+    color: var(--title-color);
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  &__table {
+    border-collapse: collapse;
+  }
+
+  &__table-cell {
+    border-bottom: 0.05rem solid rgba(33, 33, 33, 0.08);
+    padding: 0;
+    padding-top: 0.9rem;
+    padding-bottom: 0.25rem;
+    color: var(--score-table-cell-color);
+
+    &--grow {
+      width: 100%;
+      padding-left: 0.8rem;
+    }
+  }
+
+  &__avatar {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 2rem;
+    height: 2rem;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__user {
+    font-weight: 500;
+    font-size: 0.7rem;
+    line-height: 1.05rem;
+    letter-spacing: 0.005rem;
+    display: block;
+  }
+
+  &__email {
+    font-size: 0.6rem;
+    line-height: 0.75rem;
+    letter-spacing: 0.02rem;
+    display: block;
+  }
+
+  &__points {
+    display: flex;
+    gap: 0.4rem;
+    font-weight: 500;
+    font-size: 0.7rem;
+    line-height: 1.2rem;
+    letter-spacing: 0.0075rem;
+  }
+
+  &__count {
+    color: var(--score-count-color);
+  }
+
+  &__label {
+    color: var(--score-label-color);
+  }
+}
