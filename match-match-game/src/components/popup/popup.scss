@@ -115,8 +115,19 @@
     }
   }
 
-  &__image {
+  &__image-upload {
     flex-shrink: 0;
+  }
+
+  &__image {
+    cursor: pointer;
+    width: 9.9rem;
+    height: 9.9rem;
+    object-fit: cover;
+  }
+
+  &__file-loader {
+    display: none;
   }
 
   &__btn-container {

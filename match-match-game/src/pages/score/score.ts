@@ -1,7 +1,7 @@
 import './score.scss';
 import { Component } from '../../components/component';
 import { RootElement } from '../../components/cards-field/cards-field';
-import avatar from '../../assets/images/avatar.jpg';
+import avatar from '../../assets/images/player.png';
 import { iDB } from '../../components/indexed-db/indexed-db';
 import { User } from '../../models/user-model';
 
@@ -42,7 +42,9 @@ export class Score extends Component {
       this.tableRow = new Component(this.table.element, 'tr', ['score__table-row']);
       this.avatarCell = new Component(this.tableRow.element, 'td', ['score__table-cell']);
       this.avatar = new Component(this.avatarCell.element, 'div', ['score__avatar']);
-      this.avatarImage = new Component(this.avatar.element, 'img', ['score__img'], '', [['src', avatar]]);
+      this.avatarImage = new Component(this.avatar.element, 'img', ['score__img'], '', [
+        ['src', user.avatar || avatar],
+      ]);
       this.userCell = new Component(this.tableRow.element, 'td', ['score__table-cell', 'score__table-cell--grow']);
       this.userName = new Component(this.userCell.element, 'span', ['score__user'], `${user.name} ${user.surname}`);
       this.userEmail = new Component(this.userCell.element, 'span', ['score__email'], user.email);

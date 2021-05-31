@@ -3,7 +3,7 @@ import { Component } from '../component';
 import { RootElement } from '../cards-field/cards-field';
 import { MainNav } from '../main-nav/main-nav';
 import image from '../../assets/images/logo.svg';
-import avatar from '../../assets/images/avatar.jpg';
+import avatar from '../../assets/images/player.png';
 import { NavItemModel } from '../../models/nav-item-model';
 import { RegisterPopup } from '../register-popup/register-popup';
 import { iDB } from '../indexed-db/indexed-db';
