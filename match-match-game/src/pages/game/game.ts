@@ -8,7 +8,9 @@ import { iDB } from '../../components/indexed-db/indexed-db';
 import { GameSettings } from '../../models/game-settings-model';
 import { User } from '../../models/user-model';
 import { CongratulationsPopup } from '../../components/congratulations-popup/congratulations-popup';
+import { delay } from '../../shared/delay';
 
+const FLIP_DELAY = 500;
 export class Game extends Component {
   private readonly cardsField: CardsField;
 
@@ -19,6 +21,8 @@ export class Game extends Component {
   private matches: number;
 
   private uniqueCards: number;
+
+  private isAnimation = false;
 
   mismatches: number;
 
@@ -47,6 +51,9 @@ export class Game extends Component {
   }
 
   private async cardHandler(card: Card) {
+    if (this.isAnimation) return;
+    this.isAnimation = true;
+
     if (!card.isFlipped) {
       return;
     }
@@ -55,12 +62,14 @@ export class Game extends Component {
 
     if (!this.activeCard) {
       this.activeCard = card;
+      this.isAnimation = false;
       return;
     }
 
     if (this.activeCard.image !== card.image) {
       this.activeCard.showError();
       card.showError();
+      await delay(FLIP_DELAY);
       await Promise.all([this.activeCard.flipToBack(), card.flipToBack()]);
       this.activeCard.deleteError();
       card.deleteError();
@@ -78,6 +87,7 @@ export class Game extends Component {
     }
 
     this.activeCard = undefined;
+    this.isAnimation = false;
   }
 
   calculateScore(): number {

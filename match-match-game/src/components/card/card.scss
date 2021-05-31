@@ -56,7 +56,7 @@
 .card {
   width: calc((var(--cards-field-width) - var(--cards-field-column-gap) * (var(--cards-number) - 1)) / var(--cards-number));
   height: calc((var(--cards-field-width) - var(--cards-field-column-gap) * (var(--cards-number) - 1)) / var(--cards-number));
-  transition: 1s;
+  transition: 0.75s;
   transform-style: preserve-3d;
   position: relative;
 

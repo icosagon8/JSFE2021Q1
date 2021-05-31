@@ -2,7 +2,7 @@ import './cards-field.scss';
 import { Component } from '../component';
 import { Card } from '../card/card';
 
-const SHOW_TIME = 12;
+const SHOW_TIME = 30;
 
 export type RootElement = HTMLElement | null;
 
