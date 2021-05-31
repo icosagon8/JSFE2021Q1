@@ -50,11 +50,13 @@ export class Header extends Component {
   }
 
   onButtonClick = (): void => {
-    this.popup.showPopup();
-    document.addEventListener('click', this.onPopupOverlayClick);
-    this.popup.form.cancelButton.element.addEventListener('click', this.onCancelButtonClick);
-    this.popup.form.submitButton.element.addEventListener('click', this.onSubmitButtonClick);
-    this.button.element.removeEventListener('click', this.onButtonClick);
+    if (this.button.element.textContent === 'Register new player') {
+      this.popup.showPopup();
+      document.addEventListener('click', this.onPopupOverlayClick);
+      this.popup.form.cancelButton.element.addEventListener('click', this.onCancelButtonClick);
+      this.popup.form.submitButton.element.addEventListener('click', this.onSubmitButtonClick);
+      this.button.element.removeEventListener('click', this.onButtonClick);
+    }
   };
 
   onCancelButtonClick = (evt: Event): void => {
@@ -71,9 +73,13 @@ export class Header extends Component {
 
     if (this.popup.form.checkInputsValidity()) {
       iDB.write('users', this.popup.form.getInputsValues());
+      document.removeEventListener('click', this.onPopupOverlayClick);
+      this.button.element.addEventListener('click', this.onButtonClick);
       this.popup.closePopup();
       this.popup.form.resetInputs();
-      this.button.element.addEventListener('click', this.onButtonClick);
+      localStorage.setItem('registered', 'yes');
+      this.button.element.textContent = 'Start game';
+      (this.button.element as HTMLAnchorElement).href = '#/game';
     }
   };
 

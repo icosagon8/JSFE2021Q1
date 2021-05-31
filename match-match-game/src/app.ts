@@ -9,8 +9,9 @@ export class App {
 
   constructor(private readonly rootElement: HTMLElement) {
     iDB.init('icosagon8');
+    localStorage.clear();
     this.header = new Header(this.rootElement);
-    this.router = new Router(this.rootElement);
+    this.router = new Router(this.rootElement, this.header);
     setTimeout(() => this.router.render());
     this.hashChangeHandler();
   }
