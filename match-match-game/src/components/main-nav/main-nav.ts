@@ -15,13 +15,11 @@ export class MainNav extends Component {
 
     for (let i = 0; i < navItem.length; i++) {
       const item = new Component(this.navList.element, 'li');
-      const link = new Component(
-        item.element,
-        'a',
-        ['main-nav__link', `main-nav__link--${navItem[i].mod}`],
-        navItem[i].text,
-        [['href', navItem[i].href]]
-      );
+      const link = new Component(null, 'a', ['main-nav__link', `main-nav__link--${navItem[i].mod}`], navItem[i].text, [
+        ['href', navItem[i].href],
+      ]);
+
+      item.element.appendChild(link.element);
     }
   }
 }
