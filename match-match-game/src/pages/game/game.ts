@@ -51,12 +51,12 @@ export class Game extends Component {
   }
 
   private async cardHandler(card: Card) {
-    if (this.isAnimation) return;
-    this.isAnimation = true;
-
     if (!card.isFlipped) {
       return;
     }
+
+    if (this.isAnimation) return;
+    this.isAnimation = true;
 
     await card.flipToFront();
 
