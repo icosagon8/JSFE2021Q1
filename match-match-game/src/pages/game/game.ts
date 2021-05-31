@@ -98,11 +98,13 @@ export class Game extends Component {
     const categories: ImageCategoryModel[] = await res.json();
     const { cardsType, difficulty } = (await iDB.readAll<GameSettings>('settings'))[0];
     const index = categories.findIndex((item) => item.category === cardsType);
+    const uniqCards = (difficulty * difficulty) / 2;
     const category = categories[index];
     const images = category.images
       .map((name) => `${category.category}/${name}`)
       .sort(() => Math.random() - 0.5)
-      .slice(0, difficulty);
+      .slice(0, uniqCards);
+    document.documentElement.style.setProperty('--cards-number', `${difficulty}`);
     this.newGame(images);
   }
 }
