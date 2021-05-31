@@ -1,0 +1,48 @@
+[
+  {
+    "category": "animals",
+    "images": [
+      "bee.svg",
+      "beetle.svg",
+      "buffalo.svg",
+      "bullfinch.svg",
+      "camel.svg",
+      "cat.svg",
+      "chameleon.svg",
+      "clown-fish.svg",
+      "crab.svg",
+      "elephant.svg",
+      "fox.svg",
+      "giraffe.svg",
+      "ladybug.svg",
+      "lion.svg",
+      "owl.svg",
+      "pig.svg",
+      "spider.svg",
+      "turtle.svg"
+    ]
+  },
+  {
+    "category": "dogs",
+    "images": [
+      "australian-shepherd.svg",
+      "basset-hound.svg",
+      "beagle.svg",
+      "corgi.svg",
+      "dachshund.svg",
+      "dalmatian.svg",
+      "golden-retriever.svg",
+      "great-dane.svg",
+      "labrador-retriever.svg",
+      "miniature-schnauzer.svg",
+      "pitbull.svg",
+      "poodle.svg",
+      "rottweiler.svg",
+      "saint-bernard.svg",
+      "shar-pei.svg",
+      "shiba-inu.svg",
+      "siberian-husky.svg",
+      "yorkshire-terrier.svg"
+    ]
+  }
+]
