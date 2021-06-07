@@ -1,6 +1,7 @@
 import './car.scss';
 import { Component } from '../component';
-import { RootElement } from '../../models/root-element-model';
+import { CarImage } from '../car-image/car-image';
+import { CarModel } from '../../models/car-model';
 
 export class Car extends Component {
   optionsWrapper: Component;
@@ -21,8 +22,10 @@ export class Car extends Component {
 
   road: Component;
 
-  constructor(parentNode: RootElement) {
-    super(parentNode, 'li', ['cars__item']);
+  carImage?: CarImage;
+
+  constructor(car: CarModel) {
+    super(null, 'li', ['cars__item']);
     this.optionsWrapper = new Component(this.element, 'div', ['cars__options-wrapper']);
     this.selectBtn = new Component(this.optionsWrapper.element, 'button', ['btn', 'cars__select-btn'], 'Select', [
       ['type', 'button'],
@@ -30,7 +33,7 @@ export class Car extends Component {
     this.removeBtn = new Component(this.optionsWrapper.element, 'button', ['btn', 'cars__remove-btn'], 'Remove', [
       ['type', 'button'],
     ]);
-    this.carName = new Component(this.optionsWrapper.element, 'span', ['cars__car-name'], 'Car name');
+    this.carName = new Component(this.optionsWrapper.element, 'span', ['cars__car-name'], `${car.name}`);
     this.roadWrapper = new Component(this.element, 'div', ['cars__road-wrapper']);
     this.engineControls = new Component(this.roadWrapper.element, 'div', ['cars__engine-controls']);
     this.startBtn = new Component(this.engineControls.element, 'button', ['btn', 'cars__start-btn'], 'A', [
@@ -40,5 +43,10 @@ export class Car extends Component {
       ['type', 'button'],
     ]);
     this.road = new Component(this.roadWrapper.element, 'div', ['cars__road']);
+    this.addCarImage(car.color);
+  }
+
+  addCarImage(color: string): void {
+    this.carImage = new CarImage(this.road.element, color);
   }
 }
