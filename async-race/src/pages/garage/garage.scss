@@ -1,0 +1,35 @@
+.garage {
+  &__controls {
+    margin-bottom: 2.5rem;
+    width: 14.75rem;
+  }
+
+  &__group {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+
+    &:not(:last-child) {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  &__name-input {
+    outline: 0;
+    height: 1.25rem;
+  }
+
+  &__color-input {
+    height: 1.25rem;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__btn {
+    &--generate {
+      flex-grow: 1;
+    }
+  }
+}
