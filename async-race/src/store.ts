@@ -9,3 +9,9 @@ export const store: StoreModel = {
   page: 1,
   selectedCar: null,
 };
+
+export const updateGarageState = async (): Promise<void> => {
+  const { cars: carsArray, count: carsCount } = await getCars(store.page);
+  store.cars = carsArray;
+  store.carsNumber = carsCount;
+};

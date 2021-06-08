@@ -1,9 +1,9 @@
 import './garage.scss';
 import { Component } from '../../components/component';
 import { RootElement } from '../../models/root-element-model';
-import { store } from '../../store';
-import { createCar, getCars, updateCar } from '../../api';
-import { CarsField } from '../../components/cars-field/cars-field';
+import { store, updateGarageState } from '../../store';
+import { createCar, updateCar } from '../../api';
+import { Car } from '../../components/car/car';
 
 export class Garage extends Component {
   title: Component;
@@ -36,7 +36,7 @@ export class Garage extends Component {
 
   generateBtn: Component;
 
-  carsField: CarsField;
+  carsField: Component;
 
   constructor(parentNode: RootElement) {
     super(parentNode, 'div', ['page', 'garage']);
@@ -83,7 +83,8 @@ export class Garage extends Component {
       ['btn', 'garage__btn', 'garage__btn--generate'],
       'Generate cars'
     );
-    this.carsField = new CarsField(this.element);
+    this.carsField = new Component(this.element, 'ul', ['garage__cars', 'cars']);
+    Car.createCar(this.carsField.element);
     this.carNameCreateInput.element.addEventListener('change', () => this.onCarNameCreateInputChange());
     this.carCreateBtn.element.addEventListener('click', () => this.onCarCreateBtnClick());
     this.carUpdateBtn.element.addEventListener('click', () => this.onCarUpdateBtnClick());
@@ -99,10 +100,10 @@ export class Garage extends Component {
     await createCar({ name, color });
     (this.carNameCreateInput.element as HTMLInputElement).value = '';
     this.carCreateBtn.element.setAttribute('disabled', '');
-    await Garage.updateGarageState();
+    await updateGarageState();
     this.title.element.textContent = `Garage (${store.carsNumber})`;
-    this.carsField.element.remove();
-    this.carsField = new CarsField(this.element);
+    this.carsField.element.innerHTML = '';
+    Car.createCar(this.carsField.element);
   }
 
   async onCarUpdateBtnClick(): Promise<void> {
@@ -112,15 +113,9 @@ export class Garage extends Component {
       await updateCar(store.selectedCar.id, { name, color });
       (this.carNameUpdateInput.element as HTMLInputElement).value = '';
       this.carUpdateBtn.element.setAttribute('disabled', '');
-      await Garage.updateGarageState();
-      this.carsField.element.remove();
-      this.carsField = new CarsField(this.element);
+      await updateGarageState();
+      this.carsField.element.innerHTML = '';
+      Car.createCar(this.carsField.element);
     }
-  }
-
-  static async updateGarageState(): Promise<void> {
-    const { cars, count: carsNumber } = await getCars(store.page);
-    store.cars = cars;
-    store.carsNumber = carsNumber;
   }
 }
