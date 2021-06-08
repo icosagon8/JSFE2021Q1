@@ -2,7 +2,7 @@ import './garage.scss';
 import { Component } from '../../components/component';
 import { RootElement } from '../../models/root-element-model';
 import { store } from '../../store';
-import { createCar, getCars } from '../../api';
+import { createCar, getCars, updateCar } from '../../api';
 import { CarsField } from '../../components/cars-field/cars-field';
 
 export class Garage extends Component {
@@ -26,7 +26,7 @@ export class Garage extends Component {
 
   carColorUpdateInput: Component;
 
-  carUpdateButton: Component;
+  carUpdateBtn: Component;
 
   raceControls: Component;
 
@@ -59,16 +59,21 @@ export class Garage extends Component {
     ]);
     this.carUpdateControls = new Component(this.Controls.element, 'div', ['garage__group']);
     this.carNameUpdateInput = new Component(this.carUpdateControls.element, 'input', ['garage__name-input'], '', [
+      ['id', 'update-name'],
       ['type', 'text'],
       ['name', 'name'],
       ['autocomplete', 'off'],
     ]);
     this.carColorUpdateInput = new Component(this.carUpdateControls.element, 'input', ['garage__color-input'], '', [
+      ['id', 'update-color'],
       ['type', 'color'],
       ['name', 'color'],
       ['autocomplete', 'off'],
     ]);
-    this.carUpdateButton = new Component(this.carUpdateControls.element, 'button', ['btn', 'garage__btn'], 'Update');
+    this.carUpdateBtn = new Component(this.carUpdateControls.element, 'button', ['btn', 'garage__btn'], 'Update', [
+      ['id', 'update-btn'],
+      ['disabled', ''],
+    ]);
     this.raceControls = new Component(this.Controls.element, 'div', ['garage__group']);
     this.raceBtn = new Component(this.raceControls.element, 'button', ['btn', 'garage__btn'], 'Race');
     this.resetBtn = new Component(this.raceControls.element, 'button', ['btn', 'garage__btn'], 'Reset');
@@ -81,6 +86,7 @@ export class Garage extends Component {
     this.carsField = new CarsField(this.element);
     this.carNameCreateInput.element.addEventListener('change', () => this.onCarNameCreateInputChange());
     this.carCreateBtn.element.addEventListener('click', () => this.onCarCreateBtnClick());
+    this.carUpdateBtn.element.addEventListener('click', () => this.onCarUpdateBtnClick());
   }
 
   onCarNameCreateInputChange(): void {
@@ -97,6 +103,19 @@ export class Garage extends Component {
     this.title.element.textContent = `Garage (${store.carsNumber})`;
     this.carsField.element.remove();
     this.carsField = new CarsField(this.element);
+  }
+
+  async onCarUpdateBtnClick(): Promise<void> {
+    if (store.selectedCar?.id) {
+      const name = (this.carNameUpdateInput.element as HTMLInputElement).value;
+      const color = (this.carColorUpdateInput.element as HTMLInputElement).value;
+      await updateCar(store.selectedCar.id, { name, color });
+      (this.carNameUpdateInput.element as HTMLInputElement).value = '';
+      this.carUpdateBtn.element.setAttribute('disabled', '');
+      await Garage.updateGarageState();
+      this.carsField.element.remove();
+      this.carsField = new CarsField(this.element);
+    }
   }
 
   static async updateGarageState(): Promise<void> {
