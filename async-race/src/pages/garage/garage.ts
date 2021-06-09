@@ -4,6 +4,7 @@ import { RootElement } from '../../models/root-element-model';
 import { store, updateGarageState } from '../../store';
 import { createCar, updateCar } from '../../api';
 import { Car } from '../../components/car/car';
+import { getRandomCars } from '../../utils/utils';
 
 export class Garage extends Component {
   title: Component;
@@ -88,6 +89,7 @@ export class Garage extends Component {
     this.carNameCreateInput.element.addEventListener('change', () => this.onCarNameCreateInputChange());
     this.carCreateBtn.element.addEventListener('click', () => this.onCarCreateBtnClick());
     this.carUpdateBtn.element.addEventListener('click', () => this.onCarUpdateBtnClick());
+    this.generateBtn.element.addEventListener('click', () => this.onGenerateBtnClick());
   }
 
   onCarNameCreateInputChange(): void {
@@ -117,5 +119,15 @@ export class Garage extends Component {
       this.carsField.element.innerHTML = '';
       Car.createCar(this.carsField.element);
     }
+  }
+
+  async onGenerateBtnClick(): Promise<void> {
+    const CARS_NUMBER = 100;
+    const cars = getRandomCars(CARS_NUMBER);
+    await Promise.all(cars.map((car) => createCar(car)));
+    await updateGarageState();
+    this.title.element.textContent = `Garage (${store.carsNumber})`;
+    this.carsField.element.innerHTML = '';
+    Car.createCar(this.carsField.element);
   }
 }
