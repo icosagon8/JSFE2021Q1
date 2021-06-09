@@ -41,8 +41,6 @@ export class Garage extends Component {
 
   constructor(parentNode: RootElement) {
     super(parentNode, 'div', ['page', 'garage']);
-    this.title = new Component(this.element, 'h1', ['garage__title'], `Garage (${store.carsNumber})`);
-    this.pageCount = new Component(this.element, 'p', ['garage__page-count'], `Page №${store.page}`);
     this.Controls = new Component(this.element, 'div', ['garage__controls']);
     this.carCreateControls = new Component(this.Controls.element, 'div', ['garage__group']);
     this.carNameCreateInput = new Component(this.carCreateControls.element, 'input', ['garage__name-input'], '', [
@@ -84,6 +82,8 @@ export class Garage extends Component {
       ['btn', 'garage__btn', 'garage__btn--generate'],
       'Generate cars'
     );
+    this.title = new Component(this.element, 'h1', ['garage__title'], `Garage (${store.carsNumber})`);
+    this.pageCount = new Component(this.element, 'p', ['garage__page-count'], `Page №${store.page}`);
     this.carsField = new Component(this.element, 'ul', ['garage__cars', 'cars']);
     Car.createCar(this.carsField.element);
     this.carNameCreateInput.element.addEventListener('change', () => this.onCarNameCreateInputChange());
