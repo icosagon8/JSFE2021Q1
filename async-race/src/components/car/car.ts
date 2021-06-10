@@ -2,9 +2,11 @@ import './car.scss';
 import { Component } from '../component';
 import { CarImage } from '../car-image/car-image';
 import { CarModel } from '../../models/car-model';
-import { deleteCar, getCar } from '../../api';
+import { deleteCar, driveCar, getCar, startEngine, stopEngine } from '../../api';
 import { store, updateGarageState } from '../../store';
 import { RootElement } from '../../models/root-element-model';
+import { startAnimation } from '../../utils/utils';
+import { RequestFrame } from '../../models/request-frame-model';
 
 export class Car extends Component {
   optionsWrapper: Component;
@@ -25,19 +27,22 @@ export class Car extends Component {
 
   road: Component;
 
+  finish: Component;
+
   carImage?: CarImage;
+
+  requestFrame: RequestFrame;
 
   constructor(car: CarModel) {
     super(null, 'li', ['cars__item']);
+    this.element.dataset.carId = `${car.id}`;
     this.optionsWrapper = new Component(this.element, 'div', ['cars__options-wrapper']);
     this.selectBtn = new Component(this.optionsWrapper.element, 'button', ['btn', 'cars__select-btn'], 'Select', [
       ['type', 'button'],
     ]);
-    this.selectBtn.element.dataset.carId = `${car.id}`;
     this.removeBtn = new Component(this.optionsWrapper.element, 'button', ['btn', 'cars__remove-btn'], 'Remove', [
       ['type', 'button'],
     ]);
-    this.removeBtn.element.dataset.carId = `${car.id}`;
     this.carName = new Component(this.optionsWrapper.element, 'span', ['cars__car-name'], `${car.name}`);
     this.roadWrapper = new Component(this.element, 'div', ['cars__road-wrapper']);
     this.engineControls = new Component(this.roadWrapper.element, 'div', ['cars__engine-controls']);
@@ -46,11 +51,16 @@ export class Car extends Component {
     ]);
     this.stopBtn = new Component(this.engineControls.element, 'button', ['btn', 'cars__stop-btn'], 'B', [
       ['type', 'button'],
+      ['disabled', ''],
     ]);
     this.road = new Component(this.roadWrapper.element, 'div', ['cars__road']);
     this.addCarImage(car.color);
+    this.finish = new Component(this.road.element, 'div', ['cars__finish']);
+    this.requestFrame = { id: 0 };
     this.selectBtn.element.addEventListener('click', () => this.onSelectBtnClick());
     this.removeBtn.element.addEventListener('click', () => this.onRemoveBtnClick());
+    this.startBtn.element.addEventListener('click', () => this.onStartBtnClick());
+    this.stopBtn.element.addEventListener('click', () => this.onStopBtnClick());
   }
 
   addCarImage(color: string): void {
@@ -58,7 +68,7 @@ export class Car extends Component {
   }
 
   async onSelectBtnClick(): Promise<void> {
-    const id = Number(this.selectBtn.element.dataset.carId);
+    const id = Number(this.element.dataset.carId);
     const car = await getCar(id);
     store.selectedCar = car;
     const updateNameInput = document.querySelector('#update-name');
@@ -70,7 +80,7 @@ export class Car extends Component {
   }
 
   async onRemoveBtnClick(): Promise<void> {
-    const id = Number(this.removeBtn.element.dataset.carId);
+    const id = Number(this.element.dataset.carId);
     await deleteCar(id);
     await updateGarageState();
     const carsField: RootElement = document.querySelector('.garage__cars');
@@ -82,6 +92,27 @@ export class Car extends Component {
 
     const garageTitle = document.querySelector('.garage__title');
     if (garageTitle) garageTitle.textContent = `Garage (${store.carsNumber})`;
+  }
+
+  async onStartBtnClick(): Promise<void> {
+    this.startBtn.element.setAttribute('disabled', '');
+    this.stopBtn.element.removeAttribute('disabled');
+    const id = Number(this.element.dataset.carId);
+    const carMovementCharcs = await startEngine(id);
+    const time = carMovementCharcs.distance / carMovementCharcs.velocity;
+    const distance = this.finish.element.getBoundingClientRect().right - this.road.element.getBoundingClientRect().left;
+    this.requestFrame = startAnimation(this.carImage, distance, time);
+    const driveRequest = await driveCar(id);
+    if (driveRequest.success === false) cancelAnimationFrame(this.requestFrame.id);
+  }
+
+  async onStopBtnClick(): Promise<void> {
+    const id = Number(this.element.dataset.carId);
+    this.stopBtn.element.setAttribute('disabled', '');
+    this.startBtn.element.removeAttribute('disabled');
+    await stopEngine(id);
+    cancelAnimationFrame(this.requestFrame.id);
+    if (this.carImage) this.carImage.element.style.left = '0px';
   }
 
   static createCar(parent: HTMLElement): void {
