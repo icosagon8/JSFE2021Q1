@@ -6,6 +6,7 @@ import { WinnersModel } from './models/winners-model';
 import { WinnerModel } from './models/winner-model';
 import { WinnerSort } from './models/winner-sort-model';
 import { WinnerOrder } from './models/winner-order-model';
+import { CarWriteModel } from './models/car-write-model';
 
 const baseUrl = 'http://localhost:3000';
 
@@ -33,7 +34,7 @@ export const getCar = async (id: number): Promise<CarModel> => {
   return car;
 };
 
-export const createCar = async (body: CarModel): Promise<CarModel> => {
+export const createCar = async (body: CarWriteModel): Promise<CarModel> => {
   const response = await fetch(`${baseUrl}${paths.garage}`, {
     method: 'POST',
     headers: {
@@ -57,7 +58,7 @@ export const deleteCar = async (id: number): Promise<Record<string, never>> => {
   return car;
 };
 
-export const updateCar = async (id: number, body: CarModel): Promise<CarModel> => {
+export const updateCar = async (id: number, body: CarWriteModel): Promise<CarModel> => {
   const response = await fetch(`${baseUrl}${paths.garage}/${id}`, {
     method: 'PUT',
     headers: {

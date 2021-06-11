@@ -1,3 +1,3 @@
 export interface RequestFrame {
-  id: number;
+  requestID: number;
 }

@@ -2,11 +2,10 @@ import './car.scss';
 import { Component } from '../component';
 import { CarImage } from '../car-image/car-image';
 import { CarModel } from '../../models/car-model';
-import { deleteCar, driveCar, getCar, startEngine, stopEngine } from '../../api';
+import { deleteCar, getCar } from '../../api';
 import { store, updateGarageState } from '../../store';
 import { RootElement } from '../../models/root-element-model';
-import { startAnimation } from '../../utils/utils';
-import { RequestFrame } from '../../models/request-frame-model';
+import { start, stop } from '../../utils/utils';
 
 export class Car extends Component {
   optionsWrapper: Component;
@@ -31,8 +30,6 @@ export class Car extends Component {
 
   carImage?: CarImage;
 
-  requestFrame: RequestFrame;
-
   constructor(car: CarModel) {
     super(null, 'li', ['cars__item']);
     this.element.dataset.carId = `${car.id}`;
@@ -56,7 +53,6 @@ export class Car extends Component {
     this.road = new Component(this.roadWrapper.element, 'div', ['cars__road']);
     this.addCarImage(car.color);
     this.finish = new Component(this.road.element, 'div', ['cars__finish']);
-    this.requestFrame = { id: 0 };
     this.selectBtn.element.addEventListener('click', () => this.onSelectBtnClick());
     this.removeBtn.element.addEventListener('click', () => this.onRemoveBtnClick());
     this.startBtn.element.addEventListener('click', () => this.onStartBtnClick());
@@ -98,21 +94,12 @@ export class Car extends Component {
     this.startBtn.element.setAttribute('disabled', '');
     this.stopBtn.element.removeAttribute('disabled');
     const id = Number(this.element.dataset.carId);
-    const carMovementCharcs = await startEngine(id);
-    const time = carMovementCharcs.distance / carMovementCharcs.velocity;
-    const distance = this.finish.element.getBoundingClientRect().right - this.road.element.getBoundingClientRect().left;
-    this.requestFrame = startAnimation(this.carImage, distance, time);
-    const driveRequest = await driveCar(id);
-    if (driveRequest.success === false) cancelAnimationFrame(this.requestFrame.id);
+    start(id);
   }
 
   async onStopBtnClick(): Promise<void> {
     const id = Number(this.element.dataset.carId);
-    this.stopBtn.element.setAttribute('disabled', '');
-    this.startBtn.element.removeAttribute('disabled');
-    await stopEngine(id);
-    cancelAnimationFrame(this.requestFrame.id);
-    if (this.carImage) this.carImage.element.style.left = '0px';
+    stop(id);
   }
 
   static createCar(parent: HTMLElement): void {

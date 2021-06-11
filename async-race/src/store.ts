@@ -8,6 +8,7 @@ export const store: StoreModel = {
   carsNumber,
   page: 1,
   selectedCar: null,
+  carsRequestId: {},
 };
 
 export const updateGarageState = async (): Promise<void> => {
