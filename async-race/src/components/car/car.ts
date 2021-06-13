@@ -60,7 +60,7 @@ export class Car extends Component {
   }
 
   addCarImage(color: string): void {
-    this.carImage = new CarImage(this.road.element, color);
+    this.carImage = new CarImage(this.road.element, color, ['car']);
   }
 
   async onSelectBtnClick(): Promise<void> {
