@@ -1,4 +1,5 @@
 import { driveCar, startEngine, stopEngine } from '../api';
+import { CarStartModel } from '../models/car-start-model';
 import { CarWriteModel } from '../models/car-write-model';
 import { RequestFrame } from '../models/request-frame-model';
 import { store } from '../store';
@@ -53,7 +54,7 @@ export const startAnimation = (car: Element | null | undefined, distance: number
   return requestFrame;
 };
 
-export const start = async (id: number): Promise<void> => {
+export const start = async (id: number): Promise<CarStartModel> => {
   const carMovementCharcs = await startEngine(id);
   const time = carMovementCharcs.distance / carMovementCharcs.velocity;
   const road = document.querySelector(`.cars__item[data-car-id="${id}"] .cars__road`);
@@ -67,11 +68,24 @@ export const start = async (id: number): Promise<void> => {
 
   const driveRequest = await driveCar(id);
   if (driveRequest.success === false) cancelAnimationFrame(store.carsRequestId[id].requestID);
+
+  return { id, time, driveRequest };
 };
 
-export const race = (): void => {
+export const defineWinner = async (prom: Promise<CarStartModel>[]): Promise<CarStartModel> => {
+  const cars = await Promise.all(prom);
+  const finishingCars = cars.filter((car) => car.driveRequest.success);
+  const winner = finishingCars.reduce((a, b) => (a.time < b.time ? a : b));
+
+  return winner;
+};
+
+export const race = async (): Promise<CarStartModel> => {
   const { cars } = store;
-  cars.map((car) => start(car.id));
+  const carsPromises = cars.map(async (car) => start(car.id));
+  const raceWinner = await defineWinner(carsPromises);
+
+  return raceWinner;
 };
 
 export const stop = async (id: number): Promise<void> => {
