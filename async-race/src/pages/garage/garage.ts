@@ -96,7 +96,7 @@ export class Garage extends Component {
     );
     this.title = new Component(this.element, 'h1', ['garage__title'], `Garage (${store.carsNumber})`);
     this.pageControls = new Component(this.element, 'div', ['garage__page-controls']);
-    this.pageCount = new Component(this.pageControls.element, 'p', ['garage__page-count'], `Page №${store.page}`);
+    this.pageCount = new Component(this.pageControls.element, 'p', ['garage__page-count'], `Page №${store.garagePage}`);
     this.prevBtn = new Component(this.pageControls.element, 'button', ['btn', 'garage__prev-btn'], 'Prev', [
       ['type', 'button'],
       ['disabled', ''],
@@ -137,7 +137,7 @@ export class Garage extends Component {
     this.carsField.element.innerHTML = '';
     Car.createCar(this.carsField.element);
 
-    if (Math.ceil(store.carsNumber / CARS_PAGE_LIMIT) > store.page) {
+    if (Math.ceil(store.carsNumber / CARS_PAGE_LIMIT) > store.garagePage) {
       this.nextBtn.element.removeAttribute('disabled');
     }
   }
@@ -164,36 +164,37 @@ export class Garage extends Component {
     this.carsField.element.innerHTML = '';
     Car.createCar(this.carsField.element);
 
-    if (Math.ceil(store.carsNumber / CARS_PAGE_LIMIT) > store.page) {
+    if (Math.ceil(store.carsNumber / CARS_PAGE_LIMIT) > store.garagePage) {
       this.nextBtn.element.removeAttribute('disabled');
     }
   }
 
   async onNextBtnClick(): Promise<void> {
-    store.page += 1;
-    if (store.page === Math.ceil(store.carsNumber / CARS_PAGE_LIMIT)) this.nextBtn.element.setAttribute('disabled', '');
+    store.garagePage += 1;
+    if (store.garagePage === Math.ceil(store.carsNumber / CARS_PAGE_LIMIT))
+      this.nextBtn.element.setAttribute('disabled', '');
     this.prevBtn.element.removeAttribute('disabled');
-    this.pageCount.element.textContent = `Page №${store.page}`;
+    this.pageCount.element.textContent = `Page №${store.garagePage}`;
     await updateGarageState();
     this.carsField.element.innerHTML = '';
     Car.createCar(this.carsField.element);
   }
 
   async onPrevBtnClick(): Promise<void> {
-    store.page -= 1;
+    store.garagePage -= 1;
 
-    this.pageCount.element.textContent = `Page №${store.page}`;
+    this.pageCount.element.textContent = `Page №${store.garagePage}`;
     await updateGarageState();
     this.carsField.element.innerHTML = '';
     Car.createCar(this.carsField.element);
     this.nextBtn.element.removeAttribute('disabled');
 
-    if (store.page === 1 && store.carsNumber % CARS_PAGE_LIMIT === 0) {
+    if (store.garagePage === 1 && store.carsNumber % CARS_PAGE_LIMIT === 0) {
       this.prevBtn.element.setAttribute('disabled', '');
       this.nextBtn.element.setAttribute('disabled', '');
-    } else if (store.page === 1) {
+    } else if (store.garagePage === 1) {
       this.prevBtn.element.setAttribute('disabled', '');
-    } else if (store.page === Math.ceil(store.carsNumber / CARS_PAGE_LIMIT)) {
+    } else if (store.garagePage === Math.ceil(store.carsNumber / CARS_PAGE_LIMIT)) {
       this.nextBtn.element.setAttribute('disabled', '');
     }
   }
