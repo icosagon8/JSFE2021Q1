@@ -1,6 +1,6 @@
 import { WinnerModel } from './winner-model';
 
 export interface WinnersModel {
-  winners: WinnerModel[];
+  winnersWithCars: WinnerModel[];
   count: number;
 }
