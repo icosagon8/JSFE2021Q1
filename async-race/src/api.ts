@@ -7,6 +7,7 @@ import { WinnerModel } from './models/winner-model';
 import { WinnerSort } from './models/winner-sort-model';
 import { WinnerOrder } from './models/winner-order-model';
 import { CarWriteModel } from './models/car-write-model';
+import { WinnerWriteModel } from './models/winner-write-model';
 
 const baseUrl = 'http://localhost:3000';
 
@@ -96,8 +97,8 @@ export const driveCar = async (id: number): Promise<CarStatusModel> => {
 export const getWinners = async (
   page: number,
   limit = 7,
-  sort: WinnerSort,
-  order: WinnerOrder
+  sort: WinnerSort = 'time',
+  order: WinnerOrder = 'ASC'
 ): Promise<WinnersModel> => {
   const response = await fetch(
     `${baseUrl}${paths.winners}?_page=${page}&_limit=${limit}&_sort=${sort}&_order=${order}`
@@ -105,9 +106,12 @@ export const getWinners = async (
 
   const winners: WinnerModel[] = await response.json();
   const count = Number(response.headers.get('X-Total-Count'));
+  const winnersWithCars = await Promise.all(
+    winners.map(async (winner) => ({ ...winner, ...(await getCar(winner.id)) }))
+  );
 
   return {
-    winners,
+    winnersWithCars,
     count,
   };
 };
@@ -125,7 +129,7 @@ export const getWinnerStatus = async (id: number): Promise<number> => {
   return response.status;
 };
 
-export const createWinner = async (body: WinnerModel): Promise<WinnerModel> => {
+export const createWinner = async (body: WinnerWriteModel): Promise<WinnerWriteModel> => {
   const response = await fetch(`${baseUrl}${paths.winners}`, {
     method: 'POST',
     headers: {
@@ -149,7 +153,7 @@ export const deleteWinner = async (id: number): Promise<Record<string, never>> =
   return winner;
 };
 
-export const updateWinner = async (id: number, body: WinnerModel): Promise<WinnerModel> => {
+export const updateWinner = async (id: number, body: WinnerWriteModel): Promise<WinnerWriteModel> => {
   const response = await fetch(`${baseUrl}${paths.winners}/${id}`, {
     method: 'PUT',
     headers: {
