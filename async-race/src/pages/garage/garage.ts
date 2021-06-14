@@ -2,7 +2,7 @@ import './garage.scss';
 import { Component } from '../../components/component';
 import { RootElement } from '../../models/root-element-model';
 import { store, updateGarageState } from '../../store';
-import { createCar, updateCar } from '../../api';
+import { createCar, saveWinner, updateCar } from '../../api';
 import { Car } from '../../components/car/car';
 import { getRandomCars, race, reset } from '../../utils/utils';
 import { RequestFrame } from '../../models/request-frame-model';
@@ -50,7 +50,7 @@ export class Garage extends Component {
   requestFrame: RequestFrame;
 
   constructor(parentNode: RootElement) {
-    super(parentNode, 'div', ['page', 'garage']);
+    super(parentNode, 'div', ['garage']);
     this.Controls = new Component(this.element, 'div', ['garage__controls']);
     this.carCreateControls = new Component(this.Controls.element, 'div', ['garage__group']);
     this.carNameCreateInput = new Component(this.carCreateControls.element, 'input', ['garage__name-input'], '', [
@@ -171,13 +171,15 @@ export class Garage extends Component {
 
   async onNextBtnClick(): Promise<void> {
     store.garagePage += 1;
-    if (store.garagePage === Math.ceil(store.carsNumber / CARS_PAGE_LIMIT))
+    if (store.garagePage === Math.ceil(store.carsNumber / CARS_PAGE_LIMIT)) {
       this.nextBtn.element.setAttribute('disabled', '');
+    }
     this.prevBtn.element.removeAttribute('disabled');
     this.pageCount.element.textContent = `Page №${store.garagePage}`;
     await updateGarageState();
     this.carsField.element.innerHTML = '';
     Car.createCar(this.carsField.element);
+    this.controlRaceButtons();
   }
 
   async onPrevBtnClick(): Promise<void> {
@@ -197,11 +199,20 @@ export class Garage extends Component {
     } else if (store.garagePage === Math.ceil(store.carsNumber / CARS_PAGE_LIMIT)) {
       this.nextBtn.element.setAttribute('disabled', '');
     }
+
+    this.controlRaceButtons();
   }
 
-  onRaceBtnClick(): void {
+  async onRaceBtnClick(): Promise<void> {
     this.raceBtn.element.setAttribute('disabled', '');
-    race();
+    const winner = await race();
+
+    if (winner) {
+      const { id, time } = winner;
+      const winnerTime = +(time / 1000).toFixed(3);
+      saveWinner(id, winnerTime);
+    }
+
     this.resetBtn.element.removeAttribute('disabled');
   }
 
@@ -209,5 +220,10 @@ export class Garage extends Component {
     this.resetBtn.element.setAttribute('disabled', '');
     reset();
     this.raceBtn.element.removeAttribute('disabled');
+  }
+
+  controlRaceButtons(): void {
+    this.raceBtn.element.removeAttribute('disabled');
+    this.resetBtn.element.setAttribute('disabled', '');
   }
 }
