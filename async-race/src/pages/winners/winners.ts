@@ -1,7 +1,10 @@
+import './winners.scss';
 import { CarImage } from '../../components/car-image/car-image';
 import { Component } from '../../components/component';
 import { RootElement } from '../../models/root-element-model';
-import { store } from '../../store';
+import { store, updateWinnersState } from '../../store';
+
+const WINNERS_PAGE_LIMIT = 10;
 
 export class Winners extends Component {
   title: Component;
@@ -38,10 +41,28 @@ export class Winners extends Component {
 
   car?: Component;
 
+  pageControls: Component;
+
+  prevBtn: Component;
+
+  nextBtn: Component;
+
   constructor(parentNode: RootElement) {
-    super(parentNode, 'div', ['page', 'winners']);
-    this.title = new Component(this.element, 'h1', ['garage__title'], `Winners (${store.winnersNumber})`);
-    this.pageCount = new Component(this.element, 'p', ['garage__page-count'], `Page №${store.winnersPage}`);
+    super(parentNode, 'div', ['winners']);
+    this.title = new Component(this.element, 'h1', ['winners__title'], `Winners (${store.winnersNumber})`);
+    this.pageControls = new Component(this.element, 'div', ['winners__page-controls']);
+    this.pageCount = new Component(
+      this.pageControls.element,
+      'p',
+      ['winners__page-count'],
+      `Page №${store.winnersPage}`
+    );
+    this.prevBtn = new Component(this.pageControls.element, 'button', ['btn', 'winners__prev-btn'], 'Prev', [
+      ['type', 'button'],
+    ]);
+    this.nextBtn = new Component(this.pageControls.element, 'button', ['btn', 'winners__next-btn'], 'Next', [
+      ['type', 'button'],
+    ]);
     this.table = new Component(this.element, 'table', ['winners__table']);
     this.tableHead = new Component(this.table.element, 'thead');
     this.numberTh = new Component(this.tableHead.element, 'th', [], 'Number');
@@ -51,18 +72,58 @@ export class Winners extends Component {
     this.timeTh = new Component(this.tableHead.element, 'th', [], 'Best time (seconds)');
     this.tableBody = new Component(this.table.element, 'tbody');
     this.addWinners();
+    this.prevBtn.element.addEventListener('click', () => this.onPrevBtnClick());
+    this.nextBtn.element.addEventListener('click', () => this.onNextBtnClick());
+    this.controlPaginationButtons();
   }
 
   addWinners(): void {
     const { winners } = store;
     winners.forEach((winner, index) => {
       this.row = new Component(this.tableBody.element, 'tr');
-      this.number = new Component(this.row.element, 'td', [], `${index + 1}`);
+      this.number = new Component(
+        this.row.element,
+        'td',
+        [],
+        `${(store.winnersPage - 1) * WINNERS_PAGE_LIMIT + (index + 1)}`
+      );
       this.car = new Component(this.row.element, 'td');
       this.carImage = new CarImage(this.car.element, `${winner.color}`, ['winners__image']);
       this.name = new Component(this.row.element, 'td', [], `${winner.name}`);
       this.wins = new Component(this.row.element, 'td', [], `${winner.wins}`);
       this.bestTime = new Component(this.row.element, 'td', [], `${winner.time}`);
     });
+  }
+
+  async onNextBtnClick(): Promise<void> {
+    store.winnersPage += 1;
+    await updateWinnersState();
+    this.pageCount.element.textContent = `Page №${store.winnersPage}`;
+    this.tableBody.element.innerHTML = '';
+    this.addWinners();
+    this.controlPaginationButtons();
+  }
+
+  async onPrevBtnClick(): Promise<void> {
+    store.winnersPage -= 1;
+    await updateWinnersState();
+    this.pageCount.element.textContent = `Page №${store.winnersPage}`;
+    this.tableBody.element.innerHTML = '';
+    this.addWinners();
+    this.controlPaginationButtons();
+  }
+
+  controlPaginationButtons(): void {
+    if (store.winnersPage * WINNERS_PAGE_LIMIT >= store.winnersNumber) {
+      this.nextBtn.element.setAttribute('disabled', '');
+    } else {
+      this.nextBtn.element.removeAttribute('disabled');
+    }
+
+    if (store.winnersPage === 1) {
+      this.prevBtn.element.setAttribute('disabled', '');
+    } else {
+      this.prevBtn.element.removeAttribute('disabled');
+    }
   }
 }
