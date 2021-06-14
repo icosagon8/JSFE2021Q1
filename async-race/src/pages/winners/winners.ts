@@ -69,7 +69,7 @@ export class Winners extends Component {
     this.carTh = new Component(this.tableHead.element, 'th', [], 'Car');
     this.nameTh = new Component(this.tableHead.element, 'th', [], 'Name');
     this.winsTh = new Component(this.tableHead.element, 'th', [], 'Wins');
-    this.timeTh = new Component(this.tableHead.element, 'th', [], 'Best time (seconds)');
+    this.timeTh = new Component(this.tableHead.element, 'th', [], 'Best time (s)');
     this.tableBody = new Component(this.table.element, 'tbody');
     this.addWinners();
     this.prevBtn.element.addEventListener('click', () => this.onPrevBtnClick());
