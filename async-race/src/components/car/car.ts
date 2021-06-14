@@ -2,7 +2,7 @@ import './car.scss';
 import { Component } from '../component';
 import { CarImage } from '../car-image/car-image';
 import { CarModel } from '../../models/car-model';
-import { deleteCar, getCar } from '../../api';
+import { deleteCar, deleteWinner, getCar } from '../../api';
 import { store, updateGarageState } from '../../store';
 import { RootElement } from '../../models/root-element-model';
 import { start, stop } from '../../utils/utils';
@@ -78,6 +78,7 @@ export class Car extends Component {
   async onRemoveBtnClick(): Promise<void> {
     const id = Number(this.element.dataset.carId);
     await deleteCar(id);
+    await deleteWinner(id);
     await updateGarageState();
     const carsField: RootElement = document.querySelector('.garage__cars');
 
