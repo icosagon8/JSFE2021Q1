@@ -8,4 +8,19 @@
   &__page-count {
     font-size: 1.2rem;
   }
+
+  &__table {
+    border-collapse: collapse;
+    color: var(--table-color);
+    border: 0.05rem solid var(--table-color);
+
+    th {
+      background-color: var(--table-heading-bg-color);
+      padding: 0.25rem;
+    }
+
+    td {
+      padding: 0.25rem;
+    }
+  }
 }
