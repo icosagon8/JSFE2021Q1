@@ -72,15 +72,15 @@ export const start = async (id: number): Promise<CarStartModel> => {
   return { id, time, driveRequest };
 };
 
-export const defineWinner = async (prom: Promise<CarStartModel>[]): Promise<CarStartModel> => {
+export const defineWinner = async (prom: Promise<CarStartModel>[]): Promise<CarStartModel | null> => {
   const cars = await Promise.all(prom);
   const finishingCars = cars.filter((car) => car.driveRequest.success);
-  const winner = finishingCars.reduce((a, b) => (a.time < b.time ? a : b));
+  const winner = finishingCars.length > 0 ? finishingCars.reduce((a, b) => (a.time < b.time ? a : b)) : null;
 
   return winner;
 };
 
-export const race = async (): Promise<CarStartModel> => {
+export const race = async (): Promise<CarStartModel | null> => {
   const { cars } = store;
   const carsPromises = cars.map(async (car) => start(car.id));
   const raceWinner = await defineWinner(carsPromises);
