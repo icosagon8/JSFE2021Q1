@@ -21,3 +21,9 @@ export const updateGarageState = async (): Promise<void> => {
   store.cars = carsArray;
   store.carsNumber = carsCount;
 };
+
+export const updateWinnersState = async (): Promise<void> => {
+  const { winnersWithCars, count } = await getWinners(store.winnersPage);
+  store.winners = winnersWithCars;
+  store.winnersNumber = count;
+};
