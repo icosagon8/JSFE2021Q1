@@ -96,7 +96,7 @@ export const driveCar = async (id: number): Promise<CarStatusModel> => {
 
 export const getWinners = async (
   page: number,
-  limit = 7,
+  limit = 10,
   sort: WinnerSort = 'time',
   order: WinnerOrder = 'ASC'
 ): Promise<WinnersModel> => {
@@ -129,7 +129,7 @@ export const getWinnerStatus = async (id: number): Promise<number> => {
   return response.status;
 };
 
-export const createWinner = async (body: WinnerWriteModel): Promise<WinnerWriteModel> => {
+export const createWinner = async (body: WinnerModel): Promise<WinnerModel> => {
   const response = await fetch(`${baseUrl}${paths.winners}`, {
     method: 'POST',
     headers: {
@@ -179,6 +179,7 @@ export const saveWinner = async (id: number, time: number): Promise<void> => {
     });
   } else if (winnerStatus === 404) {
     await createWinner({
+      id,
       wins: 1,
       time,
     });
