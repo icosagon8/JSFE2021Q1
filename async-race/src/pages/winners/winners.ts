@@ -3,6 +3,7 @@ import { CarImage } from '../../components/car-image/car-image';
 import { Component } from '../../components/component';
 import { RootElement } from '../../models/root-element-model';
 import { store, updateWinnersState } from '../../store';
+import { controlSortTriangle, sortTable } from '../../utils/utils';
 
 const WINNERS_PAGE_LIMIT = 10;
 
@@ -68,12 +69,14 @@ export class Winners extends Component {
     this.numberTh = new Component(this.tableHead.element, 'th', [], 'Number');
     this.carTh = new Component(this.tableHead.element, 'th', [], 'Car');
     this.nameTh = new Component(this.tableHead.element, 'th', [], 'Name');
-    this.winsTh = new Component(this.tableHead.element, 'th', [], 'Wins');
-    this.timeTh = new Component(this.tableHead.element, 'th', [], 'Best time (s)');
+    this.winsTh = new Component(this.tableHead.element, 'th', ['winners__wins'], 'Wins');
+    this.timeTh = new Component(this.tableHead.element, 'th', ['winners__time'], 'Best time (s)');
     this.tableBody = new Component(this.table.element, 'tbody');
     this.addWinners();
     this.prevBtn.element.addEventListener('click', () => this.onPrevBtnClick());
     this.nextBtn.element.addEventListener('click', () => this.onNextBtnClick());
+    this.winsTh.element.addEventListener('click', () => this.onWinsThClick());
+    this.timeTh.element.addEventListener('click', () => this.onTimeThClick());
     this.controlPaginationButtons();
   }
 
@@ -125,5 +128,19 @@ export class Winners extends Component {
     } else {
       this.prevBtn.element.removeAttribute('disabled');
     }
+  }
+
+  async onWinsThClick(): Promise<void> {
+    await sortTable('wins');
+    controlSortTriangle(this.winsTh.element);
+    this.tableBody.element.innerHTML = '';
+    this.addWinners();
+  }
+
+  async onTimeThClick(): Promise<void> {
+    await sortTable('time');
+    controlSortTriangle(this.timeTh.element);
+    this.tableBody.element.innerHTML = '';
+    this.addWinners();
   }
 }

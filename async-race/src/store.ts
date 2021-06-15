@@ -14,6 +14,8 @@ export const store: StoreModel = {
   winnersPage: 1,
   selectedCar: null,
   carsRequestId: {},
+  sort: 'time',
+  order: 'ASC',
 };
 
 export const updateGarageState = async (): Promise<void> => {
@@ -23,7 +25,7 @@ export const updateGarageState = async (): Promise<void> => {
 };
 
 export const updateWinnersState = async (): Promise<void> => {
-  const { winnersWithCars, count } = await getWinners(store.winnersPage);
+  const { winnersWithCars, count } = await getWinners(store.winnersPage, store.sort, store.order);
   store.winners = winnersWithCars;
   store.winnersNumber = count;
 };

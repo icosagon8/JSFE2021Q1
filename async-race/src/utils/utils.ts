@@ -2,7 +2,8 @@ import { driveCar, startEngine, stopEngine } from '../api';
 import { CarStartModel } from '../models/car-start-model';
 import { CarWriteModel } from '../models/car-write-model';
 import { RequestFrame } from '../models/request-frame-model';
-import { store } from '../store';
+import { WinnerSort } from '../models/winner-sort-model';
+import { store, updateWinnersState } from '../store';
 
 const getRandom = (array: string[] | string) => {
   return array[Math.floor(Math.random() * array.length)];
@@ -103,4 +104,20 @@ export const stop = async (id: number): Promise<void> => {
 export const reset = (): void => {
   const { cars } = store;
   cars.map((car) => stop(car.id));
+};
+
+export const sortTable = async (sort: WinnerSort): Promise<void> => {
+  store.sort = sort;
+  store.order = store.order === 'ASC' ? 'DESC' : 'ASC';
+  await updateWinnersState();
+};
+
+export const controlSortTriangle = (tableHeaderCell: HTMLElement): void => {
+  if (store.order === 'ASC') {
+    tableHeaderCell.classList.remove('sorted');
+    tableHeaderCell.classList.add('sorted-reverse');
+  } else {
+    tableHeaderCell.classList.add('sorted');
+    tableHeaderCell.classList.remove('sorted-reverse');
+  }
 };

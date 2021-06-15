@@ -96,9 +96,9 @@ export const driveCar = async (id: number): Promise<CarStatusModel> => {
 
 export const getWinners = async (
   page: number,
-  limit = 10,
   sort: WinnerSort = 'time',
-  order: WinnerOrder = 'ASC'
+  order: WinnerOrder = 'ASC',
+  limit = 10
 ): Promise<WinnersModel> => {
   const response = await fetch(
     `${baseUrl}${paths.winners}?_page=${page}&_limit=${limit}&_sort=${sort}&_order=${order}`

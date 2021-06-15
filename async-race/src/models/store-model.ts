@@ -1,6 +1,8 @@
 import { CarModel } from './car-model';
 import { RequestFrame } from './request-frame-model';
 import { WinnerModel } from './winner-model';
+import { WinnerOrder } from './winner-order-model';
+import { WinnerSort } from './winner-sort-model';
 
 export interface StoreModel {
   cars: CarModel[];
@@ -11,4 +13,6 @@ export interface StoreModel {
   winnersPage: number;
   selectedCar: CarModel | null;
   carsRequestId: Record<string, RequestFrame>;
+  sort: WinnerSort;
+  order: WinnerOrder;
 }

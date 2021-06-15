@@ -13,14 +13,51 @@
     border-collapse: collapse;
     color: var(--table-color);
     border: 0.05rem solid var(--table-color);
+    text-align: center;
 
     th {
       background-color: var(--table-heading-bg-color);
-      padding: 0.25rem;
+      padding: 0.25rem 1rem;
     }
 
     td {
-      padding: 0.25rem;
+      padding: 0.25rem 0.5rem;
+    }
+  }
+
+  &__wins,
+  &__time {
+    cursor: pointer;
+    position: relative;
+    user-select: none;
+  }
+
+  .sorted,
+  .sorted-reverse {
+    &::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      top: 50%;
+      right: 0.25rem;
+      transform: translateY(-50%);
+    }
+  }
+
+
+  .sorted {
+    &::after {
+      border-width: 0.5rem 0.25rem 0 0.25rem;
+      border-color: var(--table-color) transparent transparent transparent;
+    }
+  }
+
+  .sorted-reverse {
+    &::after {
+      border-width: 0 0.25rem 0.5rem 0.25rem;
+      border-color: transparent transparent var(--table-color) transparent;
     }
   }
 }
