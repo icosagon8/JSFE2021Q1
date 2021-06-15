@@ -4,4 +4,5 @@ export interface CarStartModel {
   id: number;
   time: number;
   driveRequest: CarStatusModel;
+  name: string;
 }

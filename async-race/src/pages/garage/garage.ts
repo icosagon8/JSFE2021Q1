@@ -6,8 +6,11 @@ import { createCar, saveWinner, updateCar } from '../../api';
 import { Car } from '../../components/car/car';
 import { getRandomCars, race, reset } from '../../utils/utils';
 import { RequestFrame } from '../../models/request-frame-model';
+import { Popup } from '../../components/popup/popup';
 
 const CARS_PAGE_LIMIT = 7;
+const POPUP_SHOW_TIME = 5000;
+
 export class Garage extends Component {
   title: Component;
 
@@ -48,6 +51,8 @@ export class Garage extends Component {
   nextBtn: Component;
 
   requestFrame: RequestFrame;
+
+  popup?: Popup;
 
   constructor(parentNode: RootElement) {
     super(parentNode, 'div', ['garage']);
@@ -208,9 +213,14 @@ export class Garage extends Component {
     const winner = await race();
 
     if (winner) {
-      const { id, time } = winner;
+      const { id, time, name } = winner;
       const winnerTime = +(time / 1000).toFixed(3);
       saveWinner(id, winnerTime);
+      this.popup = new Popup(this.element, `The winner is ${name}! Time is ${winnerTime} seconds.`);
+      this.popup.showPopup();
+      setTimeout(() => {
+        if (this.popup) this.popup.closePopup();
+      }, POPUP_SHOW_TIME);
     }
 
     this.resetBtn.element.removeAttribute('disabled');

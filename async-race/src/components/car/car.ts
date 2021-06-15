@@ -95,7 +95,7 @@ export class Car extends Component {
     this.startBtn.element.setAttribute('disabled', '');
     this.stopBtn.element.removeAttribute('disabled');
     const id = Number(this.element.dataset.carId);
-    start(id);
+    start(id, '');
   }
 
   async onStopBtnClick(): Promise<void> {
