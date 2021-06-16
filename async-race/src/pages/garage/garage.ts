@@ -161,7 +161,7 @@ export class Garage extends Component {
   }
 
   async onGenerateBtnClick(): Promise<void> {
-    const CARS_NUMBER = 1;
+    const CARS_NUMBER = 100;
     const cars = getRandomCars(CARS_NUMBER);
     await Promise.all(cars.map((car) => createCar(car)));
     await updateGarageState();
