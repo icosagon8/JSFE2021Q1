@@ -38,10 +38,10 @@ export class Page extends Component {
   async onWinnersBtnClick(): Promise<void> {
     this.winners.element.style.display = 'block';
     this.garage.element.style.display = 'none';
+    this.garageBtn.element.removeAttribute('disabled');
+    this.winnersBtn.element.setAttribute('disabled', '');
     this.winners.element.remove();
     await updateWinnersState();
     this.winners = new Winners(this.element);
-    this.garageBtn.element.removeAttribute('disabled');
-    this.winnersBtn.element.setAttribute('disabled', '');
   }
 }

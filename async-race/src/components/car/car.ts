@@ -5,7 +5,7 @@ import { CarModel } from '../../models/car-model';
 import { deleteCar, deleteWinner, getCar } from '../../api';
 import { store, updateGarageState } from '../../store';
 import { RootElement } from '../../models/root-element-model';
-import { start, stop } from '../../utils/utils';
+import { controlNextBtn, start, stop } from '../../ui';
 
 export class Car extends Component {
   optionsWrapper: Component;
@@ -80,6 +80,7 @@ export class Car extends Component {
     await deleteCar(id);
     await deleteWinner(id);
     await updateGarageState();
+    controlNextBtn();
     const carsField: RootElement = document.querySelector('.garage__cars');
 
     if (carsField) {
@@ -104,6 +105,7 @@ export class Car extends Component {
   }
 
   static createCar(parent: HTMLElement): void {
+    parent.innerHTML = '';
     store.cars.forEach((car: CarModel) => {
       const newCar = new this(car);
       parent.appendChild(newCar.element);

@@ -10,11 +10,11 @@ export class Popup extends Component {
     this.popup = new Component(this.element, 'div', ['popup'], content);
   }
 
-  showPopup(): void {
+  show(): void {
     this.element.classList.add('popup-overlay--active');
   }
 
-  closePopup(): void {
+  close(): void {
     this.element.classList.remove('popup-overlay--active');
   }
 }
