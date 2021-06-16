@@ -66,7 +66,7 @@ export class Winners extends Component {
     ]);
     this.table = new Component(this.element, 'table', ['winners__table']);
     this.tableHead = new Component(this.table.element, 'thead');
-    this.numberTh = new Component(this.tableHead.element, 'th', [], 'Number');
+    this.numberTh = new Component(this.tableHead.element, 'th', [], '№');
     this.carTh = new Component(this.tableHead.element, 'th', [], 'Car');
     this.nameTh = new Component(this.tableHead.element, 'th', [], 'Name');
     this.winsTh = new Component(this.tableHead.element, 'th', ['winners__wins'], 'Wins');
