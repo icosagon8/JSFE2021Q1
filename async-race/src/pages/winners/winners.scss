@@ -1,11 +1,17 @@
 .winners {
+  &__title {
+    font-size: 1.5rem;
+  }
+
   &__page-controls {
     display: flex;
     gap: 0.5rem;
     align-items: center;
+    margin-bottom: 1rem;
   }
 
   &__page-count {
+    margin: 0;
     font-size: 1.2rem;
   }
 

@@ -57,6 +57,15 @@ export class Garage extends Component {
 
   constructor(parentNode: RootElement) {
     super(parentNode, 'div', ['garage']);
+    this.title = new Component(this.element, 'h1', ['garage__title'], `Garage (${store.carsNumber})`);
+    this.pageControls = new Component(this.element, 'div', ['garage__page-controls']);
+    this.pageCount = new Component(this.pageControls.element, 'p', ['garage__page-count'], `Page №${store.garagePage}`);
+    this.prevBtn = new Component(this.pageControls.element, 'button', ['btn', 'garage__prev-btn'], 'Prev', [
+      ['type', 'button'],
+    ]);
+    this.nextBtn = new Component(this.pageControls.element, 'button', ['btn', 'garage__next-btn'], 'Next', [
+      ['type', 'button'],
+    ]);
     this.Controls = new Component(this.element, 'div', ['garage__controls']);
     this.carCreateControls = new Component(this.Controls.element, 'div', ['garage__group']);
     this.carNameCreateInput = new Component(this.carCreateControls.element, 'input', ['garage__name-input'], '', [
@@ -100,15 +109,6 @@ export class Garage extends Component {
       ['btn', 'garage__btn', 'garage__btn--generate'],
       'Generate cars'
     );
-    this.title = new Component(this.element, 'h1', ['garage__title'], `Garage (${store.carsNumber})`);
-    this.pageControls = new Component(this.element, 'div', ['garage__page-controls']);
-    this.pageCount = new Component(this.pageControls.element, 'p', ['garage__page-count'], `Page №${store.garagePage}`);
-    this.prevBtn = new Component(this.pageControls.element, 'button', ['btn', 'garage__prev-btn'], 'Prev', [
-      ['type', 'button'],
-    ]);
-    this.nextBtn = new Component(this.pageControls.element, 'button', ['btn', 'garage__next-btn'], 'Next', [
-      ['type', 'button'],
-    ]);
     this.carsField = new Component(this.element, 'ul', ['garage__cars', 'cars']);
     Car.createCar(this.carsField.element);
     this.controlPaginationButtons();
