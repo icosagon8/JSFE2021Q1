@@ -1,0 +1,237 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>reveal.js</title>
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/solarized.css">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/lioshi.css">
+	<style>
+		p {
+			font-size: 25px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section data-background-image="./dist/images/typescript.jpg"></section>
+			<section>
+				<section>
+					<h2>1. Static typing</h2>
+					<img src="./dist/images/static-types.png" width="400">
+				</section>
+				<section data-auto-animate>
+					<h2>1. Static typing</h2>
+					<pre data-id="code-animation">
+						<code data-trim data-line-numbers>
+							function greet(person, date) {
+								console.log(`Hello ${person}, today is ${date}!`);
+							}
+						
+							greet("Brendan", new Date());
+						</code>
+					</pre>
+				</section>
+				<section data-auto-animate>
+					<h2>1. Static typing</h2>
+					<pre data-id="code-animation">
+						<code data-trim data-line-numbers="1">
+							function greet(person: string, date: Date) {
+								console.log(`Hello ${person}, today is ${date}!`);
+							}
+						
+							greet("Brendan", new Date());
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h2>1. Static typing</h2>
+					<pre class="fragment fade-out">
+						<code data-trim data-noescape >
+							let message;
+
+							message();
+						</code>
+					</pre>
+					<img class="fragment fade-up" src="./dist/images/undefined.jpg" width='600'>
+				</section>
+			</section>
+			<section>
+				<section data-auto-animate>
+					<h2>2. Type inference</h2>
+					<pre data-id="code-animation">
+						<code data-trim data-line-numbers>
+							function add(left: number, right: number) {
+								return left + right;
+							}
+						</code>
+					</pre>
+				</section>
+				<section data-auto-animate>
+					<h2>2. Type inference</h2>
+					<pre data-id="code-animation">
+						<code data-trim data-line-numbers="1">
+							function add(left: number, right: number): number {
+								return left + right;
+							}
+						</code>
+					</pre>
+				</section>
+			</section>
+			<section>
+				<section data-auto-animate>
+					<h2>3. Type erasure</h2>
+					<pre data-id="code-animation" style='font-size: 0.47em;'>
+						<code data-trim data-line-numbers="1">
+							function greet(person: string, date: Date) {
+								console.log(`Hello ${person}, today is ${date}!`);
+							}
+						
+							greet("Brendan", new Date());
+						</code>
+					</pre>
+				</section>
+				<section data-auto-animate>
+					<h2>3. Type erasure</h2>
+					<pre data-id="code-animation" style='font-size: 0.47em;'>
+						<code data-trim data-line-numbers="2">
+							"use strict";
+							function greet(person, date) {
+								console.log(`Hello ${person}, today is ${date}!`);
+							}
+					
+							greet("Brendan", new Date());
+						</code>
+					</pre>
+				</section>
+			</section>
+			<section>
+				<h2>4. Types of TypeScript</h2>
+				<img src="./dist/images/types-in-typescript.png" width="700">
+			</section>
+			<section>
+				<section>
+					<h2>5. Union Types / Type Aliases</h2>
+					<pre>
+						<code data-trim data-noescape>
+							function printId(id: number | string) {
+								if (typeof id === "string") {
+									console.log(id.toUpperCase());
+								} else {
+									console.log(id);
+								}
+							}
+						</code>
+					</pre>
+				</section>
+				<section>
+					<h2>5. Union Types / Type Aliases</h2>
+					<pre>
+						<code data-trim data-noescape>
+							type Point = {
+								x: number;
+								y: number;
+							};
+
+							function printCoord(pt: Point) {
+								console.log("The x value is " + pt.x);
+								console.log("The y value is " + pt.y);
+							}
+							
+							printCoord({ x: 100, y: 100 });
+						</code>
+					</pre>
+				</section>
+			</section>
+			<section>
+				<h2>6. Interfaces</h2>
+				<pre>
+					<code data-trim data-noescape data-line-numbers="1-7|9-23">
+						// define `Person` interface
+						interface Person {
+							firstName: string;
+							lastName: string;
+							age: number;
+							getSalary: (base: number) => number;
+						};
+
+						// define an object of type `Person`
+						let ross: Person = {
+							firstName: 'Ross',
+							lastName: 'Geller',
+							age: 32,
+							getSalary: ( base: number ) => base * 12
+						};
+
+						// function that returns info of a `Person` object
+						let getPersonInfo = ( person: Person ): string => {
+							return `Hello, ${ person.firstName } ${ person.lastName}`;
+						};
+
+						// get person information
+						console.log( getPersonInfo( ross ) ):
+					</code>
+				</pre>
+			</section>
+			<section>
+				<h2>7. Enums</h2>
+				<pre>
+					<code data-trim data-noescape>
+						enum PrintMedia {
+							Newspaper = "NEWSPAPER",
+							Newsletter = "NEWSLETTER",
+							Magazine = "MAGAZINE",
+							Book = "BOOK"
+						}
+
+					// Access String Enum 
+					PrintMedia.Newspaper; //returns NEWSPAPER
+					</code>
+				</pre>
+			</section>
+			<section>
+				<h2>8. Generics</h2>
+				<pre>
+					<code data-trim data-noescape>
+						<script type="text/template">
+							function fun<T>(args:T):T {
+								return args;
+							}
+						
+							let result = fun<string>("Hello World");
+							let result2 = fun<number>(200);
+						</script>
+					</code>
+				</pre>
+			</section>
+		</div>
+	</div>
+
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+			slideNumber: 'c/t',
+		});
+	</script>
+</body>
+
+</html>
