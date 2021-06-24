@@ -1,0 +1,74 @@
+.switch {
+  position: relative;
+
+  &__field {
+    display: none;
+
+    &:checked + .switch__label {
+      .switch__slider {
+        left: 0.25rem;
+      }
+
+      .switch__text::before {
+        opacity: 0;
+      }
+
+      .switch__text::after {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__label {
+    display: block;
+    width: 3.5rem;
+    height: 1.75rem;
+    border-radius: 0.85rem;
+    background-color: var(--switch-bg-color);
+    cursor: pointer;
+  }
+
+  &__slider {
+    width: 1.1rem;
+    height: 1.1rem;
+    position: absolute;
+    top: 50%;
+    left: 2.1rem;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    background-color: var(--switch-slider-bg-color);
+    box-shadow: 0 0.15rem 0.35rem rgba(0, 0, 0, 0.5);
+    transition: 1s;
+  }
+
+  &__text {
+    display: block;
+    height: inherit;
+    position: relative;
+    font-weight: bold;
+    font-size: 0.5rem;
+    line-height: 0.6rem;
+    color: var(--switch-text-color);
+    text-transform: uppercase;
+    transition: 0.5s;
+
+    &::before, &::after {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: inherit;
+    }
+
+    &::before {
+      content: "Train";
+      left: 0.5rem;
+      opacity: 1;
+    }
+
+    &::after {
+      content: 'Play';
+      right: 0.5rem;
+      opacity: 0;
+    }
+  }
+}
