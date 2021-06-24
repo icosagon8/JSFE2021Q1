@@ -5,6 +5,8 @@
     display: none;
 
     &:checked + .switch__label {
+      background-color: var(--switch-bg-color-checked);
+
       .switch__slider {
         left: 0.25rem;
       }
@@ -26,6 +28,7 @@
     border-radius: 0.85rem;
     background-color: var(--switch-bg-color);
     cursor: pointer;
+    transition: background-color 1s;
   }
 
   &__slider {
@@ -52,7 +55,8 @@
     text-transform: uppercase;
     transition: 0.5s;
 
-    &::before, &::after {
+    &::before,
+    &::after {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
