@@ -2,7 +2,10 @@ import { CardsDataModel } from '../models/cards-data-model';
 
 export const cards: CardsDataModel[] = [
   {
-    category: 'Action (set A)',
+    category: {
+      name: 'Action (set A)',
+      image: 'images/dance.jpg',
+    },
     words: [
       {
         word: 'cry',
@@ -55,7 +58,10 @@ export const cards: CardsDataModel[] = [
     ],
   },
   {
-    category: 'Action (set B)',
+    category: {
+      name: 'Action (set B)',
+      image: 'images/swim.jpg',
+    },
     words: [
       {
         word: 'open',
@@ -108,7 +114,10 @@ export const cards: CardsDataModel[] = [
     ],
   },
   {
-    category: 'Animal (set A)',
+    category: {
+      name: 'Animal (set A)',
+      image: 'images/cat.jpg',
+    },
     words: [
       {
         word: 'cat',
@@ -161,7 +170,10 @@ export const cards: CardsDataModel[] = [
     ],
   },
   {
-    category: 'Animal (set B)',
+    category: {
+      name: 'Animal (set B)',
+      image: 'images/bird.jpg',
+    },
     words: [
       {
         word: 'bird',
@@ -214,7 +226,10 @@ export const cards: CardsDataModel[] = [
     ],
   },
   {
-    category: 'Clothes',
+    category: {
+      name: 'Clothes',
+      image: 'images/blouse.jpg',
+    },
     words: [
       {
         word: 'skirt',
@@ -267,7 +282,10 @@ export const cards: CardsDataModel[] = [
     ],
   },
   {
-    category: 'Emotions',
+    category: {
+      name: 'Emotions',
+      image: 'images/smile.jpg',
+    },
     words: [
       {
         word: 'sad',
