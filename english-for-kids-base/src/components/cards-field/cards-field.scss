@@ -1,0 +1,8 @@
+.cards {
+  &__field {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.6rem 1.35rem;
+  }
+}
