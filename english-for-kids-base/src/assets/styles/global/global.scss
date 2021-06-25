@@ -12,6 +12,9 @@ html {
 body {
   margin: 0;
   font-family: 'Roboto', 'Arial', sans-serif;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 img {
@@ -24,4 +27,8 @@ img {
   max-width: 72rem;
   padding: 0 10.8rem;
   margin: 0 auto;
+}
+
+.main {
+  flex-grow: 1;
 }
