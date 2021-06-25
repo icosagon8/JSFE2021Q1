@@ -1,6 +1,7 @@
+import { CategoryDataModel } from './category-data-model';
 import { WordDataModel } from './word-data-model';
 
 export interface CardsDataModel {
-  category: string;
+  category: CategoryDataModel;
   words: WordDataModel[];
 }
