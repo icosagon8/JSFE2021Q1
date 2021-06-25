@@ -1,0 +1,26 @@
+.footer {
+  margin-top: 25px;
+  flex-shrink: 0;
+  width: 100%;
+
+  &__wrapper {
+    padding: 25px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #0099ae;
+  }
+
+  &__course-link {
+    display: inline-block;
+  }
+
+  &__year {
+    font-size: 26px;
+  }
+
+  &__course-logo {
+    width: 100px;
+    height: 37px;
+  }
+}
