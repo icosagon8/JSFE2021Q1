@@ -8,12 +8,12 @@ export class CardCategory extends Component {
 
   title: Component;
 
-  constructor(parentNode: RootElement, item: CategoryDataModel) {
+  constructor(parentNode: RootElement, category: CategoryDataModel) {
     super(parentNode, 'a', ['category-card'], '', [['href', '#/category']]);
     this.image = new Component(this.element, 'img', ['category-card__img'], '', [
-      ['src', item.image],
-      ['alt', item.name],
+      ['src', `./${category.image}`],
+      ['alt', category.name],
     ]);
-    this.title = new Component(this.element, 'h3', ['category-card__title'], item.name);
+    this.title = new Component(this.element, 'h3', ['category-card__title'], category.name);
   }
 }
