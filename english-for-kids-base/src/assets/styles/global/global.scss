@@ -32,3 +32,17 @@ img {
 .main {
   flex-grow: 1;
 }
+
+
+@media (max-width: 1200px) {
+  .container {
+    padding: 0 5.4rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 0.3rem;
+    margin: 0;
+  }
+}
