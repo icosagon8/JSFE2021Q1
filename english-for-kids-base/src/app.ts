@@ -1,10 +1,9 @@
-import { Component } from './components/component';
 import { Header } from './components/header/header';
 import { MainPage } from './pages/main';
 import { Footer } from './components/footer/footer';
 
 export class App {
-  private readonly header: Component;
+  private readonly header: Header;
 
   private readonly page: MainPage;
 
@@ -12,7 +11,7 @@ export class App {
 
   constructor(private readonly rootElement: HTMLElement) {
     this.header = new Header(this.rootElement);
-    this.page = new MainPage(this.rootElement);
+    this.page = new MainPage(this.rootElement, this.header.nav.highlightActiveMenuItem);
     this.footer = new Footer(this.rootElement);
   }
 }

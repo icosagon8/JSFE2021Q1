@@ -7,7 +7,10 @@ import { CardCategory } from '../components/card-category/card-category';
 export class MainPage extends Component {
   cardsField: CardsField;
 
-  constructor(parentNode: RootElement) {
+  constructor(
+    parentNode: RootElement,
+    private readonly headerNavCallback: (menuItemData: HTMLElement | string) => void
+  ) {
     super(parentNode, 'main', ['container', 'main']);
     this.cardsField = new CardsField(this.element, 'categories');
     this.addCategoryCards();
@@ -15,6 +18,8 @@ export class MainPage extends Component {
 
   addCategoryCards(): void {
     const categoryData = getCategoryData();
-    categoryData.forEach((category) => new CardCategory(this.cardsField.container.element, category));
+    categoryData.forEach(
+      (category) => new CardCategory(this.cardsField.container.element, category, this.headerNavCallback)
+    );
   }
 }

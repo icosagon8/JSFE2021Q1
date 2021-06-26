@@ -1,16 +1,22 @@
 .main-nav {
+  width: 2.25rem;
+  height: 1.8rem;
+
   &__toggle {
     display: block;
-    width: 2.25rem;
-    height: 1.8rem;
+    width: inherit;
+    height: inherit;
     padding: 0;
     border: 0;
-    position: relative;
+    position: absolute;
     background-color: transparent;
     cursor: pointer;
-    transition: 0.3s;
+    z-index: 0;
 
     &--open {
+      left: 22.8rem;
+      z-index: 11;
+
       .main-nav__lines {
         background-color: transparent;
 
@@ -36,7 +42,7 @@
     width: 100%;
     height: 0.25rem;
     background-color: var(--main-nav-toggle-bg-color);
-    transition:  top 0.3s, transform 1s, background-color 0.5s;
+    transition: top 0.3s, transform 1s, background-color 0.5s;
     position: relative;
 
     &::before,
@@ -58,6 +64,75 @@
 
     &::after {
       top: 0.6rem;
+    }
+  }
+
+  &__list {
+    padding: 5rem 3rem;
+    position: absolute;
+    list-style: none;
+    margin: 0;
+    left: 0;
+    top: 0;
+    width: 25.5rem;
+    background-image: linear-gradient(#0099ae, #00bf82);
+    height: 100vh;
+    transform: translateX(-100%);
+    transition: transform 1s;
+    z-index: 10;
+
+    &--open {
+      transform: translateX(0);
+    }
+  }
+
+  &__item {
+    font-size: 1.1rem;
+    line-height: 1.3rem;
+    padding: 0.85rem 0;
+
+    &--active {
+      & .main-nav__link {
+        border-bottom: 0.1rem solid #ffffff;
+      }
+    }
+  }
+
+  &__link {
+    color: #ffffff;
+    text-decoration: none;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .main-nav {
+    &__list {
+      width: 20rem;
+    }
+
+    &__toggle {
+      &--open {
+        left: 17.3rem;
+      }
+    }
+  }
+
+  @media (max-width: 640px) {
+    .main-nav {
+      &__list {
+        width: 100%;
+      }
+
+      &__toggle {
+        &--open {
+          right: 0.5rem;
+          left: auto;
+        }
+      }
     }
   }
 }
