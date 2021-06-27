@@ -94,13 +94,7 @@ export class MainNav extends Component {
 
   private addMenuItems(): void {
     routes.forEach((route) => {
-      if (typeof route.name === 'string') {
-        this.createMenuItem(route.name, route.path);
-      } else if (Array.isArray(route.name)) {
-        route.name.forEach((name) => {
-          this.createMenuItem(name, route.path);
-        });
-      }
+      this.createMenuItem(route.name, route.path);
     });
   }
 }
