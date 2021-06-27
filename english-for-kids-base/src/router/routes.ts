@@ -1,8 +1,21 @@
+import { getKebabCaseString } from '../helpers/utils';
+import { RouteModel } from '../models/route-model';
 import { MainPage } from '../pages/main';
+import { Category } from '../pages/category';
 import { getCategoryNames } from '../services/cards-services';
 
-export const routes = [
-  { name: 'Main Page', path: '', component: MainPage },
-  { name: getCategoryNames(), path: 'category', component: MainPage },
-  { name: 'Statistics', path: 'statistics', component: MainPage },
-];
+function getCategoryRoutes() {
+  const categoryNames = getCategoryNames();
+
+  const categoryRoutes = categoryNames.map((categoryName) => {
+    return {
+      name: categoryName,
+      path: getKebabCaseString(categoryName),
+      Page: Category,
+    };
+  });
+
+  return categoryRoutes;
+}
+
+export const routes: RouteModel[] = [{ name: 'Main Page', path: '', Page: MainPage }, ...getCategoryRoutes()];
