@@ -2,6 +2,7 @@ import './card-category.scss';
 import { Component } from '../component';
 import { RootElement } from '../../models/root-element-model';
 import { CategoryDataModel } from '../../models/category-data-model';
+import { getKebabCaseString } from '../../helpers/utils';
 
 export class CardCategory extends Component {
   image: Component;
@@ -13,7 +14,7 @@ export class CardCategory extends Component {
     private readonly category: CategoryDataModel,
     private readonly headerNavCallback: (menuItemData: HTMLElement | string) => void
   ) {
-    super(parentNode, 'a', ['category-card'], '', [['href', '#/category']]);
+    super(parentNode, 'a', ['category-card'], '', [['href', `#/${getKebabCaseString(category.name)}`]]);
     this.image = new Component(this.element, 'img', ['category-card__img'], '', [
       ['src', `./${category.image}`],
       ['alt', category.name],
