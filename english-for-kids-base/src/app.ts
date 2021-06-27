@@ -1,17 +1,22 @@
 import { Header } from './components/header/header';
-import { MainPage } from './pages/main';
 import { Footer } from './components/footer/footer';
+import { Router } from './router/router';
+import { routes } from './router/routes';
+import { Component } from './components/component';
 
 export class App {
   private readonly header: Header;
 
-  private readonly page: MainPage;
+  private readonly main: Component;
+
+  private readonly page: Router;
 
   private readonly footer: Footer;
 
   constructor(private readonly rootElement: HTMLElement) {
     this.header = new Header(this.rootElement);
-    this.page = new MainPage(this.rootElement, this.header.nav.highlightActiveMenuItem);
+    this.main = new Component(this.rootElement, 'main');
+    this.page = new Router(this.main.element, routes, this.header.nav.highlightActiveMenuItem);
     this.footer = new Footer(this.rootElement);
   }
 }
