@@ -1,8 +1,17 @@
 import { cards } from '../data/cards';
-import { CategoryDataModel } from '../models/category-data-model';
+import { WordDataModel } from '../models/word-data-model';
 
-export const getCategoryData = (): CategoryDataModel[] => {
-  return cards.map((item) => item.category);
+export const getCategoryNames = (): string[] => cards.map((item) => item.category);
+
+export const getCategoryImage = (category: string): string => {
+  const categorySet = cards.filter((set) => set.category === category);
+  const categoryImage = categorySet.map((set) => set.image).join('');
+
+  return categoryImage;
 };
 
-export const getCategoryNames = (): string[] => cards.map((item) => item.category.name);
+export const getWordsData = (category: string): WordDataModel[] => {
+  const categorySet = <WordDataModel[]>cards.find((set) => set.category === category)?.words;
+
+  return categorySet;
+};
