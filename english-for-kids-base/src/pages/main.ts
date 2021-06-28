@@ -1,8 +1,8 @@
 import { Component } from '../components/component';
 import { RootElement } from '../models/root-element-model';
 import { CardsField } from '../components/cards-field/cards-field';
-import { getCategoryData } from '../services/cards-services';
 import { CardCategory } from '../components/card-category/card-category';
+import { cards } from '../data/cards';
 
 export class MainPage extends Component {
   cardsField: CardsField;
@@ -17,9 +17,8 @@ export class MainPage extends Component {
   }
 
   addCategoryCards(): void {
-    const categoryData = getCategoryData();
-    categoryData.forEach(
-      (category) => new CardCategory(this.cardsField.container.element, category, this.headerNavCallback)
+    cards.forEach(
+      (categoryData) => new CardCategory(this.cardsField.container.element, categoryData, this.headerNavCallback)
     );
   }
 }
