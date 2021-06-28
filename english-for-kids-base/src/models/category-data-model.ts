@@ -1,4 +1,7 @@
+import { WordDataModel } from './word-data-model';
+
 export interface CategoryDataModel {
-  name: string;
+  category: string;
   image: string;
+  words: WordDataModel[];
 }

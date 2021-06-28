@@ -1,11 +1,9 @@
-import { CardsDataModel } from '../models/cards-data-model';
+import { CategoryDataModel } from '../models/category-data-model';
 
-export const cards: CardsDataModel[] = [
+export const cards: CategoryDataModel[] = [
   {
-    category: {
-      name: 'Action (set A)',
-      image: 'images/dance.jpg',
-    },
+    category: 'Action (set A)',
+    image: 'images/dance.jpg',
     words: [
       {
         word: 'cry',
@@ -58,10 +56,8 @@ export const cards: CardsDataModel[] = [
     ],
   },
   {
-    category: {
-      name: 'Action (set B)',
-      image: 'images/swim.jpg',
-    },
+    category: 'Action (set B)',
+    image: 'images/swim.jpg',
     words: [
       {
         word: 'open',
@@ -114,10 +110,8 @@ export const cards: CardsDataModel[] = [
     ],
   },
   {
-    category: {
-      name: 'Animal (set A)',
-      image: 'images/cat.jpg',
-    },
+    category: 'Animal (set A)',
+    image: 'images/cat.jpg',
     words: [
       {
         word: 'cat',
@@ -170,10 +164,8 @@ export const cards: CardsDataModel[] = [
     ],
   },
   {
-    category: {
-      name: 'Animal (set B)',
-      image: 'images/bird.jpg',
-    },
+    category: 'Animal (set B)',
+    image: 'images/bird.jpg',
     words: [
       {
         word: 'bird',
@@ -226,10 +218,8 @@ export const cards: CardsDataModel[] = [
     ],
   },
   {
-    category: {
-      name: 'Clothes',
-      image: 'images/blouse.jpg',
-    },
+    category: 'Clothes',
+    image: 'images/blouse.jpg',
     words: [
       {
         word: 'skirt',
@@ -282,10 +272,8 @@ export const cards: CardsDataModel[] = [
     ],
   },
   {
-    category: {
-      name: 'Emotions',
-      image: 'images/smile.jpg',
-    },
+    category: 'Emotions',
+    image: 'images/smile.jpg',
     words: [
       {
         word: 'sad',
