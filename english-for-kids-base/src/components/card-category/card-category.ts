@@ -3,6 +3,7 @@ import { Component } from '../component';
 import { RootElement } from '../../models/root-element-model';
 import { CategoryDataModel } from '../../models/category-data-model';
 import { getKebabCaseString } from '../../helpers/utils';
+import { store } from '../../store/store';
 
 export class CardCategory extends Component {
   image: Component;
@@ -11,15 +12,15 @@ export class CardCategory extends Component {
 
   constructor(
     parentNode: RootElement,
-    private readonly category: CategoryDataModel,
+    private readonly categoryData: CategoryDataModel,
     private readonly headerNavCallback: (menuItemData: HTMLElement | string) => void
   ) {
-    super(parentNode, 'a', ['category-card'], '', [['href', `#/${getKebabCaseString(category.name)}`]]);
+    super(parentNode, 'a', ['category-card'], '', [['href', `#/${getKebabCaseString(categoryData.category)}`]]);
     this.image = new Component(this.element, 'img', ['category-card__img'], '', [
-      ['src', `./${category.image}`],
-      ['alt', category.name],
+      ['src', `./${categoryData.image}`],
+      ['alt', categoryData.category],
     ]);
-    this.title = new Component(this.element, 'h3', ['category-card__title'], category.name);
+    this.title = new Component(this.element, 'h3', ['category-card__title'], categoryData.category);
     this.setEventHandlers();
   }
 
@@ -28,6 +29,10 @@ export class CardCategory extends Component {
   }
 
   cardClickHandler = (): void => {
-    this.headerNavCallback(this.category.name);
+    this.headerNavCallback(this.categoryData.category);
+    store.dispatch({
+      type: 'UPDATE_PAGE',
+      text: this.categoryData.category,
+    });
   };
 }

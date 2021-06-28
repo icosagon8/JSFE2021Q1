@@ -2,6 +2,7 @@ import './main-nav.scss';
 import { Component } from '../component';
 import { RootElement } from '../../models/root-element-model';
 import { routes } from '../../router/routes';
+import { store } from '../../store/store';
 
 export class MainNav extends Component {
   toggle: Component;
@@ -71,6 +72,10 @@ export class MainNav extends Component {
     this.highlightActiveMenuItem(<HTMLElement>evt.target);
     this.transformLines();
     this.toggleMenu();
+    store.dispatch({
+      type: 'UPDATE_PAGE',
+      text: (<HTMLElement>evt.target).textContent,
+    });
   };
 
   private highlightInitMenuItem(menuItem: HTMLElement, path: string): void {
