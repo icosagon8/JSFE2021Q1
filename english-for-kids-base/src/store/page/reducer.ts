@@ -1,12 +1,15 @@
 import { Reducer } from 'redux';
-import { InitialStateModel } from '../../models/initial-state-model';
-import { initialState } from '../initialState';
 import { UPDATE_PAGE } from './actions';
+import { PageState } from './types';
 
-export const pageReducer: Reducer<InitialStateModel> = (state = initialState, action) => {
+export const initialState: PageState = {
+  category: 'Main Page',
+};
+
+export const pageReducer: Reducer<PageState> = (state = initialState, action) => {
   switch (action.type) {
     case UPDATE_PAGE:
-      return { ...state, page: action.text };
+      return { ...state, category: action.text };
     default:
       return state;
   }
