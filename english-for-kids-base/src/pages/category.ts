@@ -15,7 +15,7 @@ export class Category extends Component {
   }
 
   addCategoryCards(): void {
-    const category = store.getState().page;
+    const { category } = store.getState().page;
     const wordsData = getWordsData(category);
     wordsData.forEach((wordData) => new CardWord(this.cardsField.container.element, wordData));
   }
