@@ -33,7 +33,12 @@ export class CardWord extends Component {
     this.cardFrontHeader = new Component(this.cardFront.element, 'div', ['card__header'], '', [
       ['style', `background-image: url(./${wordData.image})`],
     ]);
-    this.cardFrontFooter = new Component(this.cardFront.element, 'p', ['card__footer'], wordData.word);
+    this.cardFrontFooter = new Component(
+      this.cardFront.element,
+      'p',
+      ['card__footer', 'card__footer--front'],
+      wordData.word
+    );
     this.flipper = new Component(this.cardFrontFooter.element, 'div', ['card__flipper']);
     this.cardBack = new Component(this.card.element, 'div', ['card__back']);
     this.cardBackHeader = new Component(this.cardBack.element, 'div', ['card__header'], '', [
@@ -55,10 +60,8 @@ export class CardWord extends Component {
     const { isPlayMode } = store.getState().mode;
 
     if (isPlayMode) {
-      this.cardFrontFooter.element.classList.add('card__footer--hidden');
       this.cardFront.element.removeEventListener('click', this.cardClickHandler);
     } else {
-      this.cardFrontFooter.element.classList.remove('card__footer--hidden');
       this.cardFront.element.addEventListener('click', this.cardClickHandler);
     }
   };
@@ -85,7 +88,7 @@ export class CardWord extends Component {
     this.card.element.classList.toggle('card--flipped');
   }
 
-  private playAudio = (): void => {
+  playAudio = (): void => {
     this.audio.play();
   };
 }

@@ -1,0 +1,29 @@
+.category {
+  &__start-btn {
+    display: none;
+  }
+}
+
+body[data-mode="play"] {
+  .category__start-btn {
+    margin: 0 auto;
+    display: block;
+    border: 0;
+    cursor: pointer;
+    background-color: var(--start-btn-bg-color);
+    border-radius: 50%;
+    width: 4.6rem;
+    height: 4.6rem;
+    padding: 0.4rem;
+    box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.25);
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.2rem;
+    line-height: 1.4rem;
+    color: var(--start-btn-color);
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}

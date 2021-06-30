@@ -1,7 +1,7 @@
 import { getKebabCaseString } from '../helpers/utils';
 import { RouteModel } from '../models/route-model';
-import { MainPage } from '../pages/main';
-import { Category } from '../pages/category';
+import { MainPage } from '../pages/main/main';
+import { Category } from '../pages/category/category';
 import { getCategoryNames } from '../services/cards-services';
 
 function getCategoryRoutes() {
