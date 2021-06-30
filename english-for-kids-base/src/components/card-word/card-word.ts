@@ -48,7 +48,7 @@ export class CardWord extends Component {
 
   private setEventHandlers(): void {
     this.flipper.element.addEventListener('click', this.flipperClickHandler);
-    window.addEventListener('hashchange', () => this.unsubscribe());
+    window.addEventListener('hashchange', () => this.unsubscribe(), { once: true });
   }
 
   private toggleCardMode = (): void => {
