@@ -1,5 +1,4 @@
 import { createStore } from 'redux';
-import { initialState } from './initialState';
-import { pageReducer } from './page/reducer';
+import { rootReducer } from './rootReducer';
 
-export const store = createStore(pageReducer, initialState);
+export const store = createStore(rootReducer);
