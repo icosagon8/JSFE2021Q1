@@ -1,11 +1,11 @@
 .category {
-  &__start-btn {
+  &__btn--start {
     display: none;
   }
 }
 
 body[data-mode="play"] {
-  .category__start-btn {
+  .category__btn--start {
     margin: 0 auto;
     display: block;
     border: 0;
@@ -21,9 +21,18 @@ body[data-mode="play"] {
     font-size: 1.2rem;
     line-height: 1.4rem;
     color: var(--start-btn-color);
+    background-position: center;
 
     &:hover {
       opacity: 0.8;
     }
+  }
+
+  .category__btn--repeat {
+    font-size: 0;
+    background-image: url('../../assets/images/replay.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
   }
 }
