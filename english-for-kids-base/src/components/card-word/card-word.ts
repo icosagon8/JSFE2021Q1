@@ -1,7 +1,9 @@
 import './card-word.scss';
+import { Unsubscribe } from 'redux';
 import { Component } from '../component';
 import { RootElement } from '../../models/root-element-model';
 import { WordDataModel } from '../../models/word-data-model';
+import { store } from '../../store/store';
 
 export class CardWord extends Component {
   card: Component;
@@ -22,6 +24,8 @@ export class CardWord extends Component {
 
   audio: HTMLAudioElement;
 
+  unsubscribe: Unsubscribe;
+
   constructor(parentNode: RootElement, wordData: WordDataModel) {
     super(parentNode, 'div', ['card-container']);
     this.card = new Component(this.element, 'div', ['card']);
@@ -29,12 +33,7 @@ export class CardWord extends Component {
     this.cardFrontHeader = new Component(this.cardFront.element, 'div', ['card__header'], '', [
       ['style', `background-image: url(./${wordData.image})`],
     ]);
-    this.cardFrontFooter = new Component(
-      this.cardFront.element,
-      'p',
-      ['card__footer', 'card__footer--front'],
-      wordData.word
-    );
+    this.cardFrontFooter = new Component(this.cardFront.element, 'p', ['card__footer'], wordData.word);
     this.flipper = new Component(this.cardFrontFooter.element, 'div', ['card__flipper']);
     this.cardBack = new Component(this.card.element, 'div', ['card__back']);
     this.cardBackHeader = new Component(this.cardBack.element, 'div', ['card__header'], '', [
@@ -42,13 +41,27 @@ export class CardWord extends Component {
     ]);
     this.cardBackFooter = new Component(this.cardBack.element, 'p', ['card__footer'], wordData.translation);
     this.audio = new Audio(`./${wordData.audioSrc}`);
+    this.toggleCardMode();
+    this.unsubscribe = store.subscribe(this.toggleCardMode);
     this.setEventHandlers();
   }
 
   private setEventHandlers(): void {
     this.flipper.element.addEventListener('click', this.flipperClickHandler);
-    this.cardFront.element.addEventListener('click', this.cardClickHandler);
+    window.addEventListener('hashchange', () => this.unsubscribe());
   }
+
+  private toggleCardMode = (): void => {
+    const { isPlayMode } = store.getState().mode;
+
+    if (isPlayMode) {
+      this.cardFrontFooter.element.classList.add('card__footer--hidden');
+      this.cardFront.element.removeEventListener('click', this.cardClickHandler);
+    } else {
+      this.cardFrontFooter.element.classList.remove('card__footer--hidden');
+      this.cardFront.element.addEventListener('click', this.cardClickHandler);
+    }
+  };
 
   private flipperClickHandler = (evt: Event): void => {
     evt.stopPropagation();

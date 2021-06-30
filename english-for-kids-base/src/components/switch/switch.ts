@@ -1,6 +1,8 @@
 import './switch.scss';
 import { Component } from '../component';
 import { RootElement } from '../../models/root-element-model';
+import { store } from '../../store/store';
+import { setPlayMode } from '../../store/play-mode/actions';
 
 export class Switch extends Component {
   field: Component;
@@ -20,5 +22,10 @@ export class Switch extends Component {
     this.label = new Component(this.element, 'label', ['switch__label'], '', [['for', 'switch-label']]);
     this.text = new Component(this.label.element, 'span', ['switch__text']);
     this.slider = new Component(this.label.element, 'span', ['switch__slider']);
+    this.field.element.addEventListener('change', this.changePlayMode);
   }
+
+  changePlayMode = (): void => {
+    store.dispatch(setPlayMode());
+  };
 }

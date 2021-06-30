@@ -4,6 +4,7 @@ import { RootElement } from '../../models/root-element-model';
 import { CategoryDataModel } from '../../models/category-data-model';
 import { getKebabCaseString } from '../../helpers/utils';
 import { store } from '../../store/store';
+import { updateCategory } from '../../store/page/actions';
 
 export class CardCategory extends Component {
   image: Component;
@@ -30,9 +31,6 @@ export class CardCategory extends Component {
 
   cardClickHandler = (): void => {
     this.headerNavCallback(this.categoryData.category);
-    store.dispatch({
-      type: 'UPDATE_PAGE',
-      text: this.categoryData.category,
-    });
+    store.dispatch(updateCategory(this.categoryData.category));
   };
 }

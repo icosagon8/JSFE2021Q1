@@ -68,5 +68,9 @@
     text-align: center;
     will-change: transform;
     border-top: 0.05rem solid #e6e6e6;
+
+    &--hidden {
+      display: none;
+    }
   }
 }
