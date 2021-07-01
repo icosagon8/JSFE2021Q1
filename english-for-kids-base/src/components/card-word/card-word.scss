@@ -15,6 +15,11 @@
     transform: rotateY(180deg);
   }
 
+  &--inactive {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
   &__flipper {
     width: 0.95rem;
     height: 0.65rem;

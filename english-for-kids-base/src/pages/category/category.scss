@@ -1,38 +1,62 @@
 .category {
+  &__stars {
+    height: 1.7rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    overflow: hidden;
+    gap: 0.3rem;
+  }
+
   &__btn--start {
     display: none;
   }
 }
 
 body[data-mode="play"] {
-  .category__btn--start {
-    margin: 0 auto;
-    display: block;
-    border: 0;
-    cursor: pointer;
-    background-color: var(--start-btn-bg-color);
-    border-radius: 50%;
-    width: 4.6rem;
-    height: 4.6rem;
-    padding: 0.4rem;
-    box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.25);
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 1.2rem;
-    line-height: 1.4rem;
-    color: var(--start-btn-color);
-    background-position: center;
+  .category {
+    &__btn--start {
+      margin: 0 auto;
+      display: block;
+      border: 0;
+      cursor: pointer;
+      background-color: var(--start-btn-bg-color);
+      border-radius: 50%;
+      width: 4.6rem;
+      height: 4.6rem;
+      padding: 0.4rem;
+      box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.25);
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: 1.2rem;
+      line-height: 1.4rem;
+      color: var(--start-btn-color);
+      background-position: center;
 
-    &:hover {
-      opacity: 0.8;
+      &:hover {
+        opacity: 0.8;
+      }
     }
-  }
 
-  .category__btn--repeat {
-    font-size: 0;
-    background-image: url('../../assets/images/replay.svg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 60%;
+    &__btn--repeat {
+      font-size: 0;
+      background-image: url('../../assets/images/replay.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 60%;
+    }
+
+    &__star {
+      width: 1.7rem;
+      height: 1.7rem;
+      background-image: url('../../assets/images/star_correct.svg');
+      background-repeat: no-repeat;
+      background-size: contain;
+      flex-shrink: 0;
+
+      &--error {
+        background-image: url('../../assets/images/star_error.svg');
+      }
+    }
   }
 }
