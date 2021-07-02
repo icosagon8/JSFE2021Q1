@@ -1,0 +1,31 @@
+.statistics {
+  &__table {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+
+    th {
+      background-color: var(--statistics-table-th-bg-color);
+      font-weight: 700;
+      color: var(--statistics-table-th-color);
+      padding: 0.3rem 1rem;
+    }
+
+    tr {
+      background-color: var(--statistics-table-tr-bg-color);
+    }
+
+    tr:nth-child(2n) {
+      background-color: var(--statistics-table-tr-even-bg-color);
+    }
+
+    td {
+      padding: 0.3rem 1rem;
+    }
+  }
+
+  &__table-container {
+    overflow-x: auto;
+  }
+}

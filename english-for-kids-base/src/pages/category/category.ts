@@ -39,7 +39,7 @@ export class Category extends Component {
   result?: Component;
 
   constructor(parentNode: RootElement) {
-    super(parentNode, 'main', ['container', 'main']);
+    super(parentNode, 'main', ['container', 'main', 'main--category']);
     this.cardsField = new CardsField(this.element, 'category');
     this.stars = new Component(null, 'div', ['category__stars']);
     this.cardsField.element.prepend(this.stars.element);

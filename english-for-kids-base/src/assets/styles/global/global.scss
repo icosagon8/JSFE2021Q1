@@ -32,6 +32,11 @@ img {
 .main {
   flex-grow: 1;
   width: 100%;
+  padding-top: 2.7rem;
+
+  &--category {
+    padding-top: 0;
+  }
 }
 
 

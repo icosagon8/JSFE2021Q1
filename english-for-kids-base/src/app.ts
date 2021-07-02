@@ -4,6 +4,7 @@ import { Router } from './router/router';
 import { routes } from './router/routes';
 import { Component } from './components/component';
 import { store } from './store/store';
+import { initLocalStorage } from './local-storage/local-storage';
 
 export class App {
   private readonly header: Header;
@@ -19,6 +20,7 @@ export class App {
     this.main = new Component(this.rootElement, 'main');
     this.page = new Router(this.main.element, routes, this.header.nav.highlightActiveMenuItem);
     this.footer = new Footer(this.rootElement);
+
     store.subscribe(() => {
       const { isPlayMode } = store.getState().mode;
 
@@ -28,5 +30,7 @@ export class App {
         this.rootElement.dataset.mode = 'train';
       }
     });
+
+    initLocalStorage();
   }
 }

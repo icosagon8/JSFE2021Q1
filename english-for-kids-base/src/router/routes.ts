@@ -3,6 +3,7 @@ import { RouteModel } from '../models/route-model';
 import { MainPage } from '../pages/main/main';
 import { Category } from '../pages/category/category';
 import { getCategoryNames } from '../services/cards-services';
+import { Statistics } from '../pages/statistics/statistics';
 
 function getCategoryRoutes() {
   const categoryNames = getCategoryNames();
@@ -18,4 +19,8 @@ function getCategoryRoutes() {
   return categoryRoutes;
 }
 
-export const routes: RouteModel[] = [{ name: 'Main Page', path: '', Page: MainPage }, ...getCategoryRoutes()];
+export const routes: RouteModel[] = [
+  { name: 'Main Page', path: '', Page: MainPage },
+  ...getCategoryRoutes(),
+  { name: 'Statistics', path: 'statistics', Page: Statistics },
+];

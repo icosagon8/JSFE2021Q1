@@ -1,4 +1,3 @@
-import './main.scss';
 import { Component } from '../../components/component';
 import { RootElement } from '../../models/root-element-model';
 import { CardCategory } from '../../components/card-category/card-category';
@@ -13,7 +12,7 @@ export class MainPage extends Component {
     parentNode: RootElement,
     private readonly headerNavCallback: (menuItemData: HTMLElement | string) => void
   ) {
-    super(parentNode, 'main', ['container', 'main', 'main-home']);
+    super(parentNode, 'main', ['container', 'main']);
     this.cardsField = new Component(parentNode, 'section', ['categories', 'cards']);
     this.container = new Component(this.element, 'div', ['cards__field']);
     this.addCategoryCards();
