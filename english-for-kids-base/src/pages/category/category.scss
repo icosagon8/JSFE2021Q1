@@ -58,5 +58,19 @@ body[data-mode="play"] {
         background-image: url('../../assets/images/star_error.svg');
       }
     }
+
+    &__result {
+      max-width: 25rem;
+      height: 100%;
+      background-image: url('../../assets/images/success.jpg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      margin: 0 auto;
+
+      &--failure {
+        background-image: url('../../assets/images/failure.jpg');
+      }
+    }
   }
 }

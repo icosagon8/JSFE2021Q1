@@ -7,6 +7,7 @@ import { RootElement } from '../../models/root-element-model';
 import { getWordsData } from '../../services/cards-services';
 import { store } from '../../store/store';
 import { shuffleArray } from '../../helpers/utils';
+import { PLAY_AUDIO_DELAY, REDIRECT_DELAY } from '../../helpers/constants';
 
 export class Category extends Component {
   cardsField: CardsField;
@@ -25,9 +26,17 @@ export class Category extends Component {
 
   correctAudio: HTMLAudioElement;
 
+  winAudio: HTMLAudioElement;
+
+  loseAudio: HTMLAudioElement;
+
   stars: Component;
 
   star?: Component;
+
+  errors: number;
+
+  result?: Component;
 
   constructor(parentNode: RootElement) {
     super(parentNode, 'main', ['container', 'main']);
@@ -36,8 +45,11 @@ export class Category extends Component {
     this.cardsField.element.prepend(this.stars.element);
     this.button = new Component(this.cardsField.element, 'button', ['category__btn--start'], 'Start');
     this.cards = [];
+    this.errors = 0;
     this.errorAudio = new Audio('./audio/error.mp3');
     this.correctAudio = new Audio('./audio/correct.mp3');
+    this.winAudio = new Audio('./audio/success.mp3');
+    this.loseAudio = new Audio('./audio/failure.mp3');
     this.addCategoryCards();
     this.unsubscribe = store.subscribe(this.controlButtonState);
     this.setEventHandlers();
@@ -48,7 +60,7 @@ export class Category extends Component {
     window.addEventListener('hashchange', () => this.unsubscribe(), { once: true });
   }
 
-  addCategoryCards(): void {
+  private addCategoryCards(): void {
     const { category } = store.getState().page;
     const wordsData = getWordsData(category);
     wordsData.forEach((wordData) => {
@@ -57,11 +69,11 @@ export class Category extends Component {
     });
   }
 
-  repeatAudio = (): void => {
+  private repeatAudio = (): void => {
     this.currentCard?.playAudio();
   };
 
-  startGame = (): void => {
+  private startGame = (): void => {
     this.shuffleCards = shuffleArray<CardWord>(this.cards);
     this.currentCard = this.shuffleCards.pop();
     this.currentCard?.playAudio();
@@ -70,20 +82,37 @@ export class Category extends Component {
     this.cardsField.container.element.addEventListener('click', this.cardFieldClickHandler);
   };
 
-  cardFieldClickHandler = (evt: Event): void => {
-    const card = (<HTMLElement>evt.target).closest('.card');
+  private finishGame = (): void => {
+    this.cardsField.element.remove();
 
+    if (!this.errors) {
+      this.result = new Component(this.element, 'div', ['category__result']);
+      this.winAudio.play();
+    } else {
+      this.result = new Component(this.element, 'div', ['category__result', 'category__result--failure']);
+      this.loseAudio.play();
+    }
+
+    setTimeout(() => {
+      window.location.hash = '#/';
+    }, REDIRECT_DELAY);
+  };
+
+  private cardFieldClickHandler = (evt: Event): void => {
+    const card = (<HTMLElement>evt.target).closest('.card');
     if (!card) return;
+    if (!this.shuffleCards?.length) this.finishGame();
 
     if (card === this.currentCard?.card.element) {
       this.correctAudio.play();
       card.classList.add('card--inactive');
       (() => new Component(this.stars.element, 'div', ['category__star']))();
       this.currentCard = this.shuffleCards?.pop();
-      setTimeout(() => this.currentCard?.playAudio(), 1000);
+      setTimeout(() => this.currentCard?.playAudio(), PLAY_AUDIO_DELAY);
     } else {
       (() => new Component(this.stars.element, 'div', ['category__star', 'category__star--error']))();
       this.errorAudio.play();
+      this.errors++;
     }
   };
 
@@ -92,6 +121,7 @@ export class Category extends Component {
     this.button.element.removeEventListener('click', this.repeatAudio);
     this.cardsField.container.element.removeEventListener('click', this.cardFieldClickHandler);
     this.stars.element.innerHTML = '';
+    this.errors = 0;
 
     this.cards.forEach((cardWord) => {
       cardWord.card.element.classList.remove('card--inactive');
