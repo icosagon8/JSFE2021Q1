@@ -325,4 +325,112 @@ export const cards: CategoryDataModel[] = [
       },
     ],
   },
+  {
+    category: 'Fruits',
+    image: 'images/apricot.jpg',
+    words: [
+      {
+        word: 'apple',
+        translation: 'яблоко',
+        image: 'images/apple.jpg',
+        audioSrc: 'audio/apple.mp3',
+      },
+      {
+        word: 'apricot',
+        translation: 'абрикос',
+        image: 'images/apricot.jpg',
+        audioSrc: 'audio/apricot.mp3',
+      },
+      {
+        word: 'banana',
+        translation: 'банан',
+        image: 'images/banana.jpg',
+        audioSrc: 'audio/banana.mp3',
+      },
+      {
+        word: 'grape',
+        translation: 'виноград',
+        image: 'images/grape.jpg',
+        audioSrc: 'audio/grape.mp3',
+      },
+      {
+        word: 'orange',
+        translation: 'апельсин',
+        image: 'images/orange.jpg',
+        audioSrc: 'audio/orange.mp3',
+      },
+      {
+        word: 'pear',
+        translation: 'груша',
+        image: 'images/pear.jpg',
+        audioSrc: 'audio/pear.mp3',
+      },
+      {
+        word: 'pineapple',
+        translation: 'ананас',
+        image: 'images/pineapple.jpg',
+        audioSrc: 'audio/pineapple.mp3',
+      },
+      {
+        word: 'watermelon',
+        translation: 'арбуз',
+        image: 'images/watermelon.jpg',
+        audioSrc: 'audio/watermelon.mp3',
+      },
+    ],
+  },
+  {
+    category: 'Sports',
+    image: 'images/soccer.jpg',
+    words: [
+      {
+        word: 'cycling',
+        translation: 'велоспорт',
+        image: 'images/cycling.jpg',
+        audioSrc: 'audio/cycling.mp3',
+      },
+      {
+        word: 'golf',
+        translation: 'гольф',
+        image: 'images/golf.jpg',
+        audioSrc: 'audio/golf.mp3',
+      },
+      {
+        word: 'hockey',
+        translation: 'хоккей',
+        image: 'images/hockey.jpg',
+        audioSrc: 'audio/hockey.mp3',
+      },
+      {
+        word: 'karate',
+        translation: 'карате',
+        image: 'images/karate.jpg',
+        audioSrc: 'audio/karate.mp3',
+      },
+      {
+        word: 'skiing',
+        translation: 'катание на лыжах',
+        image: 'images/skiing.jpg',
+        audioSrc: 'audio/skiing.mp3',
+      },
+      {
+        word: 'soccer',
+        translation: 'футбол',
+        image: 'images/soccer.jpg',
+        audioSrc: 'audio/soccer.mp3',
+      },
+      {
+        word: 'swimming',
+        translation: 'плавание',
+        image: 'images/swimming.jpg',
+        audioSrc: 'audio/swimming.mp3',
+      },
+      {
+        word: 'tennis',
+        translation: 'теннис',
+        image: 'images/tennis.jpg',
+        audioSrc: 'audio/tennis.mp3',
+      },
+    ],
+  },
 ];
