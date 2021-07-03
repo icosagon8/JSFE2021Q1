@@ -8,6 +8,7 @@ import { getWordsData } from '../../services/cards-services';
 import { store } from '../../store/store';
 import { shuffleArray } from '../../helpers/utils';
 import { PLAY_AUDIO_DELAY, REDIRECT_DELAY } from '../../helpers/constants';
+import { StatisticsModel } from '../../models/statistics-model';
 
 export class Category extends Component {
   cardsField: CardsField;
@@ -38,12 +39,15 @@ export class Category extends Component {
 
   result?: Component;
 
+  category: string;
+
   constructor(parentNode: RootElement) {
     super(parentNode, 'main', ['container', 'main', 'main--category']);
     this.cardsField = new CardsField(this.element, 'category');
     this.stars = new Component(null, 'div', ['category__stars']);
     this.cardsField.element.prepend(this.stars.element);
     this.button = new Component(this.cardsField.element, 'button', ['category__btn--start'], 'Start');
+    this.category = store.getState().page.category;
     this.cards = [];
     this.errors = 0;
     this.errorAudio = new Audio('./audio/error.mp3');
@@ -61,10 +65,9 @@ export class Category extends Component {
   }
 
   private addCategoryCards(): void {
-    const { category } = store.getState().page;
-    const wordsData = getWordsData(category);
+    const wordsData = getWordsData(this.category);
     wordsData.forEach((wordData) => {
-      const card = new CardWord(this.cardsField.container.element, wordData);
+      const card = new CardWord(this.cardsField.container.element, wordData, this.category);
       this.cards.push(card);
     });
   }
@@ -99,21 +102,32 @@ export class Category extends Component {
   };
 
   private cardFieldClickHandler = (evt: Event): void => {
-    const card = (<HTMLElement>evt.target).closest('.card');
+    const card = <HTMLElement>(<HTMLElement>evt.target).closest('.card');
     if (!card) return;
     if (!this.shuffleCards?.length) this.finishGame();
+
+    const statisticsData = <string>localStorage.getItem('statistics');
+    const statistics: StatisticsModel[] = JSON.parse(statisticsData);
+
+    const currentCardStatistics = <StatisticsModel>(
+      statistics.find((item) => item.category === this.category && item.word === this.currentCard?.word)
+    );
 
     if (card === this.currentCard?.card.element) {
       this.correctAudio.play();
       card.classList.add('card--inactive');
       (() => new Component(this.stars.element, 'div', ['category__star']))();
+      currentCardStatistics.hit++;
       this.currentCard = this.shuffleCards?.pop();
       setTimeout(() => this.currentCard?.playAudio(), PLAY_AUDIO_DELAY);
     } else {
       (() => new Component(this.stars.element, 'div', ['category__star', 'category__star--error']))();
       this.errorAudio.play();
       this.errors++;
+      currentCardStatistics.miss++;
     }
+
+    localStorage.setItem('statistics', JSON.stringify(statistics));
   };
 
   private controlButtonState = (): void => {

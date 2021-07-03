@@ -4,6 +4,7 @@ import { Component } from '../component';
 import { RootElement } from '../../models/root-element-model';
 import { WordDataModel } from '../../models/word-data-model';
 import { store } from '../../store/store';
+import { StatisticsModel } from '../../models/statistics-model';
 
 export class CardWord extends Component {
   card: Component;
@@ -26,9 +27,15 @@ export class CardWord extends Component {
 
   unsubscribe: Unsubscribe;
 
-  constructor(parentNode: RootElement, wordData: WordDataModel) {
+  word: string;
+
+  category: string;
+
+  constructor(parentNode: RootElement, wordData: WordDataModel, category: string) {
     super(parentNode, 'div', ['card-container']);
     this.card = new Component(this.element, 'div', ['card']);
+    this.word = wordData.word;
+    this.category = category;
     this.cardFront = new Component(this.card.element, 'div', ['card__front']);
     this.cardFrontHeader = new Component(this.cardFront.element, 'div', ['card__header'], '', [
       ['style', `background-image: url(./${wordData.image})`],
@@ -73,6 +80,17 @@ export class CardWord extends Component {
 
   private cardClickHandler = (): void => {
     this.playAudio();
+
+    const statisticsData = <string>localStorage.getItem('statistics');
+    const statistics: StatisticsModel[] = JSON.parse(statisticsData);
+
+    const currentCardStatistics = <StatisticsModel>(
+      statistics.find((item) => item.category === this.category && item.word === this.word)
+    );
+
+    currentCardStatistics.click++;
+
+    localStorage.setItem('statistics', JSON.stringify(statistics));
   };
 
   private flipToFront = (): void => {

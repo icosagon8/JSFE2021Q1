@@ -7,9 +7,17 @@ export const initLocalStorage = (): void => {
   if (!statisticsData) {
     const statistics: StatisticsModel[] = [];
 
-    cards.forEach((elem) =>
-      elem.words.forEach((item) => {
-        statistics.push({ category: elem.category, word: item.word, translation: item.translation });
+    cards.forEach((categoryData) =>
+      categoryData.words.forEach((wordData) => {
+        statistics.push({
+          category: categoryData.category,
+          word: wordData.word,
+          translation: wordData.translation,
+          click: 0,
+          hit: 0,
+          miss: 0,
+          percent: 0,
+        });
       })
     );
 
