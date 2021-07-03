@@ -187,7 +187,7 @@ export const cards: CategoryDataModel[] = [
       },
       {
         word: 'giraffe',
-        translation: 'жирафа',
+        translation: 'жираф',
         image: 'images/giraffe.jpg',
         audioSrc: 'audio/giraffe.mp3',
       },
