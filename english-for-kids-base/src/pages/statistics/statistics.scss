@@ -10,6 +10,13 @@
       font-weight: 700;
       color: var(--statistics-table-th-color);
       padding: 0.3rem 1rem;
+      cursor: pointer;
+      user-select: none;
+      position: relative;
+
+      &:hover {
+        opacity: 0.8;
+      }
     }
 
     tr {
@@ -22,6 +29,35 @@
 
     td {
       padding: 0.3rem 1rem;
+    }
+
+    th.sorted,
+    th.sorted-reverse {
+      &::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        top: 50%;
+        right: 0.25rem;
+        transform: translateY(-50%);
+      }
+    }
+
+
+    th.sorted {
+      &::after {
+        border-width: 0 0.25rem 0.5rem 0.25rem;
+        border-color: transparent transparent var(--statistics-table-th-color) transparent;
+      }
+    }
+
+    th.sorted-reverse {
+      &::after {
+        border-width: 0.5rem 0.25rem 0 0.25rem;
+        border-color: var(--statistics-table-th-color) transparent transparent transparent;
+      }
     }
   }
 

@@ -26,6 +26,10 @@ export class Statistics extends Component {
 
   percentTh: Component;
 
+  sortDirections: string[];
+
+  tableHeaders: Element[];
+
   constructor(parentNode: RootElement) {
     super(parentNode, 'main', ['container', 'main']);
     this.container = new Component(this.element, 'div', ['statistics__table-container']);
@@ -39,6 +43,11 @@ export class Statistics extends Component {
     this.hitTh = new Component(this.tableHead.element, 'th', [], 'Hits');
     this.missTh = new Component(this.tableHead.element, 'th', [], 'Misses');
     this.percentTh = new Component(this.tableHead.element, 'th', [], '%');
+    this.tableHeaders = [...(<HTMLCollection>(<HTMLTableElement>this.table.element).tHead?.children)];
+    this.tableHeaders.forEach((tableHeader, index) =>
+      tableHeader.addEventListener('click', () => this.sortRows(index, tableHeader))
+    );
+    this.sortDirections = this.tableHeaders.map(() => '');
     this.addWords();
   }
 
@@ -68,5 +77,48 @@ export class Statistics extends Component {
         : `${wordStatistic.percent}`;
 
     return percent;
+  };
+
+  sortRows(index: number, tableHeader: Element): void {
+    const sortedRows = [...(<HTMLTableElement>this.table.element).rows];
+    const sortDirection = this.sortDirections[index] || 'asc';
+    const multiplier = sortDirection === 'asc' ? 1 : -1;
+
+    this.controlSortTriangle(sortDirection, tableHeader);
+
+    sortedRows.sort((rowA, rowB) => {
+      const cellAcontent = <string>rowA.cells[index].textContent;
+      const cellBContent = <string>rowB.cells[index].textContent;
+
+      const transformCellAcontent = this.transformCellContent(cellAcontent);
+      const transformCellBcontent = this.transformCellContent(cellBContent);
+
+      if (transformCellAcontent > transformCellBcontent) {
+        return 1 * multiplier;
+      }
+
+      if (transformCellAcontent < transformCellBcontent) {
+        return -1 * multiplier;
+      }
+
+      return 0;
+    });
+
+    this.sortDirections[index] = sortDirection === 'asc' ? 'desc' : 'asc';
+    (<HTMLTableElement>this.table.element).tBodies[0].append(...sortedRows);
+  }
+
+  transformCellContent = (content: string): string | number => {
+    return Number.isNaN(Number(content)) ? content : Number(content);
+  };
+
+  controlSortTriangle = (sortDirection: string, tableHeader: Element): void => {
+    if (sortDirection === 'asc') {
+      tableHeader.classList.add('sorted');
+      tableHeader.classList.remove('sorted-reverse');
+    } else {
+      tableHeader.classList.add('sorted-reverse');
+      tableHeader.classList.remove('sorted');
+    }
   };
 }
