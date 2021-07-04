@@ -15,3 +15,11 @@ export const getWordsData = (category: string): WordDataModel[] => {
 
   return categorySet;
 };
+
+export const getWordData = (category: string, word: string): WordDataModel => {
+  const wordData = <WordDataModel>(
+    cards.find((item) => item.category === category)?.words.find((item) => item.word === word)
+  );
+
+  return wordData;
+};
