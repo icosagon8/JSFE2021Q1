@@ -99,7 +99,7 @@ export class MainNav extends Component {
 
   private addMenuItems(): void {
     routes.forEach((route) => {
-      this.createMenuItem(route.name, route.path);
+      if (route.menu) this.createMenuItem(route.name, route.path);
     });
   }
 }
