@@ -41,7 +41,10 @@ export class Category extends Component {
 
   category: string;
 
-  constructor(parentNode: RootElement) {
+  constructor(
+    parentNode: RootElement,
+    private readonly headerNavCallback: (menuItemData: HTMLElement | string) => void
+  ) {
     super(parentNode, 'main', ['container', 'main', 'main--category']);
     this.cardsField = new CardsField(this.element, 'category');
     this.stars = new Component(null, 'div', ['category__stars']);
@@ -64,7 +67,7 @@ export class Category extends Component {
     window.addEventListener('hashchange', () => this.unsubscribe(), { once: true });
   }
 
-  private addCategoryCards(): void {
+  addCategoryCards(): void {
     const wordsData = getWordsData(this.category);
     wordsData.forEach((wordData) => {
       const card = new CardWord(this.cardsField.container.element, wordData, this.category);
@@ -79,6 +82,7 @@ export class Category extends Component {
   private startGame = (): void => {
     this.shuffleCards = shuffleArray<CardWord>(this.cards);
     this.currentCard = this.shuffleCards.pop();
+    this.category = <string>this.currentCard?.category;
     this.currentCard?.playAudio();
     this.button.element.classList.add('category__btn--repeat');
     this.button.element.addEventListener('click', this.repeatAudio);
@@ -98,6 +102,7 @@ export class Category extends Component {
 
     setTimeout(() => {
       window.location.hash = '#/';
+      this.headerNavCallback('Main Page');
     }, REDIRECT_DELAY);
   };
 
@@ -119,6 +124,7 @@ export class Category extends Component {
       (() => new Component(this.stars.element, 'div', ['category__star']))();
       currentCardStatistics.hit++;
       this.currentCard = this.shuffleCards?.pop();
+      this.category = <string>this.currentCard?.category;
       setTimeout(() => this.currentCard?.playAudio(), PLAY_AUDIO_DELAY);
     } else {
       (() => new Component(this.stars.element, 'div', ['category__star', 'category__star--error']))();
@@ -127,6 +133,7 @@ export class Category extends Component {
       currentCardStatistics.miss++;
     }
 
+    currentCardStatistics.percent = this.getHitsPercent(currentCardStatistics);
     localStorage.setItem('statistics', JSON.stringify(statistics));
   };
 
@@ -145,5 +152,14 @@ export class Category extends Component {
       this.button.element.classList.remove('category__btn--repeat');
       this.button.element.addEventListener('click', this.startGame, { once: true });
     }
+  };
+
+  getHitsPercent = (wordStatistic: StatisticsModel): number => {
+    const percent =
+      wordStatistic.hit / (wordStatistic.hit + wordStatistic.miss)
+        ? Math.round((wordStatistic.hit / (wordStatistic.hit + wordStatistic.miss)) * 100)
+        : wordStatistic.percent;
+
+    return percent;
   };
 }

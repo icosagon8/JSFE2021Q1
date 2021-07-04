@@ -2,6 +2,7 @@ import './statistics.scss';
 import { Component } from '../../components/component';
 import { RootElement } from '../../models/root-element-model';
 import { StatisticsModel } from '../../models/statistics-model';
+import { initLocalStorage } from '../../local-storage/local-storage';
 
 export class Statistics extends Component {
   container: Component;
@@ -30,8 +31,27 @@ export class Statistics extends Component {
 
   tableHeaders: Element[];
 
+  resetBtn: Component;
+
+  repeatBtn: Component;
+
+  buttonsContainer: Component;
+
   constructor(parentNode: RootElement) {
     super(parentNode, 'main', ['container', 'main']);
+    this.buttonsContainer = new Component(this.element, 'div', ['statistics__btn-container']);
+    this.repeatBtn = new Component(
+      this.buttonsContainer.element,
+      'button',
+      ['statistics__btn', 'statistics__btn--repeat'],
+      'Repeat difficult words'
+    );
+    this.resetBtn = new Component(
+      this.buttonsContainer.element,
+      'button',
+      ['statistics__btn', 'statistics__btn--reset'],
+      'Reset'
+    );
     this.container = new Component(this.element, 'div', ['statistics__table-container']);
     this.table = new Component(this.container.element, 'table', ['statistics__table']);
     this.tableHead = new Component(this.table.element, 'thead');
@@ -44,6 +64,8 @@ export class Statistics extends Component {
     this.missTh = new Component(this.tableHead.element, 'th', [], 'Misses');
     this.percentTh = new Component(this.tableHead.element, 'th', [], '%');
     this.tableHeaders = [...(<HTMLCollection>(<HTMLTableElement>this.table.element).tHead?.children)];
+    this.repeatBtn.element.addEventListener('click', this.repeatBtnClickHandler);
+    this.resetBtn.element.addEventListener('click', this.resetBtnClickHandler);
     this.tableHeaders.forEach((tableHeader, index) =>
       tableHeader.addEventListener('click', () => this.sortRows(index, tableHeader))
     );
@@ -65,19 +87,10 @@ export class Statistics extends Component {
         (() => new Component(row.element, 'td', [], `${item.click}`))();
         (() => new Component(row.element, 'td', [], `${item.hit}`))();
         (() => new Component(row.element, 'td', [], `${item.miss}`))();
-        (() => new Component(row.element, 'td', [], this.getHitsPercent(item)))();
+        (() => new Component(row.element, 'td', [], `${item.percent}`))();
       });
     }
   }
-
-  getHitsPercent = (wordStatistic: StatisticsModel): string => {
-    const percent =
-      wordStatistic.hit / (wordStatistic.hit + wordStatistic.miss)
-        ? `${Math.round((wordStatistic.hit / (wordStatistic.hit + wordStatistic.miss)) * 100)}`
-        : `${wordStatistic.percent}`;
-
-    return percent;
-  };
 
   sortRows(index: number, tableHeader: Element): void {
     const sortedRows = [...(<HTMLTableElement>this.table.element).rows];
@@ -120,5 +133,20 @@ export class Statistics extends Component {
       tableHeader.classList.add('sorted-reverse');
       tableHeader.classList.remove('sorted');
     }
+  };
+
+  resetBtnClickHandler = (): void => {
+    localStorage.clear();
+    initLocalStorage();
+    this.clearTable();
+    this.addWords();
+  };
+
+  repeatBtnClickHandler = (): void => {
+    window.location.hash = '#/difficult-words';
+  };
+
+  clearTable = (): void => {
+    this.tableBody.element.innerHTML = '';
   };
 }

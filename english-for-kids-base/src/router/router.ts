@@ -15,7 +15,7 @@ export class Router {
   render(): void {
     this.parseLocation();
     const { Page } = <RouteModel>this.findPage();
-    const page = this.location === '' ? new Page(this.rootElement, this.headerNavCallback) : new Page(this.rootElement);
+    const page = new Page(this.rootElement, this.headerNavCallback);
     this.rootElement.replaceWith(page.element);
     this.rootElement = page.element;
   }

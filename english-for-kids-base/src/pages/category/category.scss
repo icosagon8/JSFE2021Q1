@@ -1,4 +1,8 @@
 .category {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
   &__stars {
     height: 1.7rem;
     margin-bottom: 1rem;
