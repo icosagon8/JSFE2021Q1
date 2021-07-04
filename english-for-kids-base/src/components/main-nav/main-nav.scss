@@ -101,6 +101,7 @@
   &__link {
     color: #ffffff;
     text-decoration: none;
+    user-select: none;
 
     &:hover {
       opacity: 0.8;
