@@ -1,6 +1,10 @@
+import { Category } from '../pages/category/category';
+import { MainPage } from '../pages/main/main';
+import { Statistics } from '../pages/statistics/statistics';
+
 export interface RouteModel {
   name: string;
   path: string;
-  Page: any; // TODO: replace type any with the correct type
+  Page: typeof MainPage | typeof Category | typeof Statistics;
   menu: boolean;
 }
