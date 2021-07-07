@@ -26,3 +26,12 @@ categoryRouter.post('/', async (req, res) => {
   await category.save();
   res.send(category);
 });
+
+categoryRouter.delete('/:id', async (req, res) => {
+  try {
+    await CategoryModel.findByIdAndRemove(req.params.id);
+    res.sendStatus(204);
+  } catch {
+    res.status(404).send({ error: 'The category does not exist' });
+  }
+});
