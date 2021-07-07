@@ -1,5 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import cors from 'cors';
 import { categoryRouter } from './routes/categoryRouter';
 
 const PORT = 3000;
@@ -15,6 +16,7 @@ async function start() {
     );
 
     const app = express();
+    app.use(cors());
     app.use(express.json());
     app.use('/api/categories', categoryRouter);
 
