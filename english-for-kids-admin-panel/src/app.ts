@@ -16,7 +16,7 @@ async function start() {
 
     const app = express();
     app.use(express.json());
-    app.use('/categories', categoryRouter);
+    app.use('/api/categories', categoryRouter);
 
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
