@@ -1,6 +1,19 @@
 import { Schema, model } from 'mongoose';
 
-const wordShema = new Schema(
+interface Word {
+  word: string;
+  translation: string;
+  image: string;
+  audioSrc: string;
+}
+
+interface Category {
+  category: string;
+  image: string;
+  words: Word[];
+}
+
+const wordShema = new Schema<Word>(
   {
     word: String,
     translation: String,
@@ -10,7 +23,7 @@ const wordShema = new Schema(
   { versionKey: false }
 );
 
-const categorySchema = new Schema(
+const categorySchema = new Schema<Category>(
   {
     category: {
       type: String,
@@ -28,4 +41,4 @@ const categorySchema = new Schema(
   { versionKey: false }
 );
 
-export const CategoryModel = model('Post', categorySchema);
+export const CategoryModel = model<Category>('Post', categorySchema);
