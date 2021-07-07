@@ -9,9 +9,12 @@ categoryRouter.get('/', async (req, res) => {
 });
 
 categoryRouter.get('/:id', async (req, res) => {
-  const category = await CategoryModel.find();
-  const { id } = req.params;
-  res.send(category[id]);
+  try {
+    const category = await CategoryModel.findOne({ _id: req.params.id });
+    res.send(category);
+  } catch {
+    res.sendStatus(404);
+  }
 });
 
 categoryRouter.post('/', async (req, res) => {
