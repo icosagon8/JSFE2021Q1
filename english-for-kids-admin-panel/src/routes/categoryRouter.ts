@@ -35,3 +35,18 @@ categoryRouter.delete('/:id', async (req, res) => {
     res.status(404).send({ error: 'The category does not exist' });
   }
 });
+
+categoryRouter.put('/:id', async (req, res) => {
+  const category = {
+    category: req.body.category,
+    image: req.body.image,
+    words: req.body.words,
+  };
+
+  try {
+    const newCategory = await CategoryModel.findByIdAndUpdate(req.params.id, category, { new: true });
+    res.send(newCategory);
+  } catch {
+    res.status(404).send({ error: 'The category does not exist' });
+  }
+});
