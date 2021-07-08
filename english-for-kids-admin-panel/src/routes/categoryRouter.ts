@@ -36,11 +36,9 @@ categoryRouter.delete('/:id', async (req, res) => {
   }
 });
 
-categoryRouter.put('/:id', async (req, res) => {
+categoryRouter.patch('/:id', async (req, res) => {
   const category = {
     category: req.body.category,
-    image: req.body.image,
-    words: req.body.words,
   };
 
   try {
