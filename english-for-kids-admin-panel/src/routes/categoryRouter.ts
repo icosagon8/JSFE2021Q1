@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { CategoryModel } from '../models/categoryModel';
+import { WordModel } from '../models/wordModel';
 
 export const categoryRouter = Router();
 
@@ -30,6 +31,7 @@ categoryRouter.post('/', async (req, res) => {
 categoryRouter.delete('/:id', async (req, res) => {
   try {
     await CategoryModel.findByIdAndRemove(req.params.id);
+    await WordModel.deleteMany({ categoryId: req.params.id });
     res.sendStatus(204);
   } catch {
     res.status(404).send({ error: 'The category does not exist' });
