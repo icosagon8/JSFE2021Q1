@@ -4,11 +4,11 @@ import { CardWord } from '../../components/card-word/card-word';
 import { CardsField } from '../../components/cards-field/cards-field';
 import { Component } from '../../components/component';
 import { RootElement } from '../../models/root-element-model';
-import { getWordsData } from '../../services/cards-services';
 import { store } from '../../store/store';
 import { shuffleArray } from '../../helpers/utils';
 import { PLAY_AUDIO_DELAY, REDIRECT_DELAY } from '../../helpers/constants';
 import { StatisticsModel } from '../../models/statistics-model';
+import { getCategoryWordsData } from '../../services/api';
 
 export class Category extends Component {
   cardsField: CardsField;
@@ -67,8 +67,8 @@ export class Category extends Component {
     window.addEventListener('hashchange', () => this.unsubscribe(), { once: true });
   }
 
-  addCategoryCards(): void {
-    const wordsData = getWordsData(this.category);
+  async addCategoryCards(): Promise<void> {
+    const wordsData = await getCategoryWordsData(this.category);
     wordsData.forEach((wordData) => {
       const card = new CardWord(this.cardsField.container.element, wordData, this.category);
       this.cards.push(card);
@@ -110,13 +110,9 @@ export class Category extends Component {
     const card = <HTMLElement>(<HTMLElement>evt.target).closest('.card');
     if (!card) return;
     if (!this.shuffleCards?.length) this.finishGame();
-
     const statisticsData = <string>localStorage.getItem('statistics');
     const statistics: StatisticsModel[] = JSON.parse(statisticsData);
-
-    const currentCardStatistics = <StatisticsModel>(
-      statistics.find((item) => item.category === this.category && item.word === this.currentCard?.word)
-    );
+    const currentCardStatistics = <StatisticsModel>statistics.find((item) => item.id === this.currentCard?.wordId);
 
     if (card === this.currentCard?.card.element) {
       this.correctAudio.play();

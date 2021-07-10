@@ -26,6 +26,9 @@ module.exports = ({ development }) => ({
     path: path.resolve(__dirname, 'dist'),
     assetModuleFilename: 'assets/[hash][ext]',
   },
+  experiments: {
+    topLevelAwait: true,
+  },
   module: {
     rules: [
       {

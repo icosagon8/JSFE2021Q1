@@ -7,4 +7,5 @@ export interface RouteModel {
   path: string;
   Page: typeof MainPage | typeof Category | typeof Statistics;
   menu: boolean;
+  categoryId?: string;
 }

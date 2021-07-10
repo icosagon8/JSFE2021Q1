@@ -4,6 +4,9 @@ import { RootElement } from '../../models/root-element-model';
 import { routes } from '../../router/routes';
 import { store } from '../../store/store';
 
+export interface HTMLElementMenuItem extends HTMLElement {
+  categoryId: string;
+}
 export class MainNav extends Component {
   toggle: Component;
 
@@ -58,9 +61,10 @@ export class MainNav extends Component {
     }
   }
 
-  private createMenuItem(name: string, path: string) {
+  private createMenuItem(name: string, path: string, categoryId?: string) {
     const li = new Component(this.menu.element, 'li', ['main-nav__item']);
     const a = new Component(li.element, 'a', ['main-nav__link'], `${name}`, [['href', `#/${path}`]]);
+    if (categoryId) (<HTMLElementMenuItem>a.element).categoryId = categoryId;
     this.menuItems.push(li.element);
     a.element.addEventListener('click', this.menuItemClickHandler);
     this.highlightInitMenuItem(li.element, path);
@@ -74,7 +78,7 @@ export class MainNav extends Component {
     this.toggleMenu();
     store.dispatch({
       type: 'UPDATE_PAGE',
-      text: (<HTMLElement>evt.target).textContent,
+      text: (<HTMLElementMenuItem>evt.target).categoryId,
     });
   };
 
@@ -99,7 +103,7 @@ export class MainNav extends Component {
 
   private addMenuItems(): void {
     routes.forEach((route) => {
-      if (route.menu) this.createMenuItem(route.name, route.path);
+      if (route.menu) this.createMenuItem(route.name, route.path, route.categoryId);
     });
   }
 }

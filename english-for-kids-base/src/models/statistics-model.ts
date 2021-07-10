@@ -1,4 +1,5 @@
 export interface StatisticsModel {
+  id: string;
   category: string;
   word: string;
   translation: string;

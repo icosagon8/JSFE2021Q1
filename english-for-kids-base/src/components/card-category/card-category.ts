@@ -1,10 +1,10 @@
 import './card-category.scss';
 import { Component } from '../component';
 import { RootElement } from '../../models/root-element-model';
-import { CategoryDataModel } from '../../models/category-data-model';
 import { getKebabCaseString } from '../../helpers/utils';
 import { store } from '../../store/store';
 import { updateCategory } from '../../store/page/actions';
+import { CategoryDataModel } from '../../models/category-data-model';
 
 export class CardCategory extends Component {
   image: Component;
@@ -31,6 +31,6 @@ export class CardCategory extends Component {
 
   cardClickHandler = (): void => {
     this.headerNavCallback(this.categoryData.category);
-    store.dispatch(updateCategory(this.categoryData.category));
+    store.dispatch(updateCategory(this.categoryData.id));
   };
 }

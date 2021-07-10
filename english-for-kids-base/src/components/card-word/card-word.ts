@@ -27,14 +27,14 @@ export class CardWord extends Component {
 
   unsubscribe: Unsubscribe;
 
-  word: string;
+  wordId: string;
 
   category: string;
 
   constructor(parentNode: RootElement, wordData: WordDataModel, category: string) {
     super(parentNode, 'div', ['card-container']);
     this.card = new Component(this.element, 'div', ['card']);
-    this.word = wordData.word;
+    this.wordId = wordData.id;
     this.category = category;
     this.cardFront = new Component(this.card.element, 'div', ['card__front']);
     this.cardFrontHeader = new Component(this.cardFront.element, 'div', ['card__header'], '', [
@@ -84,9 +84,7 @@ export class CardWord extends Component {
     const statisticsData = <string>localStorage.getItem('statistics');
     const statistics: StatisticsModel[] = JSON.parse(statisticsData);
 
-    const currentCardStatistics = <StatisticsModel>(
-      statistics.find((item) => item.category === this.category && item.word === this.word)
-    );
+    const currentCardStatistics = <StatisticsModel>statistics.find((item) => item.id === this.wordId);
 
     currentCardStatistics.click++;
 

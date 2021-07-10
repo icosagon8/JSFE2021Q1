@@ -135,9 +135,9 @@ export class Statistics extends Component {
     }
   };
 
-  resetBtnClickHandler = (): void => {
+  resetBtnClickHandler = async (): Promise<void> => {
     localStorage.clear();
-    initLocalStorage();
+    await initLocalStorage();
     this.clearTable();
     this.addWords();
   };
