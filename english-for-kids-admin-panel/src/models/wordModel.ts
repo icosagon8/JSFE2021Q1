@@ -14,9 +14,16 @@ export const wordShema = new Schema<Word>(
     translation: String,
     image: String,
     audioSrc: String,
-    categoryId: Schema.Types.ObjectId,
+    categoryId: String,
   },
   { versionKey: false }
 );
+
+wordShema.set('toJSON', {
+  virtuals: true,
+  transform: (doc: any, converted: any) => {
+    delete converted._id;
+  },
+});
 
 export const WordModel = model<Word>('Words', wordShema);

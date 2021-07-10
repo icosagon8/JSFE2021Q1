@@ -19,4 +19,11 @@ const categorySchema = new Schema<Category>(
   { versionKey: false }
 );
 
+categorySchema.set('toJSON', {
+  virtuals: true,
+  transform: (doc: any, converted: any) => {
+    delete converted._id;
+  },
+});
+
 export const CategoryModel = model<Category>('Categories', categorySchema);
