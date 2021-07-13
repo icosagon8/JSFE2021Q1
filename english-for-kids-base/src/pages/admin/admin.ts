@@ -2,7 +2,7 @@ import './admin.scss';
 import { Component } from '../../components/component';
 import { RootElement } from '../../models/root-element-model';
 import { AdminCategoryCard } from '../../components/admin-card-category/admin-card-category';
-import { getCategoriesData, getWordsData } from '../../services/api';
+import { createCategory, getCategoriesData, getWordsData } from '../../services/api';
 
 const adminRoutes = [
   { name: 'Categories', path: 'admin' },
@@ -23,6 +23,10 @@ export class Admin extends Component {
   logoutBtn: Component;
 
   container: Component;
+
+  addCategoryCard?: Component;
+
+  addCategoryBtn?: Component;
 
   constructor(parentNode: RootElement) {
     super(null, 'div', ['main']);
@@ -50,6 +54,25 @@ export class Admin extends Component {
     return a;
   }
 
+  private createAddCategoryCard() {
+    this.addCategoryCard = new Component(this.container.element, 'div', ['admin__card']);
+    (() => new Component(this.addCategoryCard.element, 'h2', ['admin__card-title'], 'Create new Category'))();
+    this.addCategoryBtn = new Component(this.addCategoryCard.element, 'button', ['admin__add-category-btn']);
+    this.addCategoryBtn.element.addEventListener('click', this.createCat);
+  }
+
+  createCat = async (): Promise<void> => {
+    const category = await createCategory({
+      category: 'New category',
+      image: 'images/default.png',
+    });
+
+    const newCard = new AdminCategoryCard(null, category, 0);
+    newCard.toggleElement(newCard.cardInfo.element);
+    newCard.toggleElement(newCard.cardUpdate.element);
+    this.addCategoryCard?.element.before(newCard.element);
+  };
+
   logoutBtnClickHandler = (): void => {
     window.location.hash = '#/';
   };
@@ -57,11 +80,14 @@ export class Admin extends Component {
   async addCategoryCards(): Promise<void> {
     const categoriesData = await getCategoriesData();
     const categoryWordsData = await getWordsData();
+
     categoriesData.forEach(async (categoryData) => {
       const categoryWordsCount = categoryWordsData.filter(
         (categoryWordData) => categoryWordData.categoryId === categoryData.id
       ).length;
       (() => new AdminCategoryCard(this.container.element, categoryData, categoryWordsCount))();
     });
+
+    this.createAddCategoryCard();
   }
 }

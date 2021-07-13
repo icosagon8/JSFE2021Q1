@@ -1,4 +1,6 @@
+import { CategoryCreateData } from '../models/category-create-data';
 import { CategoryDataModel } from '../models/category-data-model';
+import { CategoryUpdateData } from '../models/category-update-data';
 import { WordDataModel } from '../models/word-data-model';
 
 const baseUrl = 'http://localhost:3000';
@@ -47,13 +49,23 @@ export const deleteCategory = async (categoryId: string): Promise<CategoryDataMo
   return category;
 };
 
-interface CategoryUpdateData {
-  category: string;
-}
-
 export const updateCategory = async (categoryId: string, body: CategoryUpdateData): Promise<CategoryDataModel> => {
   const response = await fetch(`${baseUrl}${paths.categories}/${categoryId}`, {
     method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  });
+
+  const category = await response.json();
+
+  return category;
+};
+
+export const createCategory = async (body: CategoryCreateData): Promise<CategoryDataModel> => {
+  const response = await fetch(`${baseUrl}${paths.categories}`, {
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
