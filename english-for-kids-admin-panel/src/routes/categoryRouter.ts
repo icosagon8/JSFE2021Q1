@@ -30,9 +30,9 @@ categoryRouter.post('/', async (req, res) => {
 
 categoryRouter.delete('/:id', async (req, res) => {
   try {
-    await CategoryModel.findByIdAndRemove(req.params.id);
+    const category = await CategoryModel.findByIdAndRemove(req.params.id);
     await WordModel.deleteMany({ categoryId: req.params.id });
-    res.sendStatus(204);
+    res.send(category);
   } catch {
     res.status(404).send({ error: 'The category does not exist' });
   }
