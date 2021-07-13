@@ -36,3 +36,31 @@ export const getWordData = async (wordId: string): Promise<WordDataModel> => {
 
   return wordData;
 };
+
+export const deleteCategory = async (categoryId: string): Promise<CategoryDataModel> => {
+  const response = await fetch(`${baseUrl}${paths.categories}/${categoryId}`, {
+    method: 'DELETE',
+  });
+
+  const category: CategoryDataModel = await response.json();
+
+  return category;
+};
+
+interface CategoryUpdateData {
+  category: string;
+}
+
+export const updateCategory = async (categoryId: string, body: CategoryUpdateData): Promise<CategoryDataModel> => {
+  const response = await fetch(`${baseUrl}${paths.categories}/${categoryId}`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  });
+
+  const category = await response.json();
+
+  return category;
+};
