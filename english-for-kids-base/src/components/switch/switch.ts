@@ -23,6 +23,12 @@ export class Switch extends Component {
     this.text = new Component(this.label.element, 'span', ['switch__text']);
     this.slider = new Component(this.label.element, 'span', ['switch__slider']);
     this.field.element.addEventListener('change', this.changePlayMode);
+    this.setGameMode();
+  }
+
+  setGameMode(): void {
+    const { isPlayMode } = store.getState().mode;
+    if (isPlayMode) (<HTMLInputElement>this.field.element).checked = true;
   }
 
   changePlayMode = (): void => {

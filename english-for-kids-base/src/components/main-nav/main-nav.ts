@@ -1,8 +1,9 @@
 import './main-nav.scss';
 import { Component } from '../component';
 import { RootElement } from '../../models/root-element-model';
-import { routes } from '../../router/routes';
 import { store } from '../../store/store';
+import { getKebabCaseString } from '../../helpers/utils';
+import { RouteModel } from '../../models/route-model';
 
 export interface HTMLElementMenuItem extends HTMLElement {
   categoryId: string;
@@ -18,7 +19,7 @@ export class MainNav extends Component {
 
   menuItems: HTMLElement[];
 
-  constructor(parentNode: RootElement) {
+  constructor(parentNode: RootElement, private readonly routes: RouteModel[]) {
     super(parentNode, 'nav', ['main-nav']);
     this.toggle = new Component(this.element, 'button', ['main-nav__toggle'], '', [['type', 'button']]);
     this.lines = new Component(this.toggle.element, 'span', ['main-nav__lines']);
@@ -26,6 +27,7 @@ export class MainNav extends Component {
     this.menuItems = [];
     this.addMenuItems();
     this.setEventHandlers();
+    this.highlightMenuItem();
   }
 
   private setEventHandlers(): void {
@@ -67,13 +69,11 @@ export class MainNav extends Component {
     if (categoryId) (<HTMLElementMenuItem>a.element).categoryId = categoryId;
     this.menuItems.push(li.element);
     a.element.addEventListener('click', this.menuItemClickHandler);
-    this.highlightInitMenuItem(li.element, path);
 
     return a;
   }
 
   private menuItemClickHandler = (evt: Event): void => {
-    this.highlightActiveMenuItem(<HTMLElement>evt.target);
     this.transformLines();
     this.toggleMenu();
     store.dispatch({
@@ -82,27 +82,22 @@ export class MainNav extends Component {
     });
   };
 
-  private highlightInitMenuItem(menuItem: HTMLElement, path: string): void {
+  highlightMenuItem(): void {
+    const path = window.location.hash.slice(2);
+
     if (path === '') {
-      menuItem.classList.add('main-nav__item--active');
-      this.activeMenuItem = menuItem;
+      this.activeMenuItem = this.menuItems.find((menuItem) => menuItem.textContent === 'Main Page');
+    } else {
+      this.activeMenuItem = <HTMLElement>(
+        this.menuItems.find((menuItem) => getKebabCaseString(<string>menuItem.textContent) === path)
+      );
     }
+
+    this.activeMenuItem?.classList.add('main-nav__item--active');
   }
 
-  highlightActiveMenuItem = (menuItemData: HTMLElement | string): void => {
-    this.activeMenuItem?.classList.remove('main-nav__item--active');
-
-    if (typeof menuItemData === 'string') {
-      this.activeMenuItem = <HTMLElement>this.menuItems.find((menuItem) => menuItem.textContent === menuItemData);
-    } else {
-      this.activeMenuItem = <HTMLElement>menuItemData.closest('.main-nav__item');
-    }
-
-    this.activeMenuItem.classList.add('main-nav__item--active');
-  };
-
   private addMenuItems(): void {
-    routes.forEach((route) => {
+    this.routes.forEach((route) => {
       if (route.menu) this.createMenuItem(route.name, route.path, route.categoryId);
     });
   }

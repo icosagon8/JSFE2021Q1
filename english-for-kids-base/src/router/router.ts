@@ -1,23 +1,33 @@
+import { Footer } from '../components/footer/footer';
+import { Header } from '../components/header/header';
 import { RouteModel } from '../models/route-model';
+import { Admin } from '../pages/admin/admin';
+import { getRoutes } from './routes';
 
 export class Router {
   location?: string;
 
-  constructor(
-    private rootElement: HTMLElement,
-    private readonly routes: RouteModel[],
-    private readonly headerNavCallback: (menuItemData: HTMLElement | string) => void
-  ) {
+  routes: RouteModel[];
+
+  constructor(private rootElement: HTMLElement) {
+    this.routes = [];
     this.render();
     this.hashChangeHandler();
   }
 
-  render(): void {
+  async render(): Promise<void> {
+    this.routes = await getRoutes();
     this.parseLocation();
     const { Page } = <RouteModel>this.findPage();
-    const page = new Page(this.rootElement, this.headerNavCallback);
-    this.rootElement.replaceWith(page.element);
-    this.rootElement = page.element;
+    document.body.innerHTML = '';
+
+    if (Page === Admin) {
+      (() => new Page(document.body))();
+    } else {
+      (() => new Header(this.rootElement, this.routes))();
+      (() => new Page(this.rootElement))();
+      (() => new Footer(this.rootElement))();
+    }
   }
 
   private parseLocation(): void {

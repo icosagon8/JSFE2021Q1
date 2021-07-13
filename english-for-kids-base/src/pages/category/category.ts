@@ -41,10 +41,7 @@ export class Category extends Component {
 
   category: string;
 
-  constructor(
-    parentNode: RootElement,
-    private readonly headerNavCallback: (menuItemData: HTMLElement | string) => void
-  ) {
+  constructor(parentNode: RootElement) {
     super(parentNode, 'main', ['container', 'main', 'main--category']);
     this.cardsField = new CardsField(this.element, 'category');
     this.stars = new Component(null, 'div', ['category__stars']);
@@ -102,7 +99,6 @@ export class Category extends Component {
 
     setTimeout(() => {
       window.location.hash = '#/';
-      this.headerNavCallback('Main Page');
     }, REDIRECT_DELAY);
   };
 

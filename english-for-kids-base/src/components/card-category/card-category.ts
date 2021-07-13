@@ -11,11 +11,7 @@ export class CardCategory extends Component {
 
   title: Component;
 
-  constructor(
-    parentNode: RootElement,
-    private readonly categoryData: CategoryDataModel,
-    private readonly headerNavCallback: (menuItemData: HTMLElement | string) => void
-  ) {
+  constructor(parentNode: RootElement, private readonly categoryData: CategoryDataModel) {
     super(parentNode, 'a', ['category-card'], '', [['href', `#/${getKebabCaseString(categoryData.category)}`]]);
     this.image = new Component(this.element, 'img', ['category-card__img'], '', [
       ['src', `./${categoryData.image}`],
@@ -30,7 +26,6 @@ export class CardCategory extends Component {
   }
 
   cardClickHandler = (): void => {
-    this.headerNavCallback(this.categoryData.category);
     store.dispatch(updateCategory(this.categoryData.id));
   };
 }

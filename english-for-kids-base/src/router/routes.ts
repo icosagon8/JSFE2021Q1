@@ -5,6 +5,7 @@ import { Category } from '../pages/category/category';
 import { getCategoriesData } from '../services/api';
 import { Statistics } from '../pages/statistics/statistics';
 import { DifficultWords } from '../pages/repeat/repeat';
+import { Admin } from '../pages/admin/admin';
 
 async function getCategoryRoutes() {
   const categoriesData = await getCategoriesData();
@@ -21,9 +22,14 @@ async function getCategoryRoutes() {
   return categoryRoutes;
 }
 
-export const routes: RouteModel[] = [
-  { name: 'Main Page', path: '', Page: MainPage, menu: true },
-  ...(await getCategoryRoutes()),
-  { name: 'Statistics', path: 'statistics', Page: Statistics, menu: true },
-  { name: 'Repeat', path: 'difficult-words', Page: DifficultWords, menu: false },
-];
+export async function getRoutes(): Promise<RouteModel[]> {
+  const routes = [
+    { name: 'Main Page', path: '', Page: MainPage, menu: true },
+    ...(await getCategoryRoutes()),
+    { name: 'Statistics', path: 'statistics', Page: Statistics, menu: true },
+    { name: 'Repeat', path: 'difficult-words', Page: DifficultWords, menu: false },
+    { name: 'Admin', path: 'admin', Page: Admin, menu: true },
+  ];
+
+  return routes;
+}
