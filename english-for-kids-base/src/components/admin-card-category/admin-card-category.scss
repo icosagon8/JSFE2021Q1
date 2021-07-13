@@ -1,0 +1,121 @@
+.admin {
+  &__card {
+    width: 18.05rem;
+    position: relative;
+    font-size: 1.1rem;
+    line-height: 1.3rem;
+    padding: 1.25rem 1rem;
+    border: 0.1rem solid var(--admin-category-card-border-color);
+    border-radius: 0.25rem;
+  }
+
+  &__field-group {
+    padding: 0 1rem;
+    margin-bottom: 3.95rem;
+  }
+
+  &__label {
+    font-weight: bold;
+    font-size: 0.45rem;
+    line-height: 0.55rem;
+    color: var(--admin-category-card-label-color);
+  }
+
+  &__field {
+    font-size: 1.1rem;
+    outline: 0;
+    border: 0;
+    border-bottom: 0.05rem solid var(--admin-category-card-label-color);
+    width: 100%;
+  }
+
+  &__card-title {
+    font-weight: bold;
+    font-size: inherit;
+    margin: 0;
+    text-align: center;
+    margin-bottom: 2.15rem;
+  }
+
+  &__card-body {
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0 1.9rem;
+    margin-bottom: 3rem;
+  }
+
+  &__btn {
+    border: 0;
+    background-color: transparent;
+    padding: 0.15rem 1rem;
+    color: var(--admin-btn-color);
+    border: 0.1rem solid var(--admin-btn-color);
+    border-radius: 0.25rem;
+    width: 7.15rem;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+
+  &__delete-btn {
+    position: absolute;
+    top: 0.25rem;
+    right: 0.25rem;
+    width: 1.2rem;
+    height: 1.2rem;
+    padding: 0;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+
+    &::before,
+    &::after {
+      content: '';
+      background-color: var(--admin-delete-btn-bg-color);
+      width: 1.2rem;
+      height: 0.15rem;
+      position: absolute;
+      left: 0;
+      top: 50%;
+    }
+
+    &::before {
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+    &::after {
+      transform: translateY(-50%) rotate(-45deg);
+    }
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+
+  &__cancel-btn {
+    color: var(--admin-cancel-btn-bg-color);
+    border: 0.1rem solid var(--admin-cancel-btn-bg-color);
+    padding: 0.7rem 1rem;
+  }
+
+  &__create-btn {
+    padding: 0.7rem 1rem;
+  }
+
+  &__card-footer {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 640px) {
+  .admin {
+
+    &__btn {
+      width: 6rem;
+      font-size: 0.85rem;
+    }
+  }
+}
