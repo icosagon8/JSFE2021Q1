@@ -22,8 +22,8 @@ categoryRouter.post('/', async (req, res) => {
   const category = new CategoryModel({
     category: req.body.category,
     image: req.body.image,
-    words: req.body.words,
   });
+
   await category.save();
   res.send(category);
 });
