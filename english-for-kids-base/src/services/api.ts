@@ -3,7 +3,7 @@ import { CategoryDataModel } from '../models/category-data-model';
 import { CategoryUpdateData } from '../models/category-update-data';
 import { WordDataModel } from '../models/word-data-model';
 
-const baseUrl = 'http://localhost:3000';
+const baseUrl = 'https://fringuante-bastille-07764.herokuapp.com';
 
 const paths = {
   categories: '/api/categories',
