@@ -4,7 +4,7 @@ import cors from 'cors';
 import { categoryRouter } from './routes/categoryRouter';
 import { wordRouter } from './routes/wordRouter';
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 async function start() {
   try {

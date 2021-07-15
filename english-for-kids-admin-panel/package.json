@@ -2,12 +2,13 @@
   "name": "english-for-kids-admin-panel",
   "version": "1.0.0",
   "scripts": {
-    "build": "tsc",
-    "start": "ts-node ./src/app.ts",
-    "watch": "nodemon",
-    "lint": "eslint src",
-    "fix": "eslint src --fix"
-  },
+    "start": "node dist/app.js",
+    "postinstall": "tsc",
+    "watch-node": "nodemon dist/app.js",
+    "watch-ts": "tsc -w",
+    "deploy": "git add . && git commit -m Heroku && git push heroku master"
+},
+  "engines": { "node": "14.16.1" },
   "author": "Dmitrii Pavlov",
   "devDependencies": {
     "@types/cors": "^2.8.11",
