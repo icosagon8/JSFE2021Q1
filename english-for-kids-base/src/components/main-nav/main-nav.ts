@@ -4,6 +4,7 @@ import { RootElement } from '../../models/root-element-model';
 import { store } from '../../store/store';
 import { getKebabCaseString } from '../../helpers/utils';
 import { RouteModel } from '../../models/route-model';
+import { Popup } from '../popup/popup';
 
 export interface HTMLElementMenuItem extends HTMLElement {
   categoryId: string;
@@ -19,19 +20,29 @@ export class MainNav extends Component {
 
   menuItems: HTMLElement[];
 
+  loginBtn: Component;
+
+  menuContainer: Component;
+
+  popup: Popup;
+
   constructor(parentNode: RootElement, private readonly routes: RouteModel[]) {
     super(parentNode, 'nav', ['main-nav']);
     this.toggle = new Component(this.element, 'button', ['main-nav__toggle'], '', [['type', 'button']]);
     this.lines = new Component(this.toggle.element, 'span', ['main-nav__lines']);
-    this.menu = new Component(this.element, 'ul', ['main-nav__list']);
+    this.menuContainer = new Component(this.element, 'div', ['main-nav__menu']);
+    this.menu = new Component(this.menuContainer.element, 'ul', ['main-nav__list']);
     this.menuItems = [];
     this.addMenuItems();
+    this.loginBtn = new Component(this.menuContainer.element, 'button', ['main-nav__login-btn'], 'Login');
+    this.popup = new Popup(this.element);
     this.setEventHandlers();
     this.highlightMenuItem();
   }
 
   private setEventHandlers(): void {
     this.toggle.element.addEventListener('click', this.toggleClickHandler);
+    this.loginBtn.element.addEventListener('click', this.loginBtnClickHandler);
   }
 
   private toggleClickHandler = (evt: Event): void => {
@@ -41,7 +52,9 @@ export class MainNav extends Component {
   };
 
   private menuOutsideClickHandler = (evt: Event): void => {
-    const menu = (<Element>evt.target).closest('.main-nav__list');
+    if ((<Element>evt.target).closest('.popup-overlay')) return;
+
+    const menu = (<Element>evt.target).closest('.main-nav__menu');
 
     if (!menu) {
       this.transformLines();
@@ -49,14 +62,18 @@ export class MainNav extends Component {
     }
   };
 
+  private loginBtnClickHandler = (): void => {
+    this.popup.showPopup();
+  };
+
   private transformLines(): void {
     this.toggle.element.classList.toggle('main-nav__toggle--open');
   }
 
   private toggleMenu(): void {
-    this.menu.element.classList.toggle('main-nav__list--open');
+    this.menuContainer.element.classList.toggle('main-nav__menu--open');
 
-    if (this.menu.element.classList.contains('main-nav__list--open')) {
+    if (this.menuContainer.element.classList.contains('main-nav__menu--open')) {
       document.addEventListener('click', this.menuOutsideClickHandler);
     } else {
       document.removeEventListener('click', this.menuOutsideClickHandler);
