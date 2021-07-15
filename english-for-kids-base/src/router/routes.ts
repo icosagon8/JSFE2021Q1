@@ -28,7 +28,7 @@ export async function getRoutes(): Promise<RouteModel[]> {
     ...(await getCategoryRoutes()),
     { name: 'Statistics', path: 'statistics', Page: Statistics, menu: true },
     { name: 'Repeat', path: 'difficult-words', Page: DifficultWords, menu: false },
-    { name: 'Admin', path: 'admin', Page: Admin, menu: true },
+    { name: 'Admin', path: 'admin', Page: Admin, menu: false },
   ];
 
   return routes;
