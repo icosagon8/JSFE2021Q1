@@ -9,7 +9,7 @@ import { WinnerOrder } from './models/winner-order-model';
 import { CarWriteModel } from './models/car-write-model';
 import { WinnerWriteModel } from './models/winner-write-model';
 
-const baseUrl = 'http://localhost:3000';
+const baseUrl = 'https://async-race-rss.herokuapp.com';
 
 const paths = {
   garage: '/garage',
